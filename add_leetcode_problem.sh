@@ -6,7 +6,7 @@ if [ "$#" -ne 4 ]; then
   exit 1
 fi
 
-# Load arguments
+# Parse arguments
 difficulty=$1
 number=$(printf "%04d" "$2")
 name_snake=$3
@@ -30,7 +30,7 @@ fi
 # Compose the problem folder name
 target_dir="${difficulty}/${number}_${name_snake}"
 
-# Create thee problem directory and solution file
+# Create the problem directory and solution file
 mkdir -p "$target_dir"
 touch "${target_dir}/solution.${ext}"
 
