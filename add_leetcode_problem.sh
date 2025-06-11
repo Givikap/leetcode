@@ -21,9 +21,9 @@ case "$difficulty" in
     ;;
 esac
 
-# Validate name: only lowercase letters and underscores
-if [[ ! "$name_snake" =~ ^[a-z_]+$ ]]; then
-  echo "Invalid name. Use only lowercase letters and underscores."
+# Validate name: only lowercase letters, underscores, and numbers
+if [[ ! "$name_snake" =~ ^[a-z0-9_]+$ ]]; then
+  echo "Invalid name. Use only lowercase letters, numbers, and underscores."
   exit 1
 fi
 
