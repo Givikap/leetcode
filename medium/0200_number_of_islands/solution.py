@@ -1,30 +1,29 @@
 from typing import List
-
+    
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        def _removeIsland(grid: List[List[str]], i: int, j: int) -> None:
-            queue = [(i, j)]
-            
-            while len(queue) != 0:
-                i, j = queue.pop()
-
-                grid[j][i] = "0"
-
-                if j + 1 < len(grid) and grid[j+1][i] == "1":
-                    queue.append((i, j + 1))
-                if i + 1 < len(grid[0]) and grid[j][i+1] == "1":
-                    queue.append((i + 1, j))
-                if j - 1 >= 0 and grid[j-1][i] == "1":
-                    queue.append((i, j - 1))
-                if i - 1 >= 0 and grid[j][i-1] == "1":
-                    queue.append((i - 1, j))
-
+        rows, cols = len(grid), len(grid[0])
         num_islands = 0
 
-        for j in range(len(grid)):
-            for i in range(len(grid[0])):
-                if grid[j][i] == "1":
-                    _removeIsland(grid, i, j)
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == "1":
+                    queue = [(r, c)]
+            
+                    while queue:
+                        rr, cc = queue.pop()
+
+                        grid[rr][cc] = "0"
+
+                        if rr + 1 < rows and grid[rr+1][cc] == "1":
+                            queue.append((rr + 1, cc))
+                        if cc + 1 < cols and grid[rr][cc+1] == "1":
+                            queue.append((rr, cc + 1))
+                        if rr - 1 >= 0 and grid[rr-1][cc] == "1":
+                            queue.append((rr - 1, cc))
+                        if cc - 1 >= 0 and grid[rr][cc-1] == "1":
+                            queue.append((rr, cc - 1))
+
                     num_islands += 1
 
         return num_islands
