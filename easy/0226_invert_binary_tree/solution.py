@@ -11,9 +11,15 @@ class Solution:
         if not root:
             return root
 
-        root.left, root.right = root.right, root.left
+        queue = [root]
 
-        self.invertTree(root.left)
-        self.invertTree(root.right)
+        while queue:
+            curr = queue.pop()
+            curr.left, curr.right = curr.right, curr.left
+
+            if curr.left:
+                queue.append(curr.left)
+            if curr.right:
+                queue.append(curr.right)
 
         return root
