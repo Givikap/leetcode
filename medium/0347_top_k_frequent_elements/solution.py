@@ -8,8 +8,7 @@ class Solution:
         for num in nums:
             frequencies_map[num] = frequencies_map.get(num, 0) + 1
 
-        pq = [(-frequency, num) for num, frequency in frequencies_map.items()]
+        heap = [(-frequency, num) for num, frequency in frequencies_map.items()]
+        heapq.heapify(heap)
 
-        heapq.heapify(pq)
-
-        return [heapq.heappop(pq)[1] for _ in range(k)]
+        return [heapq.heappop(heap)[1] for _ in range(k)]
