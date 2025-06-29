@@ -11,21 +11,22 @@ class ListNode:
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        lists = [l for l in lists if l]
+        heap = []
 
-        if not lists:
-            return None
-
+        for head in lists:
+            if head:
+                heapq.heappush(heap, (head.val, head))
+                
         dummy = ListNode(-1)
         curr = dummy
 
-        while lists:
-            heapq.heapify(lists)
+        while heap:
+            _, node = heapq.heappop(heap)
 
-            curr.next = lists[0]
+            curr.next = node
             curr = curr.next
 
-            if lists[0].next:
-                lists[0] = lists[0].next
-            else: 
-                lists = lists[1:]
+            if node.next:
+                heapq.heappush(heap, (node.next.val, node.next))
+
+        return dummy.next
