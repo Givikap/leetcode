@@ -8,21 +8,21 @@ class Solution:
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == "1":
-                    queue = [(r, c)]
+                    stack = [(r, c)]
             
-                    while queue:
-                        rr, cc = queue.pop()
+                    while stack:
+                        rr, cc = stack.pop()
 
                         grid[rr][cc] = "0"
 
                         if rr + 1 < rows and grid[rr+1][cc] == "1":
-                            queue.append((rr + 1, cc))
+                            stack.append((rr + 1, cc))
                         if cc + 1 < cols and grid[rr][cc+1] == "1":
-                            queue.append((rr, cc + 1))
+                            stack.append((rr, cc + 1))
                         if rr - 1 >= 0 and grid[rr-1][cc] == "1":
-                            queue.append((rr - 1, cc))
+                            stack.append((rr - 1, cc))
                         if cc - 1 >= 0 and grid[rr][cc-1] == "1":
-                            queue.append((rr, cc - 1))
+                            stack.append((rr, cc - 1))
 
                     num_islands += 1
 

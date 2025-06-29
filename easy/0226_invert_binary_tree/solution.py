@@ -11,15 +11,15 @@ class Solution:
         if not root:
             return root
 
-        queue = [root]
+        stack = [root]
 
-        while queue:
-            curr = queue.pop()
+        while stack:
+            curr = stack.pop()
             curr.left, curr.right = curr.right, curr.left
 
             if curr.left:
-                queue.append(curr.left)
+                stack.append(curr.left)
             if curr.right:
-                queue.append(curr.right)
+                stack.append(curr.right)
 
         return root
