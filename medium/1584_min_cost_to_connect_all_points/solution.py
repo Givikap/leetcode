@@ -3,31 +3,29 @@ from typing import List
 
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        visited = set()
+        curr_i = 0
+        min_cost = 0
+
+        visited = {curr_i}
         heap = []
 
-        min_cost = 0
-        curr = 0
-
         while len(visited) != len(points):
-            visited.add(curr)
-
-            for i, point in enumerate(points):
-                if curr == i or (curr in visited and i in visited):
+            for i in range(len(points)):
+                if i in visited:
                     continue
 
                 heapq.heappush(heap, (
-                    abs(points[curr][0] - point[0]) + abs(points[curr][1] - point[1]),
-                    (curr, i)
+                    abs(points[curr_i][0] - points[i][0]) + abs(points[curr_i][1] - points[i][1]),
+                    i
                 ))
 
             while heap:
-                distance, (i1, i2) = heapq.heappop(heap)
+                distance, other_i = heapq.heappop(heap)
 
-                if not (i1 in visited and i2 in visited):
-                    visited.add(i2)
+                if other_i not in visited:
+                    visited.add(other_i)
                     min_cost += distance
-                    curr = i2
+                    curr_i = other_i
                     break
 
         return min_cost 
