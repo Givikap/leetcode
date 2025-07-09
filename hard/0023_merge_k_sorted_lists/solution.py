@@ -1,13 +1,6 @@
 import heapq
 from typing import List, Optional
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-    def __lt__(self, other):
-        return self.val < other.val
+from utils.util import ListNode
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
