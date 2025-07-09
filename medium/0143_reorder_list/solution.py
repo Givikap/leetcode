@@ -7,41 +7,28 @@ class ListNode:
 
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        in_order = slow = fast = head
-        prev_slow = None
+        slow = fast = head
+        prev = None
         
         while fast:
-            prev_slow = slow
+            prev = slow
             slow = slow.next
-            fast = fast.next
+            fast = fast.next.next if fast.next else fast.next
 
-            if fast:
-                fast = fast.next
-
-        prev_slow.next = None
-
-        curr = slow
+        prev.next = None
         prev = None
 
-        while curr:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
+        while slow:
+            slow.next, prev, slow = prev, slow, slow.next
 
+        curr = head
+        inorder = head.next
         reverse = prev
-
-        reordered = in_order
-        in_order = in_order.next
-
-        curr = reordered
 
         while reverse:
             curr.next = reverse
-            curr = curr.next
-            reverse = reverse.next
+            curr, reverse = curr.next, reverse.next
 
-            if in_order:
-                curr.next = in_order
-                curr = curr.next
-                in_order = in_order.next
+            if inorder:
+                curr.next = inorder
+                curr, inorder = curr.next, inorder.next
