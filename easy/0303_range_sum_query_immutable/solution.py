@@ -2,13 +2,10 @@ from typing import List
 
 class NumArray:
     def __init__(self, nums: List[int]):
-        self.range = tuple(nums)
-        self.sumRanges = {}
+        self.prefixSums = [0]
+
+        for num in nums:
+            self.prefixSums.append(self.prefixSums[-1] + num)
 
     def sumRange(self, left: int, right: int) -> int:
-        key = (left, right)
-
-        if key not in self.sumRanges:
-            self.sumRanges[key] = sum(self.range[left:right+1])
-
-        return self.sumRanges.get(key)
+        return self.prefixSums[right + 1] - self.prefixSums[left]
