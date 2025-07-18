@@ -16,3 +16,23 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.isWord = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word: str) -> None:
+        curr = self.root
+
+        for ch in word:
+            if ch not in curr.children:
+                curr.children[ch] = TrieNode()
+            
+            curr = curr.children[ch]
+
+        curr.isWord = True
