@@ -1,28 +1,18 @@
-from collections import deque
 from typing import List
-from utils.util import Trie
 
 class Solution:
     def longestWord(self, words: List[str]) -> str:
-        trie = Trie()
+        words_set = set(words)
+        longest_word = ""
 
         for word in words:
-            trie.insert(word)
+            if (len(word) < len(longest_word)
+                    or len(word) == len(longest_word) and word > longest_word):
+                continue 
 
-        nodesDeque = deque([("", trie.root)])
-        longestWord = ""
-
-        while nodesDeque:
-            word, node = nodesDeque.popleft() 
-
-            if (len(word) > len(longestWord) 
-                    or (len(word) == len(longestWord) and word < longestWord)):
-                longestWord = word
-
-            for ch in node.children.keys():
-                child = node.children[ch]
-
-                if child.isWord:
-                    nodesDeque.append((word + ch, child))
-
-        return longestWord
+            if not {word[:prefix_end] for prefix_end in range(1, len(word))}.issubset(words_set):
+                continue
+                
+            longest_word = word
+        
+        return longest_word
