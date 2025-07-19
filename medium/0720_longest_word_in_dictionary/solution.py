@@ -1,3 +1,4 @@
+from collections import deque
 from typing import List
 from utils.util import Trie
 
@@ -8,19 +9,20 @@ class Solution:
         for word in words:
             trie.insert(word)
 
-        queue = [("", trie.root)]
+        nodesDeque = deque([("", trie.root)])
         longestWord = ""
 
-        while queue:
-            word, node = queue.pop(0) 
+        while nodesDeque:
+            word, node = nodesDeque.popleft() 
 
-            if len(word) > len(longestWord) or (len(word) == len(longestWord) and word < longestWord):
+            if (len(word) > len(longestWord) 
+                    or (len(word) == len(longestWord) and word < longestWord)):
                 longestWord = word
 
-            for ch in sorted(node.children.keys()):
+            for ch in node.children.keys():
                 child = node.children[ch]
 
                 if child.isWord:
-                    queue.append((word + ch, child))
+                    nodesDeque.append((word + ch, child))
 
         return longestWord
