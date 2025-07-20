@@ -2,11 +2,24 @@ from collections import Counter
 
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        s1_counter = Counter(s1)
-        s1_len = len(s1)
+        if len(s1) > len(s2):
+            return False
 
-        for i in range(len(s2) - s1_len + 1):
-            if s1_counter == Counter(s2[i:i+s1_len]):
+        s1_counter = [0] * 26
+        s2_window_counter = [0] * 26
+
+        for c1, c2 in zip(s1, s2[:len(s1)]):
+            s1_counter[ord(c1) - 97] += 1
+            s2_window_counter[ord(c2) - 97] += 1
+
+        if s1_counter == s2_window_counter:
+            return True
+
+        for i in range(len(s2) - len(s1)):
+            s2_window_counter[ord(s2[i]) - 97] -= 1
+            s2_window_counter[ord(s2[i+len(s1)]) - 97] += 1
+
+            if s1_counter == s2_window_counter:
                 return True
 
         return False
