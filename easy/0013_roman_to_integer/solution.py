@@ -13,17 +13,10 @@ class Solution:
         intValue = 0
         i = 0
 
-        while i < len(s):
-            if s[i] == "I" and i + 1 < len(s) and s[i+1] in ("V", "X"):
-                intValue += romanToIntMap[s[i+1]] - romanToIntMap["I"]
-            elif s[i] == "X" and i + 1 < len(s) and s[i+1] in ("L", "C"):
-                intValue += romanToIntMap[s[i+1]] - romanToIntMap["X"]
-            elif s[i] == "C" and i + 1 < len(s) and s[i+1] in ("D", "M"):
-                intValue += romanToIntMap[s[i+1]] - romanToIntMap["C"]
+        for i in range(len(s)):
+            if i + 1 < len(s) and romanToIntMap[s[i]] < romanToIntMap[s[i+1]]:
+                intValue -= romanToIntMap[s[i]]
             else:
                 intValue += romanToIntMap[s[i]]
-                i -= 1
-
-            i += 2
 
         return intValue  
