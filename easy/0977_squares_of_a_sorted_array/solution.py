@@ -2,23 +2,18 @@ from typing import List
 
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        if nums[0] >= 0:
-            return [num**2 for num in nums]
-        if nums[-1] <= 0:
-            return [num**2 for num in nums[::-1]]
+        numsSquared = [0] * len(nums)
+        left, right = 0, len(nums) - 1
+        i = right
 
-        positive = 0
-        while nums[positive] < 0 and positive < len(nums) - 1:
-            positive += 1
-
-        nums = [num**2 for num in nums]
-        negativeNums = nums[:positive]
-
-        for i in range(len(nums)):
-            if not negativeNums or (positive < len(nums) and nums[positive] < negativeNums[-1]):
-                nums[i] = nums[positive]
-                positive += 1
+        while left <= right:
+            if abs(nums[left]) > abs(nums[right]):
+                numsSquared[i] = nums[left] ** 2
+                left += 1
             else:
-                nums[i] = negativeNums.pop()
+                numsSquared[i] = nums[right] ** 2
+                right -= 1
+            
+            i -= 1
 
-        return nums
+        return numsSquared
