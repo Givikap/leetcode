@@ -2,23 +2,18 @@ from typing import List
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        length = len(matrix)
-        width = len(matrix[0])
+        if not matrix or not matrix[0]:
+            return False
 
-        i = j = 0
+        rows, cols = len(matrix), len(matrix[0])
+        row, col = 0, cols - 1 
 
-        while i < length or j < width:
-            if matrix[i][j] == target:
+        while row < rows and col >= 0:
+            if matrix[row][col] == target:
                 return True
-
-            if j + 1 < width and matrix[i][j+1] <= target:
-                j += 1
-            elif i + 1 < length and matrix[i+1][j] <= target:
-                i += 1
-            elif i + 1 < length:
-                i += 1
-                j = 0
+            elif matrix[row][col] > target:
+                col -= 1
             else:
-                break
+                row += 1
 
         return False
