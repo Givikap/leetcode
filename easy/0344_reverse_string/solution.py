@@ -2,5 +2,5 @@ from typing import List
 
 class Solution:
     def reverseString(self, s: List[str]) -> None:
-        for i in range(len(s) // 2):
-            s[i], s[len(s)-i-1] = s[len(s)-i-1], s[i]
+        for left, right in zip(range(len(s) // 2), range(len(s) - 1, (len(s) - 1) // 2, -1)):
+            s[left], s[right] = s[right], s[left]
