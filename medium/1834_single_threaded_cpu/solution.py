@@ -1,26 +1,27 @@
 import heapq
+from collections import deque
 from typing import List
 
 class Solution:
     def getOrder(self, tasks: List[List[int]]) -> List[int]:
-        order = []
-
-        tasks = [[*task, i] for i, task in enumerate(tasks)]
-        heapq.heapify(tasks)
+        tasks = deque(sorted([(*task, i) for i, task in enumerate(tasks)]))
 
         time = tasks[0][0]
         available = []
 
-        while tasks or available:
-            while tasks and tasks[0][0] <= time:
-                heapq.heappush(available, heapq.heappop(tasks)[1:])
+        order = []
 
+        while tasks or available:
+            if not available and time < tasks[0][0]:
+                time = tasks[0][0]
+                
+            while tasks and tasks[0][0] <= time:
+                heapq.heappush(available, tasks.popleft()[1:])
+                
             if available:
                 processingTime, i = heapq.heappop(available)
 
-                order.append(i)
                 time += processingTime
-            else:
-                time = tasks[0][0]
+                order.append(i)
 
         return order
