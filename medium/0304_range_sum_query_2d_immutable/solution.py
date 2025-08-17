@@ -2,16 +2,19 @@ from typing import List
 
 class NumMatrix:
     def __init__(self, matrix: List[List[int]]):
-        self.prefixSumsMatrix = [[0] * (len(matrix[0]) + 1)]
+        rows = len(matrix)
+        cols = len(matrix[0])
 
-        for row in matrix:
-            self.prefixSumsMatrix.append([0])
+        self.prefixSumsMatrix = [[0] * (cols + 1) for _ in range(rows + 1)]
 
-            for i, num in enumerate(row):
-                self.prefixSumsMatrix[-1].append(self.prefixSumsMatrix[-1][i] + num)
-
-            for i in range(1, len(row) + 1):
-                self.prefixSumsMatrix[-1][i] += self.prefixSumsMatrix[-2][i]
+        for row in range(1, rows + 1):
+            for col in range(1, cols + 1):
+                self.prefixSumsMatrix[row][col] = (
+                    matrix[row-1][col-1]
+                    + self.prefixSumsMatrix[row-1][col]
+                    + self.prefixSumsMatrix[row][col-1]
+                    - self.prefixSumsMatrix[row-1][col-1]
+                )
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
         return (
