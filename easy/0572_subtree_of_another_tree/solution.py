@@ -1,5 +1,5 @@
 from typing import Optional
-from utils.util import TreeNode
+from utils.nodes import TreeNode
 
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:

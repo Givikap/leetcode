@@ -1,5 +1,5 @@
 from typing import List, Optional
-from utils.util import TreeNode
+from utils.nodes import TreeNode
 
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:

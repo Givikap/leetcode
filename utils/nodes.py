@@ -1,8 +1,3 @@
-class Interval(object):
-    def __init__(self, start, end):
-        self.start = start
-        self.end = end
-
 class ListNode:
     def __init__(self, val: int = 0, next: "ListNode" = None):
         self.val = val
@@ -21,18 +16,3 @@ class TrieNode:
     def __init__(self):
         self.children: dict[str, "TrieNode"] = {}
         self.isWord = False
-
-class Trie:
-    def __init__(self):
-        self.root = TrieNode()
-
-    def insert(self, word: str) -> None:
-        curr = self.root
-
-        for ch in word:
-            if ch not in curr.children:
-                curr.children[ch] = TrieNode()
-            
-            curr = curr.children[ch]
-
-        curr.isWord = True

@@ -1,6 +1,6 @@
 import heapq
 from typing import List, Optional
-from utils.util import ListNode
+from utils.nodes import ListNode
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
