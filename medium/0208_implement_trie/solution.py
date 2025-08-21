@@ -1,7 +1,4 @@
-class TrieNode:
-    def __init__(self):
-        self.children = {}
-        self.isWord = False
+from utils.nodes import TrieNode
 
 class Trie:
     def __init__(self):

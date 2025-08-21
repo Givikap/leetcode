@@ -1,5 +1,5 @@
 from typing import List
-from utils.util import Interval
+from utils.interval import Interval
 
 class Solution:
     def canAttendMeetings(self, intervals: List[Interval]) -> bool:

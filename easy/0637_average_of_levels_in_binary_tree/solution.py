@@ -1,6 +1,6 @@
 from collections import deque
 from typing import List, Optional
-from utils.util import TreeNode
+from utils.nodes import TreeNode
 
 class Solution:
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
