@@ -6,20 +6,21 @@ class Solution:
         mid = len(nums) // 2
 
         root = TreeNode(val=nums[mid])
-        stack = [(root, nums[:mid], nums[mid+1:])]
+        stack = [(root, 0, nums[:mid]), (root, 1, nums[mid+1:])]
 
         while stack:
-            node, left, right = stack.pop()
+            node, side, nums, = stack.pop()
 
-            if left:
-                mid = len(left) // 2
+            if not nums:
+                continue
 
-                node.left = TreeNode(val=left[mid])
-                stack.append((node.left, left[:mid], left[mid+1:]))
-            if right:
-                mid = len(right) // 2
+            mid = len(nums) // 2
 
-                node.right = TreeNode(val=right[mid])
-                stack.append((node.right, right[:mid], right[mid+1:]))
+            if side == 0:
+                node.left = node = TreeNode(val=nums[mid])
+            else:
+                node.right = node = TreeNode(val=nums[mid])
+            
+            stack.extend([(node, 0, nums[:mid]), (node, 1, nums[mid+1:])])
 
         return root
