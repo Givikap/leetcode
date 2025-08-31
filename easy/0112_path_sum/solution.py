@@ -4,21 +4,21 @@ from utils.nodes import TreeNode
 
 
 class Solution:
-    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+    def hasPathSum(self, root: Optional[TreeNode], target_sum: int) -> bool:
         if not root:
             return False
 
         stack = [(root, root.val)]
 
         while stack:
-            node, currSum = stack.pop()
+            node, curr_sum = stack.pop()
 
-            if currSum == targetSum and not node.left and not node.right:
+            if curr_sum == target_sum and not node.left and not node.right:
                 return True
 
             if node.left:
-                stack.append((node.left, currSum + node.left.val))
+                stack.append((node.left, curr_sum + node.left.val))
             if node.right:
-                stack.append((node.right, currSum + node.right.val))
+                stack.append((node.right, curr_sum + node.right.val))
 
         return False

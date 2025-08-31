@@ -7,11 +7,11 @@ class Solution:
 
         while left <= right:
             mid = (right + left) // 2
-            midSqrt = mid**2
+            mid_sqrt = mid**2
 
-            if midSqrt == x:
+            if mid_sqrt == x:
                 return mid
-            elif midSqrt < x:
+            elif mid_sqrt < x:
                 left = mid + 1
             else:
                 right = mid - 1

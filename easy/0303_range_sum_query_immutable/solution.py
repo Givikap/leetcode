@@ -3,10 +3,10 @@ from typing import List
 
 class NumArray:
     def __init__(self, nums: List[int]):
-        self.prefixSums = [0]
+        self.prefix_sums = [0]
 
         for num in nums:
-            self.prefixSums.append(self.prefixSums[-1] + num)
+            self.prefix_sums.append(self.prefix_sums[-1] + num)
 
     def sumRange(self, left: int, right: int) -> int:
-        return self.prefixSums[right + 1] - self.prefixSums[left]
+        return self.prefix_sums[right + 1] - self.prefix_sums[left]

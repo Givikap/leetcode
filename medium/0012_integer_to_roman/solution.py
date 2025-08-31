@@ -1,6 +1,6 @@
 class Solution:
     def intToRoman(self, num: int) -> str:
-        intToRomanPairs = (
+        int_to_roman_pairs = (
             (1000, "M"),
             (900, "CM"),
             (500, "D"),
@@ -18,7 +18,7 @@ class Solution:
 
         roman = ""
 
-        for value, symbol in intToRomanPairs:
+        for value, symbol in int_to_roman_pairs:
             while num - value >= 0:
                 num -= value
                 roman += symbol

@@ -6,5 +6,5 @@ class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
         heapq.heapify(prices)
 
-        minTwoChocos = heapq.heappop(prices) + heapq.heappop(prices)
-        return money - minTwoChocos if minTwoChocos <= money else money
+        min_two_chocos = heapq.heappop(prices) + heapq.heappop(prices)
+        return money - min_two_chocos if min_two_chocos <= money else money
