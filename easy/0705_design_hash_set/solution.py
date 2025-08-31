@@ -1,6 +1,6 @@
 class MyHashSet:
     def __init__(self):
-        self.set = [False] * (10 ** 6 + 1)
+        self.set = [False] * (10**6 + 1)
 
     def add(self, key: int) -> None:
         self.set[key] = True

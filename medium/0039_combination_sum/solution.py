@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
@@ -18,6 +19,12 @@ class Solution:
 
             for i in range(index, len(candidates)):
                 if curr_sum + candidates[i] <= target:
-                    stack.append((curr_combination + [candidates[i]], curr_sum + candidates[i], i))
+                    stack.append(
+                        (
+                            curr_combination + [candidates[i]],
+                            curr_sum + candidates[i],
+                            i,
+                        )
+                    )
 
         return combinations

@@ -1,12 +1,14 @@
-from collections import deque 
+from collections import deque
 from typing import List, Optional
+
 from utils.nodes import TreeNode
+
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-        
+
         queue = deque([root])
         levels = []
 

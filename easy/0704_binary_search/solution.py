@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         start = 0
@@ -12,7 +13,7 @@ class Solution:
                 return mid
             if start >= end:
                 return -1
-            
+
             if nums[mid] < target:
                 start = mid + 1
             elif nums[mid] > target:

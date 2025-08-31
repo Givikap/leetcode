@@ -1,6 +1,7 @@
 import heapq
 from typing import List
 
+
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         curr_i = 0
@@ -14,10 +15,14 @@ class Solution:
                 if i in visited:
                     continue
 
-                heapq.heappush(heap, (
-                    abs(points[curr_i][0] - points[i][0]) + abs(points[curr_i][1] - points[i][1]),
-                    i
-                ))
+                heapq.heappush(
+                    heap,
+                    (
+                        abs(points[curr_i][0] - points[i][0])
+                        + abs(points[curr_i][1] - points[i][1]),
+                        i,
+                    ),
+                )
 
             while heap:
                 distance, other_i = heapq.heappop(heap)
@@ -28,4 +33,4 @@ class Solution:
                     curr_i = other_i
                     break
 
-        return min_cost 
+        return min_cost

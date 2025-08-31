@@ -8,4 +8,4 @@ class Solution:
             else:
                 stack.append(c)
 
-        return ''.join(stack)
+        return "".join(stack)

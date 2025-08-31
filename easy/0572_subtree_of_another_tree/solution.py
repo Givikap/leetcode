@@ -1,5 +1,7 @@
 from typing import Optional
+
 from utils.nodes import TreeNode
+
 
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
@@ -16,7 +18,7 @@ class Solution:
 
                 if not n1 and not n2:
                     continue
-                    
+
                 if (not n1 or not n2) or (n1.val != n2.val):
                     return False
 
@@ -32,7 +34,7 @@ class Solution:
             if node.val == subRoot.val:
                 if isSameTree(node, subRoot):
                     return True
-            
+
             if node.right:
                 stack.append(node.right)
             if node.left:

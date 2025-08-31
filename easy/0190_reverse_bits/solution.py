@@ -3,7 +3,7 @@ class Solution:
         res = 0
 
         for i in range(32):
-            if ((n >> i) & 1):
-                res |= (1 << (31 - i))
+            if (n >> i) & 1:
+                res |= 1 << (31 - i)
 
         return res

@@ -2,6 +2,7 @@ import heapq
 import math
 from typing import List
 
+
 class Solution:
     def pickGifts(self, gifts: List[int], k: int) -> int:
         gifts = [-gift for gift in gifts]

@@ -1,6 +1,6 @@
 class MyHashMap:
     def __init__(self):
-        self.map = [-1] * (10 ** 6 + 1)
+        self.map = [-1] * (10**6 + 1)
 
     def put(self, key: int, value: int) -> None:
         self.map[key] = value

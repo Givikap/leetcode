@@ -1,6 +1,8 @@
 from typing import Optional
+
 from utils.nodes import TreeNode
-    
+
+
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if not p and not q:

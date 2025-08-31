@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         profit = 0
@@ -11,10 +12,10 @@ class Solution:
                 continue
 
             sell = buy + 1
-            while sell < len(prices) - 1 and prices[sell] < prices[sell+1]:
+            while sell < len(prices) - 1 and prices[sell] < prices[sell + 1]:
                 sell += 1
 
             profit += prices[sell] - prices[buy]
-            buy = sell 
-        
+            buy = sell
+
         return profit

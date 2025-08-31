@@ -1,11 +1,15 @@
 from typing import Optional
+
 from utils.nodes import ListNode
 
+
 class Solution:
-    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+    def reverseBetween(
+        self, head: Optional[ListNode], left: int, right: int
+    ) -> Optional[ListNode]:
         if left == right:
             return head
-        
+
         curr = head
         prev = None
 

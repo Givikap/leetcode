@@ -1,11 +1,15 @@
 from typing import Optional
+
 from utils.nodes import ListNode
 
+
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(
+        self, list1: Optional[ListNode], list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         if not list1 and not list2:
             return None
-        
+
         dummy = ListNode(-1)
         curr = dummy
 
@@ -22,4 +26,3 @@ class Solution:
         curr.next = list1 if list1 else list2
 
         return dummy.next
-        

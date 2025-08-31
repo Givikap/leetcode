@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         parentheses_list = []
@@ -19,5 +20,5 @@ class Solution:
                 stack.append((f"{parentheses}(", open_left - 1, closed_left))
             else:
                 stack.append((f"{parentheses}(", open_left - 1, closed_left))
-            
+
         return parentheses_list

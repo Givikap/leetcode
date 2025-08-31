@@ -1,7 +1,10 @@
 from typing import List
 
+
 class Solution:
-    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+    def floodFill(
+        self, image: List[List[int]], sr: int, sc: int, color: int
+    ) -> List[List[int]]:
         stack = [(sr, sc, image[sr][sc])]
 
         while stack:
@@ -10,15 +13,15 @@ class Solution:
             if clr == color:
                 continue
 
-            if row - 1 >= 0 and image[row-1][col] == clr:
-                stack.append((row-1, col, clr))
-            if col + 1 < len(image[0]) and image[row][col+1] == clr:
-                stack.append((row, col+1, clr))
-            if row + 1 < len(image) and image[row+1][col] == clr:
-                stack.append((row+1, col, clr))
-            if col - 1 >= 0 and image[row][col-1] == clr:
-                stack.append((row, col-1, clr))
+            if row - 1 >= 0 and image[row - 1][col] == clr:
+                stack.append((row - 1, col, clr))
+            if col + 1 < len(image[0]) and image[row][col + 1] == clr:
+                stack.append((row, col + 1, clr))
+            if row + 1 < len(image) and image[row + 1][col] == clr:
+                stack.append((row + 1, col, clr))
+            if col - 1 >= 0 and image[row][col - 1] == clr:
+                stack.append((row, col - 1, clr))
 
             image[row][col] = color
-            
+
         return image

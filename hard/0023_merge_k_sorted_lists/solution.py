@@ -1,6 +1,8 @@
 import heapq
 from typing import List, Optional
+
 from utils.nodes import ListNode
+
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
@@ -9,7 +11,7 @@ class Solution:
         for head in lists:
             if head:
                 heapq.heappush(heap, (head.val, head))
-                
+
         dummy = ListNode(-1)
         curr = dummy
 
