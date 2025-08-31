@@ -17,4 +17,4 @@ class TreeNode:
 class TrieNode:
     def __init__(self):
         self.children: dict[str, "TrieNode"] = {}
-        self.isWord = False
+        self.is_word = False

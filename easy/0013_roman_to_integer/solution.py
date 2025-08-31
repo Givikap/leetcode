@@ -1,6 +1,6 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        romanToIntMap = {
+        roman_to_int_map = {
             "I": 1,
             "V": 5,
             "X": 10,
@@ -10,13 +10,13 @@ class Solution:
             "M": 1000,
         }
 
-        intValue = 0
+        int_value = 0
         i = 0
 
         for i in range(len(s)):
-            if i + 1 < len(s) and romanToIntMap[s[i]] < romanToIntMap[s[i + 1]]:
-                intValue -= romanToIntMap[s[i]]
+            if i + 1 < len(s) and roman_to_int_map[s[i]] < roman_to_int_map[s[i + 1]]:
+                int_value -= roman_to_int_map[s[i]]
             else:
-                intValue += romanToIntMap[s[i]]
+                int_value += roman_to_int_map[s[i]]
 
-        return intValue
+        return int_value

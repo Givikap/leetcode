@@ -20,9 +20,9 @@ class Solution:
                 heapq.heappush(available, tasks.popleft()[1:])
 
             if available:
-                processingTime, i = heapq.heappop(available)
+                processing_time, i = heapq.heappop(available)
 
-                time += processingTime
+                time += processing_time
                 order.append(i)
 
         return order

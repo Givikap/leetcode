@@ -4,8 +4,8 @@ from utils.nodes import TreeNode
 
 
 class Solution:
-    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if not subRoot:
+    def isSubtree(self, root: Optional[TreeNode], sub_root: Optional[TreeNode]) -> bool:
+        if not sub_root:
             return True
         if not root:
             return False
@@ -31,8 +31,8 @@ class Solution:
         while stack:
             node = stack.pop()
 
-            if node.val == subRoot.val:
-                if isSameTree(node, subRoot):
+            if node.val == sub_root.val:
+                if isSameTree(node, sub_root):
                     return True
 
             if node.right:

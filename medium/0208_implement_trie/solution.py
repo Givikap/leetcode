@@ -14,7 +14,7 @@ class Trie:
 
             curr = curr.children[ch]
 
-        curr.isWord = True
+        curr.is_word = True
 
     def search(self, word: str) -> bool:
         curr = self.root
@@ -25,7 +25,7 @@ class Trie:
 
             curr = curr.children[ch]
 
-        return curr.isWord
+        return curr.is_word
 
     def startsWith(self, prefix: str) -> bool:
         curr = self.root
