@@ -3,9 +3,9 @@ repos:
     rev: v6.0.0
     hooks:
       - id: end-of-file-fixer
-      - id: trailing-whitespace
-      - id: mixed-line-ending
       - id: debug-statements
+      - id: mixed-line-ending
+      - id: trailing-whitespace
 
   - repo: https://github.com/psf/black
     rev: 25.1.0
@@ -16,7 +16,14 @@ repos:
     hooks:
       - id: isort
         name: sort imports
-        description: ensures that imports are sorted in alphabetical order.
+        description: ensure that imports are sorted in alphabetical order.
         entry: isort
-        language: python
+        language: system
         types: [python]
+      - id: camel-to-snake-fixer
+        name: convert camelCase to snake_case (python)
+        description: convert camelCase identifiers, excluding class and function names, to snake_case.
+        entry: python3 pre_commit_hooks/camel_to_snake_fixer.py
+        language: system
+        types: [python]
+        exclude: "pre_commit_hooks/camel_to_snake_fixer.py"
