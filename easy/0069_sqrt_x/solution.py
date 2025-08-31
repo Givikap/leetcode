@@ -7,7 +7,7 @@ class Solution:
 
         while left <= right:
             mid = (right + left) // 2
-            midSqrt = mid ** 2
+            midSqrt = mid**2
 
             if midSqrt == x:
                 return mid

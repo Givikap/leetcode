@@ -4,7 +4,7 @@ class Solution:
             return False
 
         s_counter, t_counter = {}, {}
-        
+
         for i in range(len(s)):
             s_counter[s[i]] = s_counter.get(s[i], 0) + 1
             t_counter[t[i]] = t_counter.get(t[i], 0) + 1

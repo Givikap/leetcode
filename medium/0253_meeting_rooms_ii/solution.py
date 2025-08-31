@@ -1,6 +1,8 @@
 import heapq
 from typing import List
+
 from utils.interval import Interval
+
 
 class Solution:
     def minMeetingRooms(self, intervals: List[Interval]) -> int:
@@ -12,7 +14,7 @@ class Solution:
         for interval in intervals:
             if heap and interval.start >= heap[0]:
                 heapq.heappop(heap)
-                
+
             heapq.heappush(heap, interval.end)
 
             if len(heap) > max_rooms:

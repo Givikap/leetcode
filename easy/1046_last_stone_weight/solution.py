@@ -1,6 +1,7 @@
 import heapq
 from typing import List
 
+
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         heap = [-stone for stone in stones]
@@ -14,6 +15,6 @@ class Solution:
             y = -heapq.heappop(heap)
 
             if x != y:
-                heapq.heappush(heap, -(x-y))
+                heapq.heappush(heap, -(x - y))
 
         return 0

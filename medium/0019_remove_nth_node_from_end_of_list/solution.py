@@ -1,5 +1,7 @@
 from typing import Optional
+
 from utils.nodes import ListNode
+
 
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
@@ -7,7 +9,7 @@ class Solution:
             return None
 
         fast = head
-        
+
         for i in range(n):
             fast = fast.next
 
@@ -22,5 +24,5 @@ class Solution:
             slow = slow.next
 
         slow.next = slow.next.next
-    
+
         return head

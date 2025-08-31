@@ -1,11 +1,13 @@
 from typing import Optional
+
 from utils.nodes import ListNode
+
 
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         slow = fast = head
         prev = None
-        
+
         while fast:
             prev = slow
             slow = slow.next

@@ -1,6 +1,7 @@
 import heapq
 from typing import List
 
+
 class KthLargest:
     def __init__(self, k: int, nums: List[int]):
         self.heap = nums
@@ -16,5 +17,5 @@ class KthLargest:
 
         if len(self.heap) > self.k:
             heapq.heappop(self.heap)
-        
+
         return self.heap[0]

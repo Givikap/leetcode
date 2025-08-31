@@ -14,9 +14,9 @@ class Solution:
         i = 0
 
         for i in range(len(s)):
-            if i + 1 < len(s) and romanToIntMap[s[i]] < romanToIntMap[s[i+1]]:
+            if i + 1 < len(s) and romanToIntMap[s[i]] < romanToIntMap[s[i + 1]]:
                 intValue -= romanToIntMap[s[i]]
             else:
                 intValue += romanToIntMap[s[i]]
 
-        return intValue  
+        return intValue

@@ -1,5 +1,7 @@
 from typing import List, Optional
+
 from utils.nodes import TreeNode
+
 
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
@@ -9,10 +11,15 @@ class Solution:
 
         stack = [(root, 0, 0, mid)]
         if mid + 1 != len(nums):
-            stack.append((root, 1, mid+1, len(nums)))
+            stack.append((root, 1, mid + 1, len(nums)))
 
         while stack:
-            node, side, start, end, = stack.pop()
+            (
+                node,
+                side,
+                start,
+                end,
+            ) = stack.pop()
 
             if start == end:
                 continue

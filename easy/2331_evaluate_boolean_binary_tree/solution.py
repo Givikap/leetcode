@@ -1,11 +1,13 @@
 from typing import Optional
+
 from utils.nodes import TreeNode
+
 
 class Solution:
     def evaluateTree(self, root: Optional[TreeNode]) -> bool:
         if root.val <= 1:
             return bool(root.val)
-        
+
         if root.val == 2:
             return self.evaluateTree(root.left) or self.evaluateTree(root.right)
         else:

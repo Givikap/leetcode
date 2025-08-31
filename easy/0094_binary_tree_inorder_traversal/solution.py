@@ -1,10 +1,12 @@
 from typing import List, Optional
+
 from utils.nodes import TreeNode
+
 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         values = []
-        
+
         stack = []
         current = root
 
@@ -12,7 +14,7 @@ class Solution:
             while current:
                 stack.append(current)
                 current = current.left
-            
+
             current = stack.pop()
             values.append(current.val)
             current = current.right

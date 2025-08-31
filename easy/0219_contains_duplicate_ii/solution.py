@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
         if k == 0:
@@ -12,12 +13,12 @@ class Solution:
                 return True
 
             visited.add(nums[i])
-        
+
         for i in range(k, len(nums)):
             if nums[i] in visited:
                 return True
 
             visited.add(nums[i])
             visited.remove(nums[i - k])
-        
+
         return False

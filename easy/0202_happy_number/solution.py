@@ -9,5 +9,5 @@ class Solution:
                 return False
 
             visited.add(n)
-        
+
         return True

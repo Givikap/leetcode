@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
         numsSquared = [0] * len(nums)
@@ -13,7 +14,7 @@ class Solution:
             else:
                 numsSquared[i] = nums[right] ** 2
                 right -= 1
-            
+
             i -= 1
 
         return numsSquared

@@ -7,7 +7,7 @@ class Solution:
                 start += 1
 
             while end > start and not s[end].isalnum():
-                end -= 1 
+                end -= 1
 
             if start > end:
                 return True

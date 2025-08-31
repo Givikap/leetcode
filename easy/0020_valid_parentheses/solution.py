@@ -1,6 +1,6 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        brackets_map = {'(': ')', '{': '}', '[': ']'}
+        brackets_map = {"(": ")", "{": "}", "[": "]"}
         stack = []
 
         for c in s:

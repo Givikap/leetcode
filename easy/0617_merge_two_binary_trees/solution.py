@@ -1,8 +1,12 @@
 from typing import Optional
+
 from utils.nodes import TreeNode
 
+
 class Solution:
-    def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+    def mergeTrees(
+        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
+    ) -> Optional[TreeNode]:
         if not root1 and not root2:
             return None
         elif not (root1 and root2):

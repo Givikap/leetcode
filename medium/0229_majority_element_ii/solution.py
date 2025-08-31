@@ -1,6 +1,7 @@
 from collections import Counter
 from typing import List
 
+
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
         m1, m2 = None, None
@@ -17,7 +18,7 @@ class Solution:
             elif c2 == 0:
                 m2 = num
                 c2 = 1
-            else: 
+            else:
                 c1 -= 1
                 c2 -= 1
 

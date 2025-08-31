@@ -1,5 +1,7 @@
 from typing import Optional
+
 from utils.nodes import TreeNode
+
 
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
