@@ -15,8 +15,6 @@ class Solution:
                 queue.pop()
 
             queue.append(i)
+            max_nums.append(nums[queue[0]])
 
-            if i >= k - 1:
-                max_nums.append(nums[queue[0]])
-
-        return max_nums
+        return max_nums[k - 1 :]
