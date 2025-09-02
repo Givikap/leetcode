@@ -3,8 +3,14 @@ from collections import Counter
 
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        counter = Counter(s)
+        max_length = 0
+        has_odd = 0
 
-        return sum([count - (count % 2 == 1) for count in counter.values()]) + any(
-            count % 2 == 1 for count in counter.values()
-        )
+        for count in Counter(s).values():
+            if count % 2 == 0:
+                max_length += count
+            else:
+                max_length += count - 1
+                has_odd = 1
+
+        return max_length + has_odd
