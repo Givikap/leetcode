@@ -3,7 +3,9 @@ class Solution:
         column_title = ""
 
         while column_number:
-            column_title = chr((column_number - 1) % 26 + 65) + column_title
-            column_number = (column_number - 1) // 26
+            column_number -= 1
 
-        return column_title
+            column_title += chr(column_number % 26 + 65)
+            column_number = column_number // 26
+
+        return column_title[::-1]
