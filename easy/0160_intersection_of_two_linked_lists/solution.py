@@ -7,22 +7,13 @@ class Solution:
     def getIntersectionNode(
         self, head_a: ListNode, head_b: ListNode
     ) -> Optional[ListNode]:
-        visited = set()
+        if not head_a or not head_b:
+            return None
 
-        while head_a or head_b:
-            if head_a == head_b:
-                return head_a
+        p_a, p_b = head_a, head_b
 
-            if head_a:
-                visited.add(head_a)
-                head_a = head_a.next
-            if head_b:
-                visited.add(head_b)
-                head_b = head_b.next
+        while p_a is not p_b:
+            p_a = p_a.next if p_a else head_b
+            p_b = p_b.next if p_b else head_a
 
-            if head_a in visited:
-                return head_a
-            if head_b in visited:
-                return head_b
-
-        return None
+        return p_a
