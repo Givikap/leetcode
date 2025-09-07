@@ -3,18 +3,18 @@ from typing import List
 
 class Solution:
     def circularGameLosers(self, n: int, k: int) -> List[int]:
-        winners = [False] * n
+        losers = list(range(1, n + 1))
 
         curr = 0
         turn = 1
 
         while True:
-            if winners[curr]:
+            if not losers[curr]:
                 break
 
-            winners[curr] = True
+            losers[curr] = 0
 
             curr = (curr + k * turn) % n
             turn += 1
 
-        return [i + 1 for i, is_winner in enumerate(winners) if not is_winner]
+        return [loser for loser in losers if loser]
