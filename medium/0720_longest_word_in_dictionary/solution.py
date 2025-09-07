@@ -14,9 +14,9 @@ class Solution:
             ):
                 continue
 
-            if not {word[:prefix_end] for prefix_end in range(1, len(word))}.issubset(
-                words_set
-            ):
+            if not {
+                word[:prefix_end] for prefix_end in range(1, len(word))
+            }.issubset(words_set):
                 continue
 
             longest_word = word

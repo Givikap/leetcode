@@ -5,7 +5,9 @@ from utils.nodes import ListNode
 
 
 class Solution:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKLists(
+        self, lists: List[Optional[ListNode]]
+    ) -> Optional[ListNode]:
         heap = []
 
         for head in lists:

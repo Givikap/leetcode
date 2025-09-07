@@ -4,7 +4,9 @@ from utils.nodes import ListNode
 
 
 class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    def removeNthFromEnd(
+        self, head: Optional[ListNode], n: int
+    ) -> Optional[ListNode]:
         if not head.next:
             return None
 
