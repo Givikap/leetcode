@@ -4,7 +4,9 @@ from utils.nodes import TreeNode
 
 
 class Solution:
-    def isSubtree(self, root: Optional[TreeNode], sub_root: Optional[TreeNode]) -> bool:
+    def isSubtree(
+        self, root: Optional[TreeNode], sub_root: Optional[TreeNode]
+    ) -> bool:
         if not sub_root:
             return True
         if not root:

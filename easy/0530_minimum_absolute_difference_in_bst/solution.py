@@ -19,4 +19,6 @@ class Solution:
             values.append(curr.val)
             curr = curr.right
 
-        return min([abs(values[i] - values[i + 1]) for i in range(len(values) - 1)])
+        return min(
+            [abs(values[i] - values[i + 1]) for i in range(len(values) - 1)]
+        )

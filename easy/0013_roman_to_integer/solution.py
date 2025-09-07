@@ -14,7 +14,10 @@ class Solution:
         i = 0
 
         for i in range(len(s)):
-            if i + 1 < len(s) and roman_to_int_map[s[i]] < roman_to_int_map[s[i + 1]]:
+            if (
+                i + 1 < len(s)
+                and roman_to_int_map[s[i]] < roman_to_int_map[s[i + 1]]
+            ):
                 int_value -= roman_to_int_map[s[i]]
             else:
                 int_value += roman_to_int_map[s[i]]

@@ -4,7 +4,9 @@ from typing import List
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
+
         subsets_list = [[]]
+        last_size = 0
 
         for i in range(len(nums)):
             start = last_size if i > 0 and nums[i - 1] == nums[i] else 0
