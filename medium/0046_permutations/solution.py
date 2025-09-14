@@ -7,15 +7,19 @@ class Solution:
 
         def backtrack(permutation: List[int], explored: List[int]):
             if len(permutation) == len(nums):
-                permutations.append(permutation)
+                permutations.append(permutation[:])
                 return
 
             for i in range(len(nums)):
                 if explored[i]:
                     continue
 
+                permutation.append(nums[i])
                 explored[i] = True
-                backtrack(permutation + [nums[i]], explored)
+
+                backtrack(permutation, explored)
+
+                permutation.pop()
                 explored[i] = False
 
         backtrack([], [False] * len(nums))
