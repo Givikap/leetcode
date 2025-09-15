@@ -9,16 +9,12 @@ class Solution:
         max_length = 0
 
         for c in s:
-            if c in visited:
-                while substring[0] != c:
-                    visited.remove(substring.popleft())
-
+            while c in visited:
                 visited.remove(substring.popleft())
 
             substring.append(c)
             visited.add(c)
 
-            if len(visited) > max_length:
-                max_length = len(visited)
+            max_length = max(max_length, len(substring))
 
         return max_length
