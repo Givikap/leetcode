@@ -1,18 +1,20 @@
 class Solution:
     def addStrings(self, num1: str, num2: str) -> str:
-        result = [""] * max(len(num1), len(num2))
+        max_len = max(len(num1), len(num2))
+
+        result = []
         carry = 0
 
-        num1 = num1.zfill(len(result))
-        num2 = num2.zfill(len(result))
+        num1 = num1.zfill(max_len)
+        num2 = num2.zfill(max_len)
 
-        for i in range(len(result) - 1, -1, -1):
-            digit = int(num1[i]) + int(num2[i]) + carry
+        for i in range(1, max_len + 1):
+            digit = ord(num1[-i]) + ord(num2[-i]) - 96 + carry
 
-            result[i] = str(digit % 10)
+            result.append(digit % 10)
             carry = digit // 10
 
         if carry:
-            result = ["1"] + result
+            result.append(1)
 
-        return "".join(result)
+        return "".join(map(str, result[::-1]))
