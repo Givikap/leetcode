@@ -1,20 +1,14 @@
-from copy import deepcopy
 from typing import List
 
 
 class Solution:
     def gameOfLife(self, board: List[List[int]]) -> None:
-        board_copy = deepcopy(board)
-
         for row in range(len(board)):
             for col in range(len(board[0])):
                 neighbors = [
                     (row + row_offset, col + col_offset)
                     for row_offset in (-1, 0, 1)
                     for col_offset in (-1, 0, 1)
-                    if not (
-                        row + row_offset == row and col + col_offset == col
-                    )
                 ]
 
                 neighbors = [
@@ -28,11 +22,19 @@ class Solution:
                 live_neighbors_count = 0
 
                 for r, c in neighbors:
-                    if board_copy[r][c]:
+                    if abs(board[r][c]) == 1:
                         live_neighbors_count += 1
 
-                if board[row][col]:
-                    if live_neighbors_count < 2 or live_neighbors_count > 3:
-                        board[row][col] = 0
+                if board[row][col] == 1 and (
+                    live_neighbors_count < 2 or live_neighbors_count > 3
+                ):
+                    board[row][col] = 2
                 elif live_neighbors_count == 3:
+                    board[row][col] = -1
+
+        for row in range(len(board)):
+            for col in range(len(board[0])):
+                if board[row][col] == -1:
                     board[row][col] = 1
+                elif board[row][col] == 2:
+                    board[row][col] = 0
