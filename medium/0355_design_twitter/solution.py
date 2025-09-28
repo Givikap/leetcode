@@ -16,17 +16,41 @@ class Twitter:
         self.time += 1
 
     def getNewsFeed(self, user_id: int) -> List[int]:
-        tweets = []
+        feeds = []
 
         if user_id in self.tweets:
-            tweets.extend(self.tweets[user_id])
+            feeds.append((user_id, -1))
 
         if user_id in self.follows:
-            for followee_id in self.follows[user_id]:
-                if followee_id in self.tweets:
-                    tweets.extend(self.tweets[followee_id])
+            feeds.extend(
+                [
+                    (followee_id, -1)
+                    for followee_id in self.follows[user_id]
+                    if followee_id in self.tweets
+                ]
+            )
 
-        return [tweet_id for _, tweet_id in heapq.nlargest(10, tweets)]
+        tweets = []
+
+        heap = [
+            (*self.tweets[user_id][ri], user_id, ri) for user_id, ri in feeds
+        ]
+        heapq.heapify(heap)
+
+        for _ in range(10):
+            if not heap:
+                break
+
+            _, tweet_id, user_id, ri = heapq.heappop(heap)
+
+            tweets.append(tweet_id)
+
+            if len(self.tweets[user_id]) > -ri:
+                heapq.heappush(
+                    heap, (*self.tweets[user_id][ri - 1], user_id, ri - 1)
+                )
+
+        return tweets
 
     def follow(self, follower_id: int, followee_id: int) -> None:
         if follower_id not in self.follows:
