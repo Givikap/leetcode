@@ -25,13 +25,16 @@ class Twitter:
                 )
             )
 
-        for followee in self.follows[user_id]:
-            if self.tweets[followee]:
+        for followee_id in self.follows[user_id]:
+            if followee_id == user_id:
+                continue
+
+            if self.tweets[followee_id]:
                 heap.append(
                     (
-                        *self.tweets[followee][-1],
-                        followee,
-                        len(self.tweets[followee]) - 1,
+                        *self.tweets[followee_id][-1],
+                        followee_id,
+                        len(self.tweets[followee_id]) - 1,
                     )
                 )
 
