@@ -11,9 +11,9 @@ class Solution:
 
         for _ in range(k):
             num, i = heapq.heappop(heap)
-            num *= multiplier
+            heapq.heappush(heap, (num * multiplier, i))
 
+        for num, i in heap:
             nums[i] = num
-            heapq.heappush(heap, (num, i))
 
         return nums
