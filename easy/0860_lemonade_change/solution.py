@@ -3,25 +3,25 @@ from typing import List
 
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
-        bills_tracker = [0, 0]
+        five_counter = 0
+        ten_counter = 0
 
         for bill in bills:
             if bill == 5:
-                bills_tracker[0] += 1
-                continue
+                five_counter += 1
+            elif bill == 10:
+                if not five_counter:
+                    return False
 
-            if bill == 10:
-                bills_tracker[1] += 1
-
-            if bill == 20 and bills_tracker[1]:
-                bill -= 10
-                bills_tracker[1] -= 1
-
-            while bills_tracker[0] and bill > 5:
-                bill -= 5
-                bills_tracker[0] -= 1
-
-            if bill > 5:
-                return False
+                five_counter -= 1
+                ten_counter += 1
+            else:
+                if ten_counter > 0 and five_counter > 0:
+                    five_counter -= 1
+                    ten_counter -= 1
+                elif five_counter >= 3:
+                    five_counter -= 3
+                else:
+                    return False
 
         return True
