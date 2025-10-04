@@ -4,15 +4,7 @@ from typing import List
 
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        heap = []
-        closest_points = []
-
-        for i, point in enumerate(points):
-            heap.append(((point[0] ** 2 + point[1] ** 2) ** 0.5, i))
-
+        heap = [(x * x + y * y, i) for i, (x, y) in enumerate(points)]
         heapq.heapify(heap)
 
-        for i in range(k):
-            closest_points.append(points[heapq.heappop(heap)[1]])
-
-        return closest_points
+        return [points[heapq.heappop(heap)[1]] for _ in range(k)]
