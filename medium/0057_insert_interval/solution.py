@@ -5,48 +5,24 @@ class Solution:
     def insert(
         self, intervals: List[List[int]], new_interval: List[int]
     ) -> List[List[int]]:
-        if not intervals:
-            return [new_interval]
+        new_intervals = []
+        i = 0
 
-        left, right = 0, len(intervals) - 1
+        while i < len(intervals) and intervals[i][1] < new_interval[0]:
+            new_intervals.append(intervals[i])
+            i += 1
 
-        if intervals[0][0] > new_interval[0]:
-            left = right + 1
-            mid = 0
+        while i < len(intervals) and intervals[i][0] <= new_interval[1]:
+            new_interval = [
+                min(new_interval[0], intervals[i][0]),
+                max(new_interval[1], intervals[i][1]),
+            ]
+            i += 1
 
-            intervals.insert(0, new_interval)
-        elif intervals[-1][1] < new_interval[0]:
-            left = right + 1
-            mid = len(intervals) - 1
+        new_intervals.append(new_interval)
 
-            intervals.append(new_interval)
-        else:
-            while left <= right:
-                mid = (left + right) // 2
+        while i < len(intervals):
+            new_intervals.append(intervals[i])
+            i += 1
 
-                if (
-                    intervals[mid][0] <= new_interval[0]
-                    and intervals[mid][1] >= new_interval[0]
-                ):
-                    intervals[mid][0] = min(intervals[mid][0], new_interval[0])
-                    intervals[mid][1] = max(intervals[mid][1], new_interval[1])
-
-                    break
-
-                elif intervals[mid][1] < new_interval[0]:
-                    left = mid + 1
-                else:
-                    right = mid - 1
-            else:
-                intervals.insert(left, new_interval)
-                mid = left
-
-        while (
-            mid < len(intervals) - 1
-            and intervals[mid][1] >= intervals[mid + 1][0]
-        ):
-            intervals[mid][1] = max(
-                intervals[mid][1], intervals.pop(mid + 1)[1]
-            )
-
-        return intervals
+        return new_intervals
