@@ -1,4 +1,3 @@
-from collections import deque
 from typing import List, Optional
 
 
@@ -18,13 +17,13 @@ class Solution:
             return []
 
         children = []
-        queue = deque([root])
+        stack = [root]
 
-        while queue:
-            node = queue.popleft()
+        while stack:
+            node = stack.pop()
+
             children.append(node.val)
+            stack.extend(node.children)
 
-            for child in node.children:
-                queue.appendleft(child)
-
-        return children[::-1]
+        children.reverse()
+        return children
