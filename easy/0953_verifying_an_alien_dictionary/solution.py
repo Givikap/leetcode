@@ -3,18 +3,16 @@ from typing import List
 
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
-        order_map = {c: i for i, c in zip(range(97, 123), order)}
+        order_map = {c: i for i, c in enumerate(order)}
 
-        for i in range(len(words) - 1):
-            for j in range(min(len(words[i]), len(words[i + 1]))):
-                if order_map[words[i][j]] < order_map[words[i + 1][j]]:
+        for word1, word2 in zip(words, words[1:]):
+            for c1, c2 in zip(word1, word2):
+                if order_map[c1] < order_map[c2]:
                     break
-                elif order_map[words[i][j]] > order_map[words[i + 1][j]]:
+                elif order_map[c1] > order_map[c2]:
                     return False
-
-            if order_map[words[i][j]] == order_map[words[i + 1][j]] and len(
-                words[i]
-            ) > len(words[i + 1]):
-                return False
+            else:
+                if len(word1) > len(word2):
+                    return False
 
         return True
