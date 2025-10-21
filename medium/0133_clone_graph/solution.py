@@ -1,6 +1,10 @@
-from typing import Optional
+from typing import List, Optional
 
-from utils.nodes import Node
+
+class Node:
+    def __init__(self, val=0, neighbors: Optional[List["Node"]] = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
 
 
 class Solution:
