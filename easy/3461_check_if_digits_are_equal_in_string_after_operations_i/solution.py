@@ -1,11 +1,8 @@
 class Solution:
     def hasSameDigits(self, s: str) -> bool:
-        while len(s) > 2:
-            s = "".join(
-                [
-                    str((int(s[i]) + int(s[i + 1])) % 10)
-                    for i in range(len(s) - 1)
-                ]
-            )
+        digits = [int(c) for c in s]
 
-        return s[0] == s[1]
+        while len(digits) > 2:
+            digits = [(d1 + d2) % 10 for d1, d2 in zip(digits, digits[1:])]
+
+        return digits[0] == digits[1]
