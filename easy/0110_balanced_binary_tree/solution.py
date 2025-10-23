@@ -4,17 +4,25 @@ from utils.nodes import TreeNode
 
 
 class Solution:
-    def height(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-
-        return 1 + max(self.height(root.left), self.height(root.right))
-
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
 
-        if abs(self.height(root.left) - self.height(root.right)) > 1:
-            return False
+        is_balanced = True
 
-        return self.isBalanced(root.left) and self.isBalanced(root.right)
+        def dfs(root: Optional[TreeNode], depth: int):
+            if not root:
+                return 0
+
+            left_height = dfs(root.left, depth)
+            right_height = dfs(root.right, depth)
+
+            if abs(left_height - right_height) > 1:
+                nonlocal is_balanced
+                is_balanced = False
+
+            return 1 + max(left_height, right_height)
+
+        dfs(root, 1)
+
+        return is_balanced
