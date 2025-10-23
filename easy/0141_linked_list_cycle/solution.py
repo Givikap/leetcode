@@ -5,13 +5,20 @@ from utils.nodes import ListNode
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        nodes = set()
+        slow = head
+        fast = head
 
-        while head is not None:
-            if head in nodes:
+        if fast:
+            fast = fast.next
+
+        while fast:
+            if slow and fast and slow == fast:
                 return True
 
-            nodes.add(head)
-            head = head.next
+            slow = slow.next
+            fast = fast.next
+
+            if fast:
+                fast = fast.next
 
         return False
