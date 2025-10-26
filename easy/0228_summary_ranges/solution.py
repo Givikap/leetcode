@@ -7,21 +7,20 @@ class Solution:
             return []
 
         ranges = []
+        range_start = nums[0]
 
-        start = nums[0]
+        for prev_num, num in zip(nums, nums[1:]):
+            if prev_num + 1 != num:
+                ranges.append(
+                    f"{range_start}->{prev_num}"
+                    if range_start != prev_num
+                    else str(range_start)
+                )
+                range_start = num
 
-        for i in range(len(nums) - 1):
-            if nums[i] + 1 != nums[i + 1]:
-                if start == nums[i]:
-                    ranges.append(str(start))
-                else:
-                    ranges.append(f"{start}->{nums[i]}")
-
-                start = nums[i + 1]
-
-        if start == nums[-1]:
-            ranges.append(str(start))
-        else:
-            ranges.append(f"{start}->{nums[-1]}")
-
+        ranges.append(
+            f"{range_start}->{nums[-1]}"
+            if range_start != nums[-1]
+            else str(range_start)
+        )
         return ranges
