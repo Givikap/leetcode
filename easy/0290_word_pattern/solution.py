@@ -9,12 +9,12 @@ class Solution:
         word_to_char = {}
 
         for char, word in zip(pattern, words):
-            if word in word_to_char and word_to_char[word] != char:
+            if (word in word_to_char and word_to_char[word] != char) or (
+                char in char_to_word and char_to_word[char] != word
+            ):
                 return False
-            if char not in char_to_word:
+            else:
                 char_to_word[char] = word
                 word_to_char[word] = char
-            elif char_to_word[char] != word:
-                return False
 
         return True
