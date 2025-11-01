@@ -1,21 +1,16 @@
-import heapq
 from typing import List
 
 
 class Solution:
     def findRelativeRanks(self, scores: List[int]) -> List[str]:
-        heap = [(-score, i) for i, score in enumerate(scores)]
-        heapq.heapify(heap)
-
         podium = ["Gold Medal", "Silver Medal", "Bronze Medal"]
 
+        ranked_scores = sorted(
+            enumerate(scores), key=lambda x: x[1], reverse=True
+        )
         ranks = [""] * len(scores)
-        rank = 1
 
-        while heap:
-            _, i = heapq.heappop(heap)
-
+        for rank, (i, _) in enumerate(ranked_scores, start=1):
             ranks[i] = podium[rank - 1] if rank < 4 else str(rank)
-            rank += 1
 
         return ranks
