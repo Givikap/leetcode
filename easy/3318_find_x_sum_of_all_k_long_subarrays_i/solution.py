@@ -1,31 +1,23 @@
 import heapq
-from collections import Counter, deque
+import math
+from collections import Counter
 from typing import List
 
 
 class Solution:
     def findXSum(self, nums: List[int], k: int, x: int) -> List[int]:
-        window = deque(nums[:k])
-        x_sums = []
+        x_sums = [0] * (len(nums) - k + 1)
 
         for i in range(len(nums) - k + 1):
-            window_counter = Counter(window)
-
             heap = [
-                (-window_counter[num], -num, num) for num in window_counter
+                (-count, -num)
+                for num, count in Counter(nums[i : k + i]).items()
             ]
             heapq.heapify(heap)
 
-            x_sum = 0
-
-            for _ in range(min(x, len(window_counter))):
-                num = heapq.heappop(heap)[2]
-                x_sum += num * window_counter[num]
-
-            x_sums.append(x_sum)
-
-            window.popleft()
-            if k + i < len(nums):
-                window.append(nums[k + i])
+            x_sums[i] = sum(
+                math.prod(heapq.heappop(heap))
+                for _ in range(min(x, len(heap)))
+            )
 
         return x_sums
