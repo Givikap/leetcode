@@ -9,10 +9,8 @@ class Solution:
         for num in nums:
             if num:
                 ones_count += 1
-
-                if ones_count > max_ones_count:
-                    max_ones_count = ones_count
             else:
+                max_ones_count = max(max_ones_count, ones_count)
                 ones_count = 0
 
-        return max_ones_count
+        return max(max_ones_count, ones_count)
