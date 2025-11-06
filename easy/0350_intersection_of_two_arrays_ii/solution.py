@@ -1,17 +1,26 @@
-from collections import Counter
 from typing import List
 
 
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        nums1_counter = Counter(nums1)
-        nums2_counter = Counter(nums2)
+        nums1.sort()
+        nums2.sort()
+
+        i1 = i2 = 0
 
         intersection = []
 
-        for num in nums1_counter.keys() & nums2_counter.keys():
-            intersection.extend(
-                [num] * min(nums1_counter[num], nums2_counter[num])
-            )
+        while True:
+            if i1 == len(nums1) or i2 == len(nums2):
+                break
+
+            if nums1[i1] == nums2[i2]:
+                intersection.append(nums1[i1])
+                i1 += 1
+                i2 += 1
+            elif nums1[i1] < nums2[i2]:
+                i1 += 1
+            else:
+                i2 += 1
 
         return intersection
