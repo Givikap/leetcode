@@ -8,7 +8,4 @@ class Solution:
         nums1_set = set(nums1)
         nums2_set = set(nums2)
 
-        return [
-            [num for num in nums1_set if num not in set(nums2_set)],
-            [num for num in nums2_set if num not in set(nums1_set)],
-        ]
+        return [list(nums1_set - nums2_set), list(nums2_set - nums1_set)]
