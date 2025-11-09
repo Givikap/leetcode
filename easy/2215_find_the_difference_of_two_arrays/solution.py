@@ -8,4 +8,14 @@ class Solution:
         nums1_set = set(nums1)
         nums2_set = set(nums2)
 
-        return [list(nums1_set - nums2_set), list(nums2_set - nums1_set)]
+        answer = [[], []]
+
+        for num in nums1_set:
+            if num not in nums2_set:
+                answer[0].append(num)
+
+        for num in nums2_set:
+            if num not in nums1_set:
+                answer[1].append(num)
+
+        return answer
