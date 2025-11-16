@@ -3,11 +3,14 @@ from typing import List
 
 class Solution:
     def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:
-        return sum(
-            num
-            for i, num in enumerate(nums)
-            if not (
-                (i - k >= 0 and nums[i - k] >= num)
-                or (i + k < len(nums) and nums[i + k] >= num)
-            )
-        )
+        good_numbers_sum = 0
+
+        for i in range(len(nums)):
+            if i - k >= 0 and nums[i] <= nums[i - k]:
+                continue
+            if i + k < len(nums) and nums[i] <= nums[i + k]:
+                continue
+
+            good_numbers_sum += nums[i]
+
+        return good_numbers_sum
