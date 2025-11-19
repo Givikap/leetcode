@@ -1,4 +1,4 @@
-from utils.nodes import TrieNode
+from utils.python.nodes import TrieNode
 
 
 class Trie:

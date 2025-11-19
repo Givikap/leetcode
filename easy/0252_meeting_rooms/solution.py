@@ -1,6 +1,6 @@
 from typing import List
 
-from utils.interval import Interval
+from utils.python.interval import Interval
 
 
 class Solution:

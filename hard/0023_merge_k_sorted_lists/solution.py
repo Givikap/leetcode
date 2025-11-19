@@ -1,7 +1,7 @@
 import heapq
 from typing import List, Optional
 
-from utils.nodes import ListNode
+from utils.python.nodes import ListNode
 
 
 class Solution:

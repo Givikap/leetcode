@@ -1,7 +1,7 @@
 from collections import deque
 from typing import List, Optional
 
-from utils.nodes import TreeNode
+from utils.python.nodes import TreeNode
 
 
 class Solution:
