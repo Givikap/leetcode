@@ -5,12 +5,20 @@ from utils.python.nodes import TreeNode
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        if not p and not q:
-            return True
+        stack = [(p, q)]
 
-        if p and q and p.val == q.val:
-            return self.isSameTree(p.left, q.left) and self.isSameTree(
-                p.right, q.right
-            )
-        else:
-            return False
+        while stack:
+            node1, node2 = stack.pop()
+
+            if not node1 and not node2:
+                continue
+            elif not (node1 and node2):
+                return False
+            elif node1.val != node2.val:
+                return False
+            else:
+                stack.extend(
+                    ((node1.left, node2.left), (node1.right, node2.right))
+                )
+
+        return True
