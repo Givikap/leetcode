@@ -6,6 +6,14 @@ using namespace std;
 class Solution {
 public:
   bool containsDuplicate(vector<int> &nums) {
-    return unordered_set<int>(nums.begin(), nums.end()).size() != nums.size();
+    unordered_set<int> numsSet;
+    numsSet.reserve(nums.size());
+
+    for (int &num : nums) {
+      if (!numsSet.insert(num).second)
+        return true;
+    }
+
+    return false;
   }
 };
