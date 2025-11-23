@@ -1,23 +1,14 @@
-from collections import defaultdict
+from collections import Counter
 from typing import List
 
 
 class Solution:
     def kthDistinct(self, arr: List[str], k: int) -> str:
-        ch_counter = defaultdict(int)
-        distinct = []
-
-        for ch in arr:
-            if ch not in ch_counter:
-                distinct.append(ch)
-
-            ch_counter[ch] += 1
-
-        for ch, count in ch_counter.items():
+        for s, count in Counter(arr).items():
             if count == 1:
                 k -= 1
 
-            if k == 0:
-                return ch
+                if k == 0:
+                    return s
 
         return ""
