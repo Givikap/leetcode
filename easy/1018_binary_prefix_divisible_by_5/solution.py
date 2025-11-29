@@ -3,7 +3,11 @@ from typing import List
 
 class Solution:
     def prefixesDivBy5(self, nums: List[int]) -> List[bool]:
-        nums_str = "".join(map(str, nums))
-        return [
-            int(nums_str[:end], 2) % 5 == 0 for end in range(1, len(nums) + 1)
-        ]
+        bin_num = 0
+        answer = []
+
+        for i in range(len(nums)):
+            bin_num = (bin_num << 1) | nums[i]
+            answer.append(bin_num % 5 == 0)
+
+        return answer
