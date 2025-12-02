@@ -1,16 +1,12 @@
 using namespace std;
 
+#include <algorithm>
 #include <vector>
 
 class Solution {
 public:
   int minimumOperations(vector<int> &nums) {
-    int operationsNum = 0;
-
-    for (int &num : nums) {
-      operationsNum += num % 3 != 0;
-    }
-
-    return operationsNum;
+    return count_if(nums.begin(), nums.end(),
+                    [](int num) { return num % 3 != 0; });
   }
 };
