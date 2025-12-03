@@ -1,7 +1,8 @@
 class Solution:
     def totalMoney(self, n: int) -> int:
-        return sum(
-            7 * week + 28 for week in range(n // 7)
-        ) + sum(
-            day + n // 7 for day in range(1, n % 7 + 1)
+        weeks, days = divmod(n, 7)
+        return (
+            weeks * 28
+            + 7 * (weeks - 1) * weeks // 2
+            + days * (2 * weeks + days + 1) // 2
         )
