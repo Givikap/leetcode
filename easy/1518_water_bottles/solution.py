@@ -6,8 +6,7 @@ class Solution:
             total_num_bottles += num_bottles
             num_empty_bottles += num_bottles
 
-            tmp = num_empty_bottles // num_exchanges
-            num_bottles = tmp
-            num_empty_bottles -= tmp * num_exchanges
+            num_bottles = num_empty_bottles // num_exchanges
+            num_empty_bottles %= num_exchanges
 
         return total_num_bottles
