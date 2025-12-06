@@ -1,13 +1,20 @@
-from collections import Counter
+from collections import defaultdict
 from typing import List
 
 
 class Solution:
     def maxFrequencyElements(self, nums: List[int]) -> int:
-        nums_counter = Counter(nums)
-        max_frequency = max(nums_counter.values())
-        return max_frequency * sum(
-            1
+        nums_counter = defaultdict(int)
+        max_frequency = 0
+
+        for num in nums:
+            nums_counter[num] += 1
+
+            if nums_counter[num] > max_frequency:
+                max_frequency = nums_counter[num]
+
+        return sum(
+            frequency
             for frequency in nums_counter.values()
             if frequency == max_frequency
         )
