@@ -7,18 +7,23 @@ class Solution {
 public:
   int maxFrequencyElements(vector<int> &nums) {
     unordered_map<int, int> numsCounter;
+    numsCounter.reserve(nums.size());
 
     int maxFrequency = 0;
-    int maxFrequencySum = 0;
+    int maxFrequencyCount = 0;
+    int numCount;
 
-    for (int &num : nums)
-      if (++numsCounter[num] > maxFrequency)
+    for (int &num : nums) {
+      numCount = ++numsCounter[num];
+
+      if (numCount > maxFrequency) {
         maxFrequency = numsCounter[num];
+        maxFrequencyCount = 1;
+      } else if (numCount == maxFrequency) {
+        maxFrequencyCount++;
+      }
+    }
 
-    for (unordered_map<int, int>::iterator it = numsCounter.begin(); it != numsCounter.end(); it++)
-      if (it->second == maxFrequency)
-        maxFrequencySum += maxFrequency;
-
-    return maxFrequencySum;
+    return maxFrequency * maxFrequencyCount;
   }
 };
