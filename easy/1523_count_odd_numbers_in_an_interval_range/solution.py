@@ -1,3 +1,3 @@
 class Solution:
     def countOdds(self, low: int, high: int) -> int:
-        return (high - low) // 2 + (high % 2 == 1 or low % 2 == 1)
+        return ((high + 1) // 2) - (low // 2)
