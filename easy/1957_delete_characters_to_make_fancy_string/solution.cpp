@@ -13,9 +13,7 @@ public:
 
     for (char &c : s) {
       if (c == prev) {
-        prevCount += 1;
-
-        if (prevCount >= 3)
+        if (++prevCount > 2)
           continue;
       } else {
         prev = c;
