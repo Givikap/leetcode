@@ -15,14 +15,11 @@ public:
   }
 
   vector<int> getNoZeroIntegers(int n) {
-    int a = 1;
-    int b = n - 1;
-
-    while (containsZero(a) || containsZero(b)) {
-      ++a;
-      --b;
+    for (int a = 1, b = n - 1;; a++, b--) {
+      if (!containsZero(a) && !containsZero(b))
+        return {a, b};
     }
 
-    return {a, b};
+    return {};
   }
 };
