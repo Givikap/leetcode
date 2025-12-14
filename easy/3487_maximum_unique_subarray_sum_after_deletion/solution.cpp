@@ -17,6 +17,6 @@ public:
     if (uniquePositiveNums.size() == 0)
       return *max_element(nums.begin(), nums.end());
 
-    return accumulate(uniquePositiveNums.begin(), uniquePositiveNums.end(), 0);
+    return reduce(uniquePositiveNums.begin(), uniquePositiveNums.end(), 0);
   }
 };
