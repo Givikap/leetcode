@@ -1,18 +1,8 @@
+import re
 from typing import List
 
 
 class Solution:
-    @staticmethod
-    def isalnumorunderscore(s: str) -> bool:
-        if not s:
-            return False
-
-        for c in s:
-            if not c.isalnum() and c != "_":
-                return False
-
-        return True
-
     def validateCoupons(
         self,
         coupons: List[str],
@@ -22,18 +12,24 @@ class Solution:
         valid_business_lines = set(
             ["electronics", "grocery", "pharmacy", "restaurant"]
         )
+        business_lines_order = {
+            "electronics": 0,
+            "grocery": 1,
+            "pharmacy": 2,
+            "restaurant": 3,
+        }
 
         return [
             coupon
             for _, coupon in sorted(
                 [
-                    (business_line, coupon)
+                    (business_lines_order[business_line], coupon)
                     for coupon, business_line, is_active in zip(
                         coupons, business_lines, are_active
                     )
                     if is_active
                     and business_line in valid_business_lines
-                    and self.isalnumorunderscore(coupon)
+                    and re.fullmatch(r"[A-Za-z0-9_]+", coupon)
                 ]
             )
         ]
