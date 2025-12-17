@@ -6,18 +6,14 @@ using namespace std;
 class Solution {
 public:
   char findTheDifference(string s, string t) {
-    unordered_map<char, int> sCounter, tCounter;
+    char diff = 0;
 
-    for (char &ch : s)
-      ++sCounter[ch];
-    for (char &ch : t)
-      ++tCounter[ch];
+    for (char &c : s)
+      diff ^= c;
 
-    for (const auto &[ch, count] : tCounter) {
-      if (sCounter.find(ch) == sCounter.end() || sCounter[ch] != count)
-        return ch;
-    }
+    for (char &c : t)
+      diff ^= c;
 
-    return ' ';
+    return diff;
   }
 };
