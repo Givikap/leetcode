@@ -8,10 +8,10 @@ public:
   char findTheDifference(string s, string t) {
     char diff = 0;
 
-    for (char &c : s)
+    for (const char &c : s)
       diff ^= c;
 
-    for (char &c : t)
+    for (const char &c : t)
       diff ^= c;
 
     return diff;

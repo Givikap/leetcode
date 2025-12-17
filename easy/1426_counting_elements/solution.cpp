@@ -9,7 +9,7 @@ public:
     unordered_set<int> numsSet(arr.begin(), arr.end());
     int elementsCount = 0;
 
-    for (int &num : arr) {
+    for (const int &num : arr) {
       if (numsSet.find(num + 1) != numsSet.end())
         elementsCount++;
     }

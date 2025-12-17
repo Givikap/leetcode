@@ -13,7 +13,7 @@ public:
     int maxFrequencyCount = 0;
     int numCount;
 
-    for (int &num : nums) {
+    for (const int &num : nums) {
       numCount = ++numsCounter[num];
 
       if (numCount > maxFrequency) {

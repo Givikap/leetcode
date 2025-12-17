@@ -9,7 +9,7 @@ public:
     unordered_set<int> numsSet;
     numsSet.reserve(nums.size());
 
-    for (int &num : nums) {
+    for (const int &num : nums) {
       if (!numsSet.insert(num).second)
         return true;
     }

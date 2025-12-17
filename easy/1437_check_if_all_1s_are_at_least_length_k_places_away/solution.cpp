@@ -7,7 +7,7 @@ public:
   bool kLengthApart(vector<int> &nums, int k) {
     int zerosCount = 1000001;
 
-    for (int &num : nums) {
+    for (const int &num : nums) {
       if (num == 1) {
         if (zerosCount < k)
           return false;

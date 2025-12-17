@@ -8,7 +8,7 @@ public:
   int finalValueAfterOperations(vector<string> &operations) {
     int finalValue = 0;
 
-    for (string &operation : operations) {
+    for (const string &operation : operations) {
       if (operation[0] == '+' || operation[2] == '+')
         finalValue++;
       else

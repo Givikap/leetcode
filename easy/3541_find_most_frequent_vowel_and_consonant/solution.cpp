@@ -8,7 +8,7 @@ public:
   int maxFreqSum(string s) {
     unordered_map<char, int> chCounter;
 
-    for (char &ch : s)
+    for (const char &ch : s)
       chCounter[ch] += 1;
 
     int maxVowelCount = 0;

@@ -9,7 +9,7 @@ public:
     unordered_set<int> numsSet;
     vector<int> sneakyNums;
 
-    for (int &num : nums) {
+    for (const int &num : nums) {
       if (numsSet.find(num) != numsSet.end()) {
         sneakyNums.push_back(num);
 

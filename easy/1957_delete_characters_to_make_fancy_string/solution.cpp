@@ -11,7 +11,7 @@ public:
     char prev;
     int prevCount = 0;
 
-    for (char &c : s) {
+    for (const char &c : s) {
       if (c == prev) {
         if (++prevCount > 2)
           continue;

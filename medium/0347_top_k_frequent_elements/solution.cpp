@@ -11,7 +11,7 @@ public:
     priority_queue<pair<int, int>> pq;
     vector<int> topKFreqientNums;
 
-    for (int &num : nums) {
+    for (const int &num : nums) {
       if (numsCounter.find(num) == numsCounter.end())
         numsCounter[num] = 1;
       else

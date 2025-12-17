@@ -7,7 +7,7 @@ public:
   int arraySign(vector<int> &nums) {
     int numsProduct = 1;
 
-    for (int &num : nums) {
+    for (const int &num : nums) {
       if (num == 0) {
         numsProduct = 0;
         break;
