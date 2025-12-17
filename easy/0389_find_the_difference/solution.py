@@ -4,12 +4,8 @@ from collections import Counter
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
         s_counter = Counter(s)
+        t_counter = Counter(t)
 
-        for c in t:
-            if c in s_counter:
-                s_counter[c] -= 1
-
-                if s_counter[c] < 0:
-                    return c
-            else:
+        for c in t_counter:
+            if c not in s_counter or s_counter[c] != t_counter[c]:
                 return c
