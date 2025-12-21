@@ -4,19 +4,12 @@ class Solution:
 
         longest_palindrome = s[0]
 
-        for i in range(s_len - 1):
-            rights = []
+        for left in range(len(s) - 1):
+            for offset in (1, 2):
+                right = left + offset
 
-            if s[i] == s[i + 1]:
-                rights.append(i + 1)
-            if i + 2 < s_len and s[i] == s[i + 2]:
-                rights.append(i + 2)
-
-            if not rights:
-                continue
-
-            for right in rights:
-                left = i
+                if right == s_len or s[left] != s[right]:
+                    continue
 
                 while (
                     left > 0
@@ -26,7 +19,7 @@ class Solution:
                     left -= 1
                     right += 1
 
-                if len(s[left : right + 1]) > len(longest_palindrome):
+                if right - left + 1 > len(longest_palindrome):
                     longest_palindrome = s[left : right + 1]
 
         return longest_palindrome
