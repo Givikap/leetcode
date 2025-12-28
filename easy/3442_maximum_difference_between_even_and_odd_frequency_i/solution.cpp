@@ -1,24 +1,24 @@
 using namespace std;
 
 #include <string>
-#include <unordered_map>
+#include <vector>
 
 class Solution {
 public:
   int maxDifference(string s) {
-    unordered_map<char, int> sCounter;
+    vector<int> frequencies(26, 0);
 
     for (const char &c : s)
-      ++sCounter[c];
+      ++frequencies[c - 'a'];
 
     int maxOddFrequency = 0;
     int minEvenFrequency = 101;
 
-    for (const auto &[_, frequency] : sCounter) {
-      if (frequency % 2)
-        maxOddFrequency = max(frequency, maxOddFrequency);
-      else
+    for (const int &frequency : frequencies) {
+      if (frequency % 2 == 0 && frequency != 0)
         minEvenFrequency = min(frequency, minEvenFrequency);
+      else
+        maxOddFrequency = max(frequency, maxOddFrequency);
     }
 
     return maxOddFrequency - minEvenFrequency;
