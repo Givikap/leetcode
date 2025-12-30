@@ -4,15 +4,22 @@ from typing import List
 class Solution:
     def countNegatives(self, grid: List[List[int]]) -> int:
         cols = len(grid[0])
-        rows = len(grid)
 
         negatives_count = 0
 
-        for row in range(rows):
-            for col in range(cols - 1, -1, -1):
-                if grid[row][col] >= 0:
-                    break
+        for row in grid:
+            left = 0
+            right = cols - 1
 
-                negatives_count += 1
+            while left <= right:
+                mid = left + (right - left) // 2
+
+                if row[mid] < 0 and (mid == 0 or row[mid - 1] >= 0):
+                    negatives_count += cols - mid
+                    break
+                elif row[mid] < 0:
+                    right = mid - 1
+                else:
+                    left = mid + 1
 
         return negatives_count
