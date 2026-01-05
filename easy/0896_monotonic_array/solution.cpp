@@ -10,18 +10,17 @@ public:
     if (numsLen == 1)
       return true;
 
-    bool increasing = false;
-    bool decreasing = false;
+    bool increasing = true;
+    bool decreasing = true;
 
     for (int i = 1; i < numsLen; ++i) {
-      if ((increasing && nums[i] < nums[i - 1]) ||
-          (decreasing && nums[i] > nums[i - 1])) {
+      if (nums[i] < nums[i - 1])
+        increasing = false;
+      if (nums[i] > nums[i - 1])
+        decreasing = false;
+
+      if (!increasing && !decreasing)
         return false;
-      } else if (nums[i] > nums[i - 1]) {
-        increasing = true;
-      } else if (nums[i] < nums[i - 1]) {
-        decreasing = true;
-      }
     }
 
     return true;
