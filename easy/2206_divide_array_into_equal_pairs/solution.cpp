@@ -1,19 +1,23 @@
 using namespace std;
 
-#include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
   bool divideArray(vector<int> &nums) {
-    unordered_map<int, int> numsCounter;
+    const int numsLen = nums.size();
 
-    for (const int &num : nums)
-      ++numsCounter[num];
+    if (numsLen % 2 == 1)
+      return false;
 
-    for (auto &[_, count] : numsCounter) {
-      if (count % 2 == 1)
+    sort(nums.begin(), nums.end());
+
+    int i = 0;
+    while (i < numsLen) {
+      if (nums[i] != nums[i + 1])
         return false;
+
+      i += 2;
     }
 
     return true;
