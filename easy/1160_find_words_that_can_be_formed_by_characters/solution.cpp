@@ -1,16 +1,15 @@
 using namespace std;
 
 #include <string>
-#include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
   int countCharacters(vector<string> &words, string chars) {
-    unordered_map<char, int> charsCounter, charsCounterCopy;
+    vector<int> charsCounter(26, 0), charsCounterCopy;
 
     for (const char &ch : chars)
-      ++charsCounter[ch];
+      ++charsCounter[ch - 'a'];
 
     bool isGood;
     int charsCount = 0;
@@ -20,13 +19,12 @@ public:
       isGood = true;
 
       for (const char &ch : word) {
-        if (charsCounter.find(ch) == charsCounter.end() ||
-            charsCounterCopy[ch] == 0) {
+        if (charsCounterCopy[ch - 'a'] == 0) {
           isGood = false;
           break;
         }
 
-        --charsCounterCopy[ch];
+        --charsCounterCopy[ch - 'a'];
       }
 
       if (isGood)
