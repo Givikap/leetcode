@@ -8,11 +8,13 @@ class Solution:
         chars_count = 0
 
         for word in words:
-            word_counter = Counter(word)
+            chars_counter_copy = chars_counter.copy()
 
-            for c, count in word_counter.items():
-                if c not in chars_counter or chars_counter[c] < count:
+            for c in word:
+                if c not in chars_counter or chars_counter_copy[c] == 0:
                     break
+
+                chars_counter_copy[c] -= 1
             else:
                 chars_count += len(word)
 
