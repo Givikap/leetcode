@@ -1,13 +1,15 @@
 using namespace std;
 
 #include <string>
-#include <unordered_set>
 #include <vector>
 
 class Solution {
 public:
   int countConsistentStrings(string allowed, vector<string> &words) {
-    const unordered_set<char> allowedSet(allowed.begin(), allowed.end());
+    vector<int> allowedHash(26, 0);
+
+    for (const char ch : allowed)
+      ++allowedHash[ch - 'a'];
 
     bool consistent;
     int consistentCount = 0;
@@ -16,7 +18,7 @@ public:
       consistent = true;
 
       for (const char ch : word) {
-        if (allowedSet.find(ch) == allowedSet.end()) {
+        if (allowedHash[ch - 'a'] == 0) {
           consistent = false;
           break;
         }
