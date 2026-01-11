@@ -1,29 +1,36 @@
 using namespace std;
 
-#include <set>
 #include <string>
-#include <utility>
+#include <unordered_set>
 
 class Solution {
 public:
   bool isPathCrossing(string path) {
     int x = 0, y = 0;
-    set<pair<int, int>> visited;
+    unordered_set<int> visited = {0};
 
     for (const char &direction : path) {
-      visited.insert({x, y});
-
-      if (direction == 'N')
+      switch (direction) {
+      case 'N':
         ++y;
-      else if (direction == 'E')
+        break;
+      case 'E':
         ++x;
-      else if (direction == 'S')
+        break;
+      case 'S':
         --y;
-      else if (direction == 'W')
+        break;
+      case 'W':
         --x;
+        break;
+      }
 
-      if (visited.find({x, y}) != visited.end())
+      const int hash = x * 67 + y;
+
+      if (visited.find(hash) != visited.end())
         return true;
+
+      visited.insert(hash);
     }
 
     return false;
