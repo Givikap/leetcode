@@ -4,7 +4,9 @@ from typing import List
 class Solution:
     def exclusiveTime(self, n: int, logs: List[str]) -> List[int]:
         stack = []
-        times = {}
+        times = [0] * n
+
+        last_ts = 0
 
         for log in logs:
             fid, action, ts = log.split(":")
@@ -12,20 +14,16 @@ class Solution:
             fid = int(fid)
             ts = int(ts)
 
-            if fid not in times:
-                times[fid] = 0
-
             if action == "start":
                 if stack:
-                    top = stack[-1]
-                    times[top[0]] += ts - top[1]
+                    times[stack[-1]] += ts - last_ts
 
-                stack.append([fid, ts])
+                stack.append(fid)
+                last_ts = ts
             else:
-                fid, start_ts = stack.pop()
-                times[fid] += ts - start_ts + 1
+                times[stack.pop()] += ts - last_ts + 1
 
                 if stack:
-                    stack[-1][1] = ts + 1
+                    last_ts = ts + 1
 
-        return [time for _, time in sorted(times.items())]
+        return times
