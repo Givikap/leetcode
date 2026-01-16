@@ -8,13 +8,14 @@ class Solution:
         common_chars = []
 
         for c in set("".join(words)):
+            min_count = 101
+
             for word_counter in word_counters:
-                if c not in word_counter:
+                min_count = min(min_count, word_counter[c])
+
+                if min_count == 0:
                     break
             else:
-                for _ in range(
-                    min(word_counter[c] for word_counter in word_counters)
-                ):
-                    common_chars.append(c)
+                common_chars.extend([c] * min_count)
 
         return common_chars
