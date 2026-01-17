@@ -7,35 +7,28 @@ using namespace std;
 class Solution {
 public:
   vector<string> commonChars(vector<string> &words) {
-    vector<unordered_map<char, int>> wordCounters;
+    const int wordsLen = words.size();
 
-    for (const string &word : words) {
-      unordered_map<char, int> wordCounter;
+    vector<int> charsHash(26, 0);
 
-      for (const char &ch : word)
-        ++wordCounter[ch];
+    for (const char &ch : words[0])
+      ++charsHash[ch - 'a'];
 
-      wordCounters.push_back(wordCounter);
+    for (int i = 1; i < wordsLen; ++i) {
+      vector<int> wordHash(26, 0);
+
+      for (const char &ch : words[i])
+        ++wordHash[ch - 'a'];
+
+      for (int i = 0; i < 26; ++i)
+        charsHash[i] = min(charsHash[i], wordHash[i]);
     }
 
     vector<string> common;
 
-    for (char ch = 'a'; ch < '{'; ++ch) {
-      int minCount = 101;
-      bool isCommon = true;
-
-      for (unordered_map<char, int> &wordCounter : wordCounters) {
-        minCount = min(minCount, wordCounter[ch]);
-
-        if (minCount == 0) {
-          isCommon = false;
-          break;
-        }
-      }
-
-      if (isCommon)
-        for (int _ = 0; _ < minCount; ++_)
-          common.push_back(string(1, ch));
+    for (int i = 0; i < 26; ++i) {
+      for (int _ = 0; _ < charsHash[i]; ++_)
+        common.push_back(string(1, 'a' + i));
     }
 
     return common;
