@@ -10,17 +10,12 @@ public:
 
     const int size = rows * cols;
 
-    vector<int> flattenGrid;
+    vector<int> flattenShiftedGrid(size, 0);
 
     for (const vector<int> &row : grid) {
       for (const int &num : row)
-        flattenGrid.push_back(num);
+        flattenShiftedGrid[k++ % size] = num;
     }
-
-    vector<int> flattenShiftedGrid(size, 0);
-
-    for (int i = 0; i < size; ++i)
-      flattenShiftedGrid[(i + k) % size] = flattenGrid[i];
 
     vector<vector<int>> shiftedGrid(rows, vector<int>(cols, 0));
 
