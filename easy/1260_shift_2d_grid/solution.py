@@ -6,13 +6,14 @@ class Solution:
         rows = len(grid)
         cols = len(grid[0])
 
-        k = k % (rows * cols)
+        size = rows * cols
+        shift = size - (k % (size))
 
-        shifted_grid = [[0] * cols for _ in range(rows)]
+        flatten_grid = []
 
-        for i in range(rows * cols):
-            shifted_grid[(i + k) // cols % rows][(i + k) % cols] = grid[
-                i // cols
-            ][i % cols]
+        for row in grid:
+            flatten_grid.extend(row)
 
-        return shifted_grid
+        flatten_grid = [*flatten_grid[shift:], *flatten_grid[:shift]]
+
+        return [flatten_grid[i : i + cols] for i in range(0, size, cols)]
