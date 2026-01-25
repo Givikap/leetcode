@@ -1,12 +1,11 @@
 using namespace std;
 
-#include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
   int countStudents(vector<int> &students, vector<int> &sandwiches) {
-    unordered_map<int, int> preferenceCounter;
+    vector<int> preferenceCounter(2, 0);
 
     for (const int &preference : students)
       ++preferenceCounter[preference];
