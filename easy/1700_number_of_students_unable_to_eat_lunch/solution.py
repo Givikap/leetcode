@@ -1,21 +1,15 @@
-from collections import deque
+from collections import Counter
 from typing import List
 
 
 class Solution:
     def countStudents(self, students: List[int], sandwiches: List[int]) -> int:
-        students_queue = deque(students)
-        sandwiches_queue = deque(sandwiches)
+        preference_counter = Counter(students)
 
-        for _ in range(len(students) * 4):
-            if not students_queue:
-                break
+        for sandwich in sandwiches:
+            if preference_counter[sandwich] == 0:
+                return preference_counter[not sandwich]
 
-            student = students_queue.popleft()
+            preference_counter[sandwich] -= 1
 
-            if sandwiches_queue[0] == student:
-                sandwiches_queue.popleft()
-            else:
-                students_queue.append(student)
-
-        return len(students_queue)
+        return 0
