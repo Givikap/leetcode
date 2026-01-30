@@ -1,11 +1,14 @@
-from collections import Counter
 from typing import List
 
 
 class Solution:
     def repeatedNTimes(self, nums: List[int]) -> int:
-        for num, count in Counter(nums).items():
-            if count * 2 == len(nums):
+        seen = set()
+
+        for num in nums:
+            if num in seen:
                 return num
+
+            seen.add(num)
 
         return -1
