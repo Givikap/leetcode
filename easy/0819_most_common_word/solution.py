@@ -6,18 +6,12 @@ class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
         words_counter = Counter(
             (
-                paragraph.translate(
-                    str.maketrans(
-                        {
-                            "!": " ",
-                            "?": " ",
-                            "'": " ",
-                            ",": " ",
-                            ";": " ",
-                            ".": " ",
-                        }
-                    )
-                )
+                paragraph.replace("!", " ")
+                .replace("?", " ")
+                .replace("'", " ")
+                .replace(",", " ")
+                .replace(";", " ")
+                .replace(".", " ")
                 .lower()
                 .split()
             )
