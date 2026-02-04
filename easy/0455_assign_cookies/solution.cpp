@@ -10,18 +10,18 @@ public:
 
     const int gLen = g.size();
     const int sLen = s.size();
+
     int gi = 0;
     int si = 0;
 
-    int cookiesCount = 0;
-
     while (gi < gLen && si < sLen) {
-      if (g[gi] <= s[si++]) {
+      if (g[gi] <= s[si]) {
         ++gi;
-        ++cookiesCount;
-      }
+        ++si;
+      } else
+        ++si;
     }
 
-    return cookiesCount;
+    return gi;
   }
 };
