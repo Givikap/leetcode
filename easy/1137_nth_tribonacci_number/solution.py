@@ -2,7 +2,7 @@ from functools import lru_cache
 
 
 class Solution:
-    @lru_cache(maxsize=64)
+    @lru_cache
     def tribonacci(self, n: int) -> int:
         if n == 0:
             return 0
