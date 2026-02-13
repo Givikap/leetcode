@@ -3,12 +3,14 @@ from typing import List
 
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
-        nums.sort()
-
         duplicates = []
 
-        for i in range(len(nums) - 1):
-            if nums[i] == nums[i + 1]:
-                duplicates.append(nums[i])
+        for num in nums:
+            idx = abs(num) - 1
+
+            if nums[idx] < 0:
+                duplicates.append(idx + 1)
+            else:
+                nums[idx] *= -1
 
         return duplicates
