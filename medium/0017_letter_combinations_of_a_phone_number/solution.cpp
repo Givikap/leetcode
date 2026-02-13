@@ -13,21 +13,14 @@ public:
     };
 
     queue<string> q;
-    for (char &ch : phoneKeyboard[digits[0]])
-      q.push(string() + ch);
+    q.push("");
 
-    int combinationsCount;
-    string combination;
-
-    for (int i = 1; i < digits.size(); ++i) {
-      combinationsCount = q.size();
-
-      for (int _ = 0; _ < combinationsCount; ++_) {
-        combination = q.front();
-        q.pop();
-
+    for (int i = 0; i < digits.size(); ++i) {
+      for (int _ = q.size(); _ != 0; --_) {
         for (char &ch : phoneKeyboard[digits[i]])
-          q.push(combination + ch);
+          q.push(q.front() + ch);
+
+        q.pop();
       }
     }
 
