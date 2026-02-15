@@ -1,21 +1,21 @@
-from collections import defaultdict
 from typing import List
 
 
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        loss_counter = defaultdict(int)
+        winners = set()
+        one_loss = set()
+        many_losses = set()
 
         for winner, loser in matches:
-            loss_counter[winner]
-            loss_counter[loser] += 1
+            winners.add(winner)
 
-        answer = [[], []]
+            if loser not in one_loss:
+                one_loss.add(loser)
+            else:
+                many_losses.add(loser)
 
-        for loser in sorted(loss_counter.keys()):
-            count = loss_counter[loser]
-
-            if count < 2:
-                answer[count].append(loser)
-
-        return answer
+        return [
+            sorted(winners - one_loss - many_losses),
+            sorted(one_loss - many_losses),
+        ]
