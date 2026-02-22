@@ -7,13 +7,14 @@ class Solution:
 
         for i in range(len(nums) - 1):
             if nums[i] > nums[i + 1]:
-                if modified or (
-                    (nums[i - 1] if i != 0 else nums[i + 1]) > nums[i + 1]
-                    and nums[i]
-                    > (nums[i + 2] if i + 2 < len(nums) else nums[i])
-                ):
+                if modified:
                     return False
                 else:
                     modified = True
+
+                if i > 0 and nums[i - 1] > nums[i + 1]:
+                    nums[i + 1] = nums[i]
+                else:
+                    nums[i] = nums[i + 1]
 
         return True
