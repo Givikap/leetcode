@@ -7,12 +7,10 @@ class Solution:
         waiting_time = 0
 
         for arrival, time in customers:
-            if curr_time > arrival:
-                waiting_time += curr_time - arrival
-            else:
+            if arrival > curr_time:
                 curr_time = arrival
 
             curr_time += time
-            waiting_time += time
+            waiting_time += curr_time - arrival
 
         return waiting_time / len(customers)
