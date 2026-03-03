@@ -3,43 +3,39 @@ from typing import List
 
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
+        rows = len(grid)
+        cols = len(grid[0])
+
+        rotten = []
+        fresh_count = 0
+
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == 2:
+                    rotten.append((row, col))
+                elif grid[row][col] == 1:
+                    fresh_count += 1
+
         minutes = 0
 
-        rotted = []
-        to_rot = [
-            (row, col)
-            for row in range(len(grid))
-            for col in range(len(grid[0]))
-            if grid[row][col] == 2
-        ]
+        while rotten and fresh_count:
+            to_rot = set()
 
-        while to_rot:
-            rotted.extend(to_rot)
-            to_rot = []
-
-            while rotted:
-                row, col = rotted.pop()
-
+            for row, col in rotten:
                 if row > 0 and grid[row - 1][col] == 1:
-                    to_rot.append((row - 1, col))
-                if col + 1 < len(grid[0]) and grid[row][col + 1] == 1:
-                    to_rot.append((row, col + 1))
-                if row + 1 < len(grid) and grid[row + 1][col] == 1:
-                    to_rot.append((row + 1, col))
+                    to_rot.add((row - 1, col))
+                if col + 1 < cols and grid[row][col + 1] == 1:
+                    to_rot.add((row, col + 1))
+                if row + 1 < rows and grid[row + 1][col] == 1:
+                    to_rot.add((row + 1, col))
                 if col > 0 and grid[row][col - 1] == 1:
-                    to_rot.append((row, col - 1))
+                    to_rot.add((row, col - 1))
 
-            if not to_rot:
-                break
-
-            to_rot = list(set(to_rot))
             for row, col in to_rot:
                 grid[row][col] = 2
+                fresh_count -= 1
 
+            rotten = list(to_rot)
             minutes += 1
 
-        for row in grid:
-            if 1 in row:
-                return -1
-
-        return minutes
+        return minutes if fresh_count == 0 else -1
