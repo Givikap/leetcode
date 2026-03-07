@@ -10,18 +10,16 @@ public:
     if (s.size() == 2)
       return s[0] == s[1];
 
-    int zeros = 0, ones = 0;
-    int zero = 1;
+    int changesCount = 0;
+    int curr = 0;
 
     for (int i = 0; i < s.size(); ++i) {
-      if ((zero && s[i] != '0') || (!zero && s[i] != '1'))
-        ++zeros;
-      if ((zero && s[i] != '1') || (!zero && s[i] != '0'))
-        ++ones;
+      if ((curr == 0 && s[i] != '0') || (curr == 1 && s[i] != '1'))
+        ++changesCount;
 
-      zero = !zero;
+      curr = !curr;
     }
 
-    return min(zeros, ones);
+    return min(changesCount, (int)s.size() - changesCount);
   }
 };
