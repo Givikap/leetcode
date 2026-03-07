@@ -3,4 +3,4 @@ from typing import List
 
 class Solution:
     def sortByBits(self, arr: List[int]) -> List[int]:
-        return sorted(arr, key=lambda num: (bin(num).count("1"), num))
+        return sorted(arr, key=lambda num: (num.bit_count(), num))
