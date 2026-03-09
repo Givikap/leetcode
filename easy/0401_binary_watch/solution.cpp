@@ -13,23 +13,26 @@ public:
 
     int hour, minute;
 
-    vector<int> hours(12, 0);
+    vector<pair<int, string>> hours;
+    hours.reserve(12);
     for (hour = 0; hour < 12; ++hour)
-      hours[hour] = __builtin_popcount(hour);
+      hours.push_back(
+          pair<int, string>{__builtin_popcount(hour), to_string(hour)});
 
-    vector<int> minutes(60, 0);
+    vector<pair<int, string>> minutes;
+    minutes.reserve(60);
     for (minute = 0; minute < 60; ++minute)
-      minutes[minute] = __builtin_popcount(minute);
+      minutes.push_back(pair<int, string>{__builtin_popcount(minute),
+                                          minute < 10 ? '0' + to_string(minute)
+                                                      : to_string(minute)});
 
     vector<string> times;
 
     for (hour = 0; hour < 12; ++hour) {
-      if (hours[hour] <= turnedOn) {
+      if (hours[hour].first <= turnedOn) {
         for (minute = 0; minute < 60; ++minute) {
-          if (hours[hour] + minutes[minute] == turnedOn)
-            times.push_back(
-                to_string(hour) + ':' +
-                (minute < 10 ? '0' + to_string(minute) : to_string(minute)));
+          if (hours[hour].first + minutes[minute].first == turnedOn)
+            times.push_back(hours[hour].second + ':' + minutes[minute].second);
         }
       }
     }
