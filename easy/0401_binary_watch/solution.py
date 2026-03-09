@@ -10,12 +10,13 @@ class Solution:
 
         times = []
 
-        for hour in range(12):
-            if hour.bit_count() <= turned_on:
-                time = str(hour)
+        hours = [hour.bit_count() for hour in range(12)]
+        minutes = [minute.bit_count() for minute in range(60)]
 
-                for minutes in range(60):
-                    if minutes.bit_count() == turned_on - hour.bit_count():
-                        times.append(f"{time}:{minutes:02d}")
+        for hour, hour_bit_count in enumerate(hours):
+            if hour_bit_count <= turned_on:
+                for minute, minute_bit_count in enumerate(minutes):
+                    if hour_bit_count + minute_bit_count == turned_on:
+                        times.append(f"{hour}:{minute:02d}")
 
         return times
