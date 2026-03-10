@@ -5,12 +5,13 @@ using namespace std;
 class Solution {
 public:
   int countPrimeSetBits(int left, int right) {
-    const set<int> primeNumbersSet = {2, 3, 5, 7, 11, 13, 17, 19};
-
     int count = 0;
 
     for (int i = left; i < right + 1; ++i) {
-      if (primeNumbersSet.find(__builtin_popcount(i)) != primeNumbersSet.end())
+      int bitsCount = __builtin_popcount(i);
+
+      if (bitsCount == 2 || bitsCount == 3 ||
+          (bitsCount != 1 && bitsCount % 2 != 0 && bitsCount % 3 != 0))
         ++count;
     }
 
