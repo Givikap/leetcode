@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <vector>
 
 class UnionFind {
 private:
-  vector<int> parent;
-  vector<int> rank;
+  std::vector<int> parent;
+  std::vector<int> rank;
 
 public:
   UnionFind(int n) : parent(n), rank(n) {
