@@ -2,7 +2,7 @@
 
 class Solution {
 public:
-  int getDecimalValue(ListNode *head) {
+  int getDecimalValue(utils::ListNode *head) {
     int decimalValue = 0;
 
     while (head) {

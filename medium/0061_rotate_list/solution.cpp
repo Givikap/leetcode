@@ -2,11 +2,11 @@
 
 class Solution {
 public:
-  ListNode *rotateRight(ListNode *head, int k) {
+  utils::ListNode *rotateRight(utils::ListNode *head, int k) {
     if (!head || !head->next || k == 0)
       return head;
 
-    ListNode *curr, *back;
+    utils::ListNode *curr, *back;
 
     int listLen = 0;
 

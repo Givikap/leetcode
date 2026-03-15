@@ -2,7 +2,7 @@
 
 class Solution {
 public:
-  bool checkTree(TreeNode *root) {
+  bool checkTree(utils::TreeNode *root) {
     return root->val == root->left->val + root->right->val;
   }
 };

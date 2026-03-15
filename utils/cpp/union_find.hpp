@@ -1,5 +1,7 @@
 #include <vector>
 
+namespace utils {
+
 class UnionFind {
 private:
   std::vector<int> parent;
@@ -34,3 +36,5 @@ public:
     }
   }
 };
+
+} // namespace utils

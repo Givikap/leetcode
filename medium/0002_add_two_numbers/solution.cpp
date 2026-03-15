@@ -2,9 +2,9 @@
 
 class Solution {
 public:
-  ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
-    ListNode dummy(-1);
-    ListNode *curr = &dummy;
+  utils::ListNode *addTwoNumbers(utils::ListNode *l1, utils::ListNode *l2) {
+    utils::ListNode dummy(-1);
+    utils::ListNode *curr = &dummy;
 
     int carry = 0;
     int val1 = 0, val2 = 0, newVal;
@@ -19,7 +19,7 @@ public:
       newVal = val1 + val2 + carry;
       carry = newVal / 10;
 
-      curr->next = new ListNode(newVal % 10);
+      curr->next = new utils::ListNode(newVal % 10);
       curr = curr->next;
     }
 

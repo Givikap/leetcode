@@ -1,3 +1,5 @@
+namespace utils {
+
 class Interval {
 public:
   int start, end;
@@ -7,3 +9,5 @@ public:
     this->end = end;
   }
 };
+
+} // namespace utils

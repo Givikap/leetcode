@@ -3,15 +3,15 @@
 
 class Solution {
 public:
-  bool leafSimilar(TreeNode *root1, TreeNode *root2) {
+  bool leafSimilar(utils::TreeNode *root1, utils::TreeNode *root2) {
     std::vector<int> leafs1, leafs2;
 
-    TreeNode *node;
+    utils::TreeNode *node;
 
     for (auto &[root, leafs] :
-         std::vector<std::pair<TreeNode *, std::vector<int> *>>{
+         std::vector<std::pair<utils::TreeNode *, std::vector<int> *>>{
              {root1, &leafs1}, {root2, &leafs2}}) {
-      std::vector<TreeNode *> stack = {root};
+      std::vector<utils::TreeNode *> stack = {root};
 
       while (!stack.empty()) {
         node = stack.back();

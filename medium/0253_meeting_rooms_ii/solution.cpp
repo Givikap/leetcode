@@ -4,16 +4,17 @@
 
 class Solution {
 public:
-  int minMeetingRooms(std::vector<Interval> &intervals) {
-    std::sort(
-        intervals.begin(), intervals.end(),
-        [](const Interval &a, const Interval &b) { return a.start < b.start; });
+  int minMeetingRooms(std::vector<utils::Interval> &intervals) {
+    std::sort(intervals.begin(), intervals.end(),
+              [](const utils::Interval &a, const utils::Interval &b) {
+                return a.start < b.start;
+              });
 
     std::vector<int> heap;
 
     int maxRooms = 0;
 
-    for (const Interval &interval : intervals) {
+    for (const utils::Interval &interval : intervals) {
       if (!heap.empty() && interval.start >= -heap[0]) {
         std::pop_heap(heap.begin(), heap.end());
         heap.pop_back();

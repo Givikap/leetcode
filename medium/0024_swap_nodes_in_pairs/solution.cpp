@@ -2,15 +2,15 @@
 
 class Solution {
 public:
-  ListNode *swapPairs(ListNode *head) {
+  utils::ListNode *swapPairs(utils::ListNode *head) {
     if (!head)
       return nullptr;
 
-    ListNode *dummy = new ListNode(-1, head);
+    utils::ListNode *dummy = new utils::ListNode(-1, head);
 
-    ListNode *prev = dummy;
-    ListNode *curr = head;
-    ListNode *temp;
+    utils::ListNode *prev = dummy;
+    utils::ListNode *curr = head;
+    utils::ListNode *temp;
 
     while (curr) {
       if (curr->next) {

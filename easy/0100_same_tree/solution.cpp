@@ -3,9 +3,10 @@
 
 class Solution {
 public:
-  bool isSameTree(TreeNode *p, TreeNode *q) {
-    std::vector<std::pair<TreeNode *, TreeNode *>> stack = {{p, q}};
-    std::pair<TreeNode *, TreeNode *> pair;
+  bool isSameTree(utils::TreeNode *p, utils::TreeNode *q) {
+    std::vector<std::pair<utils::TreeNode *, utils::TreeNode *>> stack = {
+        {p, q}};
+    std::pair<utils::TreeNode *, utils::TreeNode *> pair;
 
     while (!stack.empty()) {
       pair = stack.back();

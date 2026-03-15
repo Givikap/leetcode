@@ -1,3 +1,5 @@
+namespace utils {
+
 struct ListNode {
   int val;
   ListNode *next;
@@ -15,3 +17,5 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right)
       : val(x), left(left), right(right) {}
 };
+
+} // namespace utils

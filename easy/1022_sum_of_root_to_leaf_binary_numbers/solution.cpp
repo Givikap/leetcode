@@ -4,13 +4,13 @@
 
 class Solution {
 public:
-  int sumRootToLeaf(TreeNode *root) {
-    std::vector<std::pair<TreeNode *, int>> stack = {
-        std::pair<TreeNode *, int>{root, root->val}};
+  int sumRootToLeaf(utils::TreeNode *root) {
+    std::vector<std::pair<utils::TreeNode *, int>> stack = {
+        std::pair<utils::TreeNode *, int>{root, root->val}};
     std::vector<int> nums;
 
     while (!stack.empty()) {
-      TreeNode *node = stack.back().first;
+      utils::TreeNode *node = stack.back().first;
       int num = stack.back().second;
       stack.pop_back();
 
@@ -20,10 +20,10 @@ public:
       }
 
       if (node->left)
-        stack.push_back(std::pair<TreeNode *, int>{
+        stack.push_back(std::pair<utils::TreeNode *, int>{
             node->left, (num << 1) | node->left->val});
       if (node->right)
-        stack.push_back(std::pair<TreeNode *, int>{
+        stack.push_back(std::pair<utils::TreeNode *, int>{
             node->right, (num << 1) | node->right->val});
     }
 

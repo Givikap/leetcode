@@ -12,7 +12,7 @@ public:
            return a[2] > b[2];
          });
 
-    UnionFind uf(n);
+    utils::UnionFind uf(n);
     std::vector<std::vector<int>> mst;
 
     for (const std::vector<int> &edge : edges) {
