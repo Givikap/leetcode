@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  vector<int> applyOperations(vector<int> &nums) {
+  std::vector<int> applyOperations(std::vector<int> &nums) {
     const int numsLen = nums.size();
 
-    vector<int> modifiedNums;
+    std::vector<int> modifiedNums;
     modifiedNums.reserve(numsLen);
 
     int zeroCount = 0;

@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int minimumIndex(vector<int> &capacity, int itemSize) {
+  int minimumIndex(std::vector<int> &capacity, int itemSize) {
     int minI = 0;
 
     for (int i = 0; i < capacity.size(); ++i) {

@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  bool canPlaceFlowers(vector<int> &flowerbed, int n) {
+  bool canPlaceFlowers(std::vector<int> &flowerbed, int n) {
     const int flowerbedLen = flowerbed.size();
 
     for (int i = 0; n && i < flowerbedLen; ++i) {

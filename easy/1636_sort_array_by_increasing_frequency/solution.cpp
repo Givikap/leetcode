@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
-  vector<int> frequencySort(vector<int> &nums) {
-    unordered_map<int, int> numsCounter;
+  std::vector<int> frequencySort(std::vector<int> &nums) {
+    std::unordered_map<int, int> numsCounter;
 
     for (const int &num : nums)
       ++numsCounter[num];

@@ -1,5 +1,3 @@
-using namespace std;
-
 #include <cstdlib>
 
 class Solution {

@@ -1,18 +1,16 @@
-using namespace std;
-
 #include <stack>
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  vector<int> exclusiveTime(int n, vector<string> &logs) {
-    stack<int> s;
-    vector<int> times(n, 0);
+  std::vector<int> exclusiveTime(int n, std::vector<std::string> &logs) {
+    std::stack<int> s;
+    std::vector<int> times(n, 0);
 
     int lastTs;
 
-    for (const string &log : logs) {
+    for (const std::string &log : logs) {
       int fid = stoi(log.substr(0, log.find(':')));
       char action = log.find('s') != -1 ? 's' : 'e';
       int ts = stoi(log.substr(log.rfind(':') + 1));

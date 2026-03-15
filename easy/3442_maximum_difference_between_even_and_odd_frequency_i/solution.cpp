@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  int maxDifference(string s) {
-    vector<int> frequencies(26, 0);
+  int maxDifference(std::string s) {
+    std::vector<int> frequencies(26, 0);
 
     for (const char &c : s)
       ++frequencies[c - 'a'];
@@ -16,9 +14,9 @@ public:
 
     for (const int &frequency : frequencies) {
       if (frequency % 2 == 0 && frequency != 0)
-        minEvenFrequency = min(frequency, minEvenFrequency);
+        minEvenFrequency = std::min(frequency, minEvenFrequency);
       else
-        maxOddFrequency = max(frequency, maxOddFrequency);
+        maxOddFrequency = std::max(frequency, maxOddFrequency);
     }
 
     return maxOddFrequency - minEvenFrequency;

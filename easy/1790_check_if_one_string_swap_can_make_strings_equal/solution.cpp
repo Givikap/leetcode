@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  bool areAlmostEqual(string s1, string s2) {
-    vector<int> difference;
+  bool areAlmostEqual(std::string s1, std::string s2) {
+    std::vector<int> difference;
 
     for (int i = 0; i < s1.size(); ++i) {
       if (s1[i] != s2[i])

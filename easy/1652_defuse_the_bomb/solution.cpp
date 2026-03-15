@@ -1,17 +1,15 @@
-using namespace std;
-
 #include <numeric>
 #include <vector>
 
 class Solution {
 public:
-  vector<int> decrypt(vector<int> &code, int k) {
+  std::vector<int> decrypt(std::vector<int> &code, int k) {
     const int codeLen = code.size();
 
     if (k == 0)
-      return vector<int>(codeLen, 0);
+      return std::vector<int>(codeLen, 0);
 
-    vector<int> decryptedCode;
+    std::vector<int> decryptedCode;
 
     int kSum = 0;
     int i;

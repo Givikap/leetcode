@@ -1,5 +1,3 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
@@ -9,7 +7,7 @@ public:
     return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
   }
 
-  string reverseVowels(string s) {
+  std::string reverseVowels(std::string s) {
     int left = 0;
     int right = s.size() - 1;
 
@@ -19,7 +17,7 @@ public:
       else if (!isVowel(s[right]))
         --right;
       else
-        swap(s[left++], s[right--]);
+        std::swap(s[left++], s[right--]);
     }
 
     return s;

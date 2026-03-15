@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  int minDeletionSize(vector<string> &strs) {
+  int minDeletionSize(std::vector<std::string> &strs) {
     int deleteCount = 0;
 
     const int cols = strs[0].size();

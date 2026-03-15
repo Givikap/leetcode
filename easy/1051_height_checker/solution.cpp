@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int heightChecker(vector<int> &heights) {
+  int heightChecker(std::vector<int> &heights) {
     const int heightsLen = heights.size();
 
-    vector<int> expectedHeights(heights.begin(), heights.end());
+    std::vector<int> expectedHeights(heights.begin(), heights.end());
     sort(expectedHeights.begin(), expectedHeights.end());
 
     int mismatchedHeightsCount = 0;

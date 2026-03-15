@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  bool kLengthApart(vector<int> &nums, int k) {
+  bool kLengthApart(std::vector<int> &nums, int k) {
     int zerosCount = 1000001;
 
     for (const int &num : nums) {

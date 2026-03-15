@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int countStudents(vector<int> &students, vector<int> &sandwiches) {
-    vector<int> preferenceCounter(2, 0);
+  int countStudents(std::vector<int> &students, std::vector<int> &sandwiches) {
+    std::vector<int> preferenceCounter(2, 0);
 
     for (const int &preference : students)
       ++preferenceCounter[preference];

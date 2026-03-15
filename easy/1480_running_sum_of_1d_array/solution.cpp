@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  vector<int> runningSum(vector<int> &nums) {
-    vector<int> runningSums;
+  std::vector<int> runningSum(std::vector<int> &nums) {
+    std::vector<int> runningSums;
     int currSum = 0;
 
     for (const int &num : nums) {

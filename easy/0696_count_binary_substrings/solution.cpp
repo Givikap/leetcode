@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  int countBinarySubstrings(string s) {
+  int countBinarySubstrings(std::string s) {
     int count = 0;
 
     int prev = 0;
@@ -14,12 +12,12 @@ public:
       if (s[i] == s[i + 1])
         ++curr;
       else {
-        count += min(curr, prev);
+        count += std::min(curr, prev);
         prev = curr;
         curr = 1;
       }
     }
 
-    return count + min(curr, prev);
+    return count + std::min(curr, prev);
   }
 };

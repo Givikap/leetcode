@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <string>
 #include <unordered_set>
 
 class Solution {
 public:
-  bool isPathCrossing(string path) {
+  bool isPathCrossing(std::string path) {
     int x = 0, y = 0;
-    unordered_set<int> visited = {0};
+    std::unordered_set<int> visited = {0};
 
     for (const char &direction : path) {
       switch (direction) {

@@ -1,5 +1,3 @@
-using namespace std;
-
 #include <algorithm>
 #include <numeric>
 #include <unordered_set>
@@ -7,10 +5,10 @@ using namespace std;
 
 class Solution {
 public:
-  int maxSum(vector<int> &nums) {
-    unordered_set<int> uniqueNums(nums.begin(), nums.end());
+  int maxSum(std::vector<int> &nums) {
+    std::unordered_set<int> uniqueNums(nums.begin(), nums.end());
 
-    vector<int> uniquePositiveNums;
+    std::vector<int> uniquePositiveNums;
     copy_if(uniqueNums.begin(), uniqueNums.end(),
             back_inserter(uniquePositiveNums), [](int num) { return num > 0; });
 

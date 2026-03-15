@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int minTimeToVisitAllPoints(vector<vector<int>> &points) {
+  int minTimeToVisitAllPoints(std::vector<std::vector<int>> &points) {
     if (points.size() == 1)
       return 0;
 
@@ -19,7 +17,7 @@ public:
       x2 = points[i + 1][0];
       y2 = points[i + 1][1];
 
-      time += max(abs(x1 - x2), abs(y1 - y2));
+      time += std::max(abs(x1 - x2), abs(y1 - y2));
     }
 
     return time;

@@ -1,14 +1,12 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  string reverseWords(string s) {
+  std::string reverseWords(std::string s) {
     int i = s.find(' ');
 
-    string::iterator left = s.begin();
-    string::iterator right;
+    std::string::iterator left = s.begin();
+    std::string::iterator right;
 
     while (i != -1) {
       right = s.begin() + i;

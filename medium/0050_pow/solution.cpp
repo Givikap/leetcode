@@ -1,6 +1,4 @@
-using namespace std;
-
-#include <stdlib.h>
+#include <cstdlib>
 
 class Solution {
 public:
@@ -12,7 +10,7 @@ public:
     if (n == 1)
       return x;
 
-    long N = abs((long)n);
+    long N = std::abs((long)n);
 
     double result = myPow(x, N / 2);
     result *= result;

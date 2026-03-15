@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  bool check(vector<int> &nums) {
+  bool check(std::vector<int> &nums) {
     const int numsLen = nums.size();
 
     int i;

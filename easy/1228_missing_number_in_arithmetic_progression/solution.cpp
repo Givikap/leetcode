@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int missingNumber(vector<int> &arr) {
+  int missingNumber(std::vector<int> &arr) {
     const int arrLen = arr.size();
     const int step = (arr[arrLen - 1] - arr[0]) / arrLen;
 

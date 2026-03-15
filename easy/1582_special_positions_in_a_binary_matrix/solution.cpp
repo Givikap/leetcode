@@ -1,15 +1,13 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int numSpecial(vector<vector<int>> &matrix) {
+  int numSpecial(std::vector<std::vector<int>> &matrix) {
     const int rows = matrix.size();
     const int cols = matrix[0].size();
 
-    vector<int> rowSums(rows, 0);
-    vector<int> colSums(cols, 0);
+    std::vector<int> rowSums(rows, 0);
+    std::vector<int> colSums(cols, 0);
 
     for (int row = 0; row < rows; ++row) {
       for (int col = 0; col < cols; ++col) {

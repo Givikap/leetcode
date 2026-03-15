@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  string makeFancyString(string s) {
-    string fancyS = "";
+  std::string makeFancyString(std::string s) {
+    std::string fancyS = "";
     fancyS.reserve(s.size());
 
     char prev;

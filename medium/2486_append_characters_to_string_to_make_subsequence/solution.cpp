@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  int appendCharacters(string s, string t) {
+  int appendCharacters(std::string s, std::string t) {
     const int sLen = s.size();
     const int tLen = t.size();
 

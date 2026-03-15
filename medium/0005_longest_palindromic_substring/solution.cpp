@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  string longestPalindrome(string s) {
+  std::string longestPalindrome(std::string s) {
     const int sLen = s.size();
 
-    string longestPalindrome{s[0]};
+    std::string longestPalindrome{s[0]};
     int left, right;
 
     for (int i = 0; i < sLen - 1; ++i) {

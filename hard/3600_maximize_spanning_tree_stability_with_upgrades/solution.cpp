@@ -1,23 +1,21 @@
-using namespace std;
-
 #include "../../utils/cpp/union_find.hpp"
 #include <algorithm>
 #include <vector>
 
 class Solution {
 public:
-  int maxStability(int n, vector<vector<int>> &edges, int k) {
+  int maxStability(int n, std::vector<std::vector<int>> &edges, int k) {
     sort(edges.begin(), edges.end(),
-         [](const vector<int> &a, const vector<int> &b) {
+         [](const std::vector<int> &a, const std::vector<int> &b) {
            if (a[3] != b[3])
              return a[3] > b[3];
            return a[2] > b[2];
          });
 
     UnionFind uf(n);
-    vector<vector<int>> mst;
+    std::vector<std::vector<int>> mst;
 
-    for (const vector<int> &edge : edges) {
+    for (const std::vector<int> &edge : edges) {
       if (uf.find(edge[0]) != uf.find(edge[1])) {
         uf.merge(edge[0], edge[1]);
         mst.push_back(edge);
@@ -29,13 +27,13 @@ public:
       return -1;
 
     sort(mst.begin(), mst.end(),
-         [](const vector<int> &a, const vector<int> &b) {
+         [](const std::vector<int> &a, const std::vector<int> &b) {
            if (a[3] != b[3])
              return a[3] < b[3];
            return a[2] < b[2];
          });
 
-    for (vector<int> &edge : mst) {
+    for (std::vector<int> &edge : mst) {
       if (!k || edge[3])
         break;
 
@@ -43,9 +41,11 @@ public:
       --k;
     }
 
-    vector<vector<int>>::iterator minEdgeIt = min_element(
-        mst.begin(), mst.end(),
-        [](const vector<int> &a, const vector<int> &b) { return a[2] < b[2]; });
+    std::vector<std::vector<int>>::iterator minEdgeIt =
+        min_element(mst.begin(), mst.end(),
+                    [](const std::vector<int> &a, const std::vector<int> &b) {
+                      return a[2] < b[2];
+                    });
 
     return minEdgeIt != mst.end() ? (*minEdgeIt)[2] : -1;
   }

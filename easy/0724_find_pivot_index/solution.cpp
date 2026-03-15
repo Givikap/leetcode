@@ -1,14 +1,12 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int pivotIndex(vector<int> &nums) {
+  int pivotIndex(std::vector<int> &nums) {
     const int numsLen = nums.size();
 
-    vector<int> sumsLeft = {0};
-    vector<int> sumsRight(numsLen, 0);
+    std::vector<int> sumsLeft = {0};
+    std::vector<int> sumsRight(numsLen, 0);
 
     int i;
 

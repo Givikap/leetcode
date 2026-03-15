@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <string>
 #include <unordered_set>
 
 class Solution {
 public:
-  int canBeTypedWords(string text, string brokenLetters) {
-    unordered_set<char> brokenLettersSet(brokenLetters.begin(),
-                                         brokenLetters.end());
+  int canBeTypedWords(std::string text, std::string brokenLetters) {
+    std::unordered_set<char> brokenLettersSet(brokenLetters.begin(),
+                                              brokenLetters.end());
 
     int wordsCount = 0;
 

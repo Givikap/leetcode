@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  vector<int> findDuplicates(vector<int> &nums) {
-    vector<int> duplicates;
+  std::vector<int> findDuplicates(std::vector<int> &nums) {
+    std::vector<int> duplicates;
 
     for (const int &num : nums) {
       int idx = abs(num) - 1;

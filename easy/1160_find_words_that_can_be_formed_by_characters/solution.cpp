@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  int countCharacters(vector<string> &words, string chars) {
-    vector<int> charsCounter(26, 0), charsCounterCopy;
+  int countCharacters(std::vector<std::string> &words, std::string chars) {
+    std::vector<int> charsCounter(26, 0), charsCounterCopy;
 
     for (const char &ch : chars)
       ++charsCounter[ch - 'a'];
@@ -14,7 +12,7 @@ public:
     bool isGood;
     int charsCount = 0;
 
-    for (const string &word : words) {
+    for (const std::string &word : words) {
       charsCounterCopy = charsCounter;
       isGood = true;
 

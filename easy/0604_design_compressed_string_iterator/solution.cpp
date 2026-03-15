@@ -1,14 +1,12 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class StringIterator {
 private:
-  vector<pair<char, int>> encodedRuns;
+  std::vector<std::pair<char, int>> encodedRuns;
 
 public:
-  StringIterator(string compressedString) {
+  StringIterator(std::string compressedString) {
     int prev = compressedString.size();
     int curr = prev - 1;
 

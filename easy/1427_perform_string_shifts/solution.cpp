@@ -1,19 +1,17 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  string stringShift(string s, vector<vector<int>> &shift) {
+  std::string stringShift(std::string s, std::vector<std::vector<int>> &shift) {
     const int sLen = s.size();
 
     int start = 0;
 
-    string shiftedS;
+    std::string shiftedS;
     shiftedS.reserve(sLen);
 
-    for (const vector<int> &sh : shift)
+    for (const std::vector<int> &sh : shift)
       start += sh[1] * (sh[0] == 0 ? 1 : -1);
 
     start = ((start % sLen) + sLen) % sLen;

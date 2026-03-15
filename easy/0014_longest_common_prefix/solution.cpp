@@ -1,18 +1,16 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  string longestCommonPrefix(vector<string> &words) {
-    string longestCommonPrefix = words[0];
+  std::string longestCommonPrefix(std::vector<std::string> &words) {
+    std::string longestCommonPrefix = words[0];
 
     int i, end;
 
-    for (const string &word : words) {
+    for (const std::string &word : words) {
       i = 0;
-      end = min(word.size(), longestCommonPrefix.size());
+      end = std::min(word.size(), longestCommonPrefix.size());
 
       while (i < end and word[i] == longestCommonPrefix[i])
         ++i;

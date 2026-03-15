@@ -1,26 +1,25 @@
-using namespace std;
-
 #include <sstream>
 #include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
-  vector<string> uncommonFromSentences(string s1, string s2) {
-    vector<string> uncommonWords;
+  std::vector<std::string> uncommonFromSentences(std::string s1,
+                                                 std::string s2) {
+    std::vector<std::string> uncommonWords;
 
-    unordered_map<string, int> s1Counter, s2Counter;
+    std::unordered_map<std::string, int> s1Counter, s2Counter;
 
-    vector<string> words;
-    string word;
+    std::vector<std::string> words;
+    std::string word;
 
-    for (const string &s : vector<string>{s1, s2}) {
-      istringstream iss(s);
+    for (const std::string &s : std::vector<std::string>{s1, s2}) {
+      std::stringstream iss(s);
 
       while (getline(iss, word, ' '))
         words.push_back(word);
 
-      for (const string &word : words)
+      for (const std::string &word : words)
         s == s1 ? ++s1Counter[word] : ++s2Counter[word];
 
       words.clear();

@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  vector<int> addToArrayForm(vector<int> &num, int k) {
+  std::vector<int> addToArrayForm(std::vector<int> &num, int k) {
     int i = num.size() - 1;
 
     int carry = 0;

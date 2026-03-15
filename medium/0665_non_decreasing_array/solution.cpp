@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  bool checkPossibility(vector<int> &nums) {
+  bool checkPossibility(std::vector<int> &nums) {
     bool modified = false;
 
     for (int i = 0; i + 1 < nums.size(); ++i) {

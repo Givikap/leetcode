@@ -1,5 +1,3 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
@@ -11,18 +9,18 @@ public:
       return num + 'W';
   }
 
-  string toHex(int num) {
+  std::string toHex(int num) {
     if (num == 0)
       return "0";
 
     unsigned int unsignedNum = static_cast<unsigned int>(num);
-    string hexNum;
+    std::string hexNum;
 
     while (unsignedNum > 0) {
       hexNum += numToHex(unsignedNum % 16);
       unsignedNum /= 16;
     }
 
-    return string(hexNum.rbegin(), hexNum.rend());
+    return std::string(hexNum.rbegin(), hexNum.rend());
   }
 };

@@ -1,14 +1,12 @@
-using namespace std;
-
 #include <vector>
 
 class ParkingSystem {
 private:
-  vector<int> parking;
+  std::vector<int> parking;
 
 public:
   ParkingSystem(int big, int medium, int small) {
-    parking = vector<int>{big, medium, small};
+    parking = std::vector<int>{big, medium, small};
   }
 
   bool addCar(int carType) {

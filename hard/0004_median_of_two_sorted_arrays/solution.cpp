@@ -1,14 +1,13 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2) {
-    vector<int>::iterator it1 = nums1.begin();
-    vector<int>::iterator it2 = nums2.begin();
+  double findMedianSortedArrays(std::vector<int> &nums1,
+                                std::vector<int> &nums2) {
+    std::vector<int>::iterator it1 = nums1.begin();
+    std::vector<int>::iterator it2 = nums2.begin();
 
-    vector<int>::iterator prev, curr;
+    std::vector<int>::iterator prev, curr;
 
     for (int i = 0; i < (nums1.size() + nums2.size()) / 2 + 1; ++i) {
       prev = curr;

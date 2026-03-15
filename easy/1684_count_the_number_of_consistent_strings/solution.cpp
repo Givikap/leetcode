@@ -1,12 +1,11 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  int countConsistentStrings(string allowed, vector<string> &words) {
-    vector<int> allowedHash(26, 0);
+  int countConsistentStrings(std::string allowed,
+                             std::vector<std::string> &words) {
+    std::vector<int> allowedHash(26, 0);
 
     for (const char ch : allowed)
       ++allowedHash[ch - 'a'];
@@ -14,7 +13,7 @@ public:
     bool consistent;
     int consistentCount = 0;
 
-    for (const string &word : words) {
+    for (const std::string &word : words) {
       consistent = true;
 
       for (const char ch : word) {

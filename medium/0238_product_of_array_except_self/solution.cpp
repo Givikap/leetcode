@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  vector<int> productExceptSelf(vector<int> &nums) {
+  std::vector<int> productExceptSelf(std::vector<int> &nums) {
     const int numsLen = nums.size();
 
-    vector<int> numProducts(numsLen, 1);
+    std::vector<int> numProducts(numsLen, 1);
 
     int prefix = 1;
     for (int i = 0; i < numsLen; ++i) {

@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  vector<int> findErrorNums(vector<int> &nums) {
+  std::vector<int> findErrorNums(std::vector<int> &nums) {
     const int numsLen = nums.size();
 
-    vector<int> notSeen;
+    std::vector<int> notSeen;
     for (int i = 0; i < numsLen + 1; ++i)
       notSeen.push_back(i);
 

@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <numeric>
 #include <vector>
 
 class Solution {
 public:
-  int minOperations(vector<int> &nums, int k) {
+  int minOperations(std::vector<int> &nums, int k) {
     return reduce(nums.begin(), nums.end(), 0) % k;
   }
 };

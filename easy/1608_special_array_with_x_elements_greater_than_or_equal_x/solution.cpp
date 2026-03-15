@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int specialArray(vector<int> &nums) {
+  int specialArray(std::vector<int> &nums) {
     sort(nums.begin(), nums.end());
 
     const int numsLen = nums.size();

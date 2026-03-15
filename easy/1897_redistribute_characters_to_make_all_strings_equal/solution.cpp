@@ -1,17 +1,15 @@
-using namespace std;
-
 #include <string>
 #include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
-  bool makeEqual(vector<string> &words) {
+  bool makeEqual(std::vector<std::string> &words) {
     const int wordsLen = words.size();
 
-    unordered_map<char, int> charsCounter;
+    std::unordered_map<char, int> charsCounter;
 
-    for (const string &word : words) {
+    for (const std::string &word : words) {
       for (const char &ch : word)
         ++charsCounter[ch];
     }

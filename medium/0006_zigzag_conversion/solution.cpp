@@ -1,17 +1,15 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  string convert(string s, int numRows) {
+  std::string convert(std::string s, int numRows) {
     if (numRows == 1)
       return s;
 
     const int sLen = s.size();
     const int step = 2 * numRows - 2;
 
-    string zigzagS;
+    std::string zigzagS;
 
     for (int row = 0; row < numRows; ++row) {
       for (int i = row; i < sLen; i += step) {

@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <cstddef>
 #include <vector>
 
 class Solution {
 public:
-  int longestMonotonicSubarray(vector<int> &nums) {
+  int longestMonotonicSubarray(std::vector<int> &nums) {
     const size_t numsLen = nums.size();
 
     bool increasing = false;
@@ -24,7 +22,7 @@ public:
         increasing = false;
         decreasing = false;
 
-        maxSubbarraySize = max(subbarraySize, maxSubbarraySize);
+        maxSubbarraySize = std::max(subbarraySize, maxSubbarraySize);
         subbarraySize = 1;
       }
 
@@ -37,6 +35,6 @@ public:
         subbarraySize += 1;
     }
 
-    return max(subbarraySize, maxSubbarraySize);
+    return std::max(subbarraySize, maxSubbarraySize);
   }
 };

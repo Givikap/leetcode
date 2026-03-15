@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <unordered_set>
 #include <vector>
 
 class Solution {
 public:
-  vector<int> getSneakyNumbers(vector<int> &nums) {
-    unordered_set<int> numsSet;
-    vector<int> sneakyNums;
+  std::vector<int> getSneakyNumbers(std::vector<int> &nums) {
+    std::unordered_set<int> numsSet;
+    std::vector<int> sneakyNums;
 
     for (const int &num : nums) {
       if (numsSet.find(num) != numsSet.end()) {

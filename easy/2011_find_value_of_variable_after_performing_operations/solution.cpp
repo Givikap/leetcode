@@ -1,14 +1,12 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  int finalValueAfterOperations(vector<string> &operations) {
+  int finalValueAfterOperations(std::vector<std::string> &operations) {
     int finalValue = 0;
 
-    for (const string &operation : operations) {
+    for (const std::string &operation : operations) {
       if (operation[0] == '+' || operation[2] == '+')
         finalValue++;
       else

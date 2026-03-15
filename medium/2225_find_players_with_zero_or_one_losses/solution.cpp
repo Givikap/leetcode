@@ -1,20 +1,19 @@
-using namespace std;
-
 #include <algorithm>
 #include <set>
 #include <vector>
 
 class Solution {
 public:
-  vector<vector<int>> findWinners(vector<vector<int>> &matches) {
-    unordered_map<int, int> lossCounter;
+  std::vector<std::vector<int>>
+  findWinners(std::vector<std::vector<int>> &matches) {
+    std::unordered_map<int, int> lossCounter;
 
-    for (const vector<int> &match : matches) {
+    for (const std::vector<int> &match : matches) {
       lossCounter[match[0]];
       ++lossCounter[match[1]];
     }
 
-    vector<vector<int>> answer(2);
+    std::vector<std::vector<int>> answer(2);
 
     for (const auto &[loser, count] : lossCounter) {
       if (count < 2)

@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
-  vector<int> twoSum(vector<int> &nums, int target) {
-    unordered_map<int, int> targetsMap;
+  std::vector<int> twoSum(std::vector<int> &nums, int target) {
+    std::unordered_map<int, int> targetsMap;
     int i, otherNum;
 
     for (i = 0; i < nums.size(); i++) {

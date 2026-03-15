@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <unordered_set>
 #include <vector>
 
 class Solution {
 public:
-  bool containsDuplicate(vector<int> &nums) {
-    unordered_set<int> numsSet;
+  bool containsDuplicate(std::vector<int> &nums) {
+    std::unordered_set<int> numsSet;
     numsSet.reserve(nums.size());
 
     for (const int &num : nums) {

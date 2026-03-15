@@ -1,5 +1,3 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
@@ -14,7 +12,7 @@ public:
     return false;
   }
 
-  vector<int> getNoZeroIntegers(int n) {
+  std::vector<int> getNoZeroIntegers(int n) {
     for (int a = 1, b = n - 1;; a++, b--) {
       if (!containsZero(a) && !containsZero(b))
         return {a, b};

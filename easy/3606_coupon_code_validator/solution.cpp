@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <string>
 #include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
-  bool isAlnumOrUnderscore(string s) {
+  bool isAlnumOrUnderscore(std::string s) {
     if (s.size() == 0)
       return false;
 
@@ -18,14 +16,15 @@ public:
     return true;
   }
 
-  vector<string> validateCoupons(vector<string> &coupons,
-                                 vector<string> &businessLines,
-                                 vector<bool> &areActive) {
-    unordered_map<string, int> validBusinessLines = {
+  std::vector<std::string>
+  validateCoupons(std::vector<std::string> &coupons,
+                  std::vector<std::string> &businessLines,
+                  std::vector<bool> &areActive) {
+    std::unordered_map<std::string, int> validBusinessLines = {
         {"electronics", 0}, {"grocery", 1}, {"pharmacy", 2}, {"restaurant", 3}};
 
-    vector<pair<int, string>> validCouponsItems;
-    vector<string> validCoupons;
+    std::vector<std::pair<int, std::string>> validCouponsItems;
+    std::vector<std::string> validCoupons;
 
     for (int i = 0; i < coupons.size(); ++i) {
       if (!areActive[i])

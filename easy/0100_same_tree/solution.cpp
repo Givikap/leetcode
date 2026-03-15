@@ -1,13 +1,11 @@
-using namespace std;
-
 #include "../../utils/cpp/nodes.hpp"
 #include <vector>
 
 class Solution {
 public:
   bool isSameTree(TreeNode *p, TreeNode *q) {
-    vector<pair<TreeNode *, TreeNode *>> stack = {{p, q}};
-    pair<TreeNode *, TreeNode *> pair;
+    std::vector<std::pair<TreeNode *, TreeNode *>> stack = {{p, q}};
+    std::pair<TreeNode *, TreeNode *> pair;
 
     while (!stack.empty()) {
       pair = stack.back();

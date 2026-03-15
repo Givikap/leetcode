@@ -1,16 +1,14 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int countNegatives(vector<vector<int>> &grid) {
+  int countNegatives(std::vector<std::vector<int>> &grid) {
     const int cols = grid[0].size();
 
     int left, right, mid;
     int negativesCount = 0;
 
-    for (const vector<int> &row : grid) {
+    for (const std::vector<int> &row : grid) {
       left = 0;
       right = cols - 1;
 

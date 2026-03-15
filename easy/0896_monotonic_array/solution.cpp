@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  bool isMonotonic(vector<int> &nums) {
+  bool isMonotonic(std::vector<int> &nums) {
     const int numsLen = nums.size();
 
     if (numsLen == 1)

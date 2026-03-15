@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
-  int largestUniqueNumber(vector<int> &nums) {
-    unordered_map<int, int> numsCounter;
+  int largestUniqueNumber(std::vector<int> &nums) {
+    std::unordered_map<int, int> numsCounter;
 
     for (const int &num : nums)
       ++numsCounter[num];
@@ -15,7 +13,7 @@ public:
 
     for (const auto &[num, count] : numsCounter) {
       if (count == 1)
-        largestNum = max(num, largestNum);
+        largestNum = std::max(num, largestNum);
     }
 
     return largestNum;

@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <string>
 #include <unordered_map>
 
 class Solution {
 public:
-  int maxFreqSum(string s) {
-    unordered_map<char, int> chCounter;
+  int maxFreqSum(std::string s) {
+    std::unordered_map<char, int> chCounter;
 
     for (const char &ch : s)
       chCounter[ch] += 1;

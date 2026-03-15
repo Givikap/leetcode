@@ -1,12 +1,10 @@
-using namespace std;
-
 #include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
-  int maxFrequencyElements(vector<int> &nums) {
-    unordered_map<int, int> numsCounter;
+  int maxFrequencyElements(std::vector<int> &nums) {
+    std::unordered_map<int, int> numsCounter;
     numsCounter.reserve(nums.size());
 
     int maxFrequency = 0;

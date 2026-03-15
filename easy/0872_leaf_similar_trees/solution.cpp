@@ -1,18 +1,17 @@
-using namespace std;
-
 #include "../../utils/cpp/nodes.hpp"
 #include <vector>
 
 class Solution {
 public:
   bool leafSimilar(TreeNode *root1, TreeNode *root2) {
-    vector<int> leafs1, leafs2;
+    std::vector<int> leafs1, leafs2;
 
     TreeNode *node;
 
-    for (auto &[root, leafs] : vector<pair<TreeNode *, vector<int> *>>{
+    for (auto &[root, leafs] :
+         std::vector<std::pair<TreeNode *, std::vector<int> *>>{
              {root1, &leafs1}, {root2, &leafs2}}) {
-      vector<TreeNode *> stack = {root};
+      std::vector<TreeNode *> stack = {root};
 
       while (!stack.empty()) {
         node = stack.back();

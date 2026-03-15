@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int arraySign(vector<int> &nums) {
+  int arraySign(std::vector<int> &nums) {
     int numsProduct = 1;
 
     for (const int &num : nums) {

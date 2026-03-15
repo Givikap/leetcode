@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  int maxAscendingSum(vector<int> &nums) {
+  int maxAscendingSum(std::vector<int> &nums) {
     const size_t numsLen = nums.size();
 
     int currSum = nums[0];
@@ -14,11 +12,11 @@ public:
       if (nums[i - 1] < nums[i]) {
         currSum += nums[i];
       } else {
-        maxSum = max(currSum, maxSum);
+        maxSum = std::max(currSum, maxSum);
         currSum = nums[i];
       }
     }
 
-    return max(currSum, maxSum);
+    return std::max(currSum, maxSum);
   }
 };

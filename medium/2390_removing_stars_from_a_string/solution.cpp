@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  string removeStars(string s) {
-    string stack;
+  std::string removeStars(std::string s) {
+    std::string stack;
 
     for (const char &c : s) {
       if (c == '*')

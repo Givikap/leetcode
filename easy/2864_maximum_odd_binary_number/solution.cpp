@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  string maximumOddBinaryNumber(string s) {
-    string maxOddS;
+  std::string maximumOddBinaryNumber(std::string s) {
+    std::string maxOddS;
     maxOddS.reserve(s.size());
 
     int onesCount = count(s.begin(), s.end(), '1');

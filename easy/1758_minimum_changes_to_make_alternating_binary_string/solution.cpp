@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  int minOperations(string s) {
+  int minOperations(std::string s) {
     if (s.size() == 1)
       return 0;
     if (s.size() == 2)
@@ -20,6 +18,6 @@ public:
       curr = !curr;
     }
 
-    return min(changesCount, (int)s.size() - changesCount);
+    return std::min(changesCount, (int)s.size() - changesCount);
   }
 };

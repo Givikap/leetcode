@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  int numberOfWays(string corridor) {
+  int numberOfWays(std::string corridor) {
     static const int MOD = 1'000'000'007;
 
     int sectionStart = -1;

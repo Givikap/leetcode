@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  bool isCircularSentence(string sentence) {
+  bool isCircularSentence(std::string sentence) {
     int spacePos = sentence.find(' ');
 
     while (spacePos != -1) {

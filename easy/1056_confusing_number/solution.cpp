@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <unordered_map>
 
 class Solution {
 public:
   bool confusingNumber(int n) {
-    unordered_map<int, int> confusingMap = {
+    std::unordered_map<int, int> confusingMap = {
         {0, 0}, {1, 1}, {6, 9}, {8, 8}, {9, 6}};
 
     const int nCopy = n;

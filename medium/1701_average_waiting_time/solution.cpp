@@ -1,14 +1,12 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  double averageWaitingTime(vector<vector<int>> &customers) {
+  double averageWaitingTime(std::vector<std::vector<int>> &customers) {
     int currTime = customers[0][0];
     long waitingTime = 0;
 
-    for (const vector<int> &customer : customers) {
+    for (const std::vector<int> &customer : customers) {
       int arrival = customer[0];
       int time = customer[1];
 

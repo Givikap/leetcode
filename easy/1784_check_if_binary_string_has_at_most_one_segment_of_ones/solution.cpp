@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  bool checkOnesSegment(string s) {
+  bool checkOnesSegment(std::string s) {
     const int sLen = s.size();
 
     bool hasOnesSegment = false;

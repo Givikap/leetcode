@@ -1,11 +1,9 @@
-using namespace std;
-
 #include <string>
 #include <vector>
 
 class Solution {
 public:
-  int myAtoi(string s) {
+  int myAtoi(std::string s) {
     const int sLen = s.size();
 
     int i = 0;

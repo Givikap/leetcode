@@ -1,5 +1,3 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
@@ -8,7 +6,7 @@ public:
     return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
   }
 
-  bool isValid(string word) {
+  bool isValid(std::string word) {
     if (word.size() < 3)
       return false;
 

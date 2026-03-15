@@ -1,5 +1,3 @@
-using namespace std;
-
 #include "../../utils/cpp/nodes.hpp"
 
 class Solution {

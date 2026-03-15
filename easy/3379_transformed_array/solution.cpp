@@ -1,13 +1,11 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  vector<int> constructTransformedArray(vector<int> &nums) {
+  std::vector<int> constructTransformedArray(std::vector<int> &nums) {
     const int numsLen = nums.size();
 
-    vector<int> transformedNums(numsLen, 0);
+    std::vector<int> transformedNums(numsLen, 0);
 
     for (int i = 0; i < numsLen; ++i) {
       int ii = i + nums[i];

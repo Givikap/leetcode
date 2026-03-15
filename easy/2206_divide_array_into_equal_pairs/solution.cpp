@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <vector>
 
 class Solution {
 public:
-  bool divideArray(vector<int> &nums) {
+  bool divideArray(std::vector<int> &nums) {
     const int numsLen = nums.size();
 
     if (numsLen % 2 == 1)

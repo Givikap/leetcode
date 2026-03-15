@@ -1,5 +1,3 @@
-using namespace std;
-
 bool isBadVersion(int version);
 
 class Solution {

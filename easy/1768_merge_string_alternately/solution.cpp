@@ -1,14 +1,12 @@
-using namespace std;
-
 #include <string>
 
 class Solution {
 public:
-  string mergeAlternately(string word1, string word2) {
+  std::string mergeAlternately(std::string word1, std::string word2) {
     const int word1Length = word1.length();
     const int word2Length = word2.length();
 
-    string newWord;
+    std::string newWord;
     newWord.reserve(word1Length + word2Length);
 
     int i = 0;

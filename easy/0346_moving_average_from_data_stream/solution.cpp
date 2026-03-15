@@ -1,10 +1,8 @@
-using namespace std;
-
 #include <queue>
 
 class MovingAverage {
 private:
-  queue<int> q;
+  std::queue<int> q;
   int size;
   double sum;
 
