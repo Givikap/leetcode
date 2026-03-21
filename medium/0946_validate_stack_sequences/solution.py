@@ -7,18 +7,11 @@ class Solution:
     ) -> bool:
         stack = []
 
-        push_i = pop_i = 0
-
-        while push_i < len(pushed):
-            if stack and stack[-1] == popped[pop_i]:
+        while pushed and popped:
+            while popped and (not stack or stack[-1] != pushed[-1]):
+                stack.append(popped.pop())
+            while stack and pushed and stack[-1] == pushed[-1]:
                 stack.pop()
-                pop_i += 1
-            else:
-                stack.append(pushed[push_i])
-                push_i += 1
+                pushed.pop()
 
-        while stack and pop_i < len(popped) and stack[-1] == popped[pop_i]:
-            stack.pop()
-            pop_i += 1
-
-        return push_i == len(pushed) and pop_i == len(popped)
+        return not (pushed or popped)
