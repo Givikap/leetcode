@@ -6,7 +6,7 @@ public:
     int val = 0;
     std::vector<bool> answer;
 
-    for (int i = 0; i < nums.size(); i++) {
+    for (size_t i = 0; i < nums.size(); i++) {
       val = (val * 2 + nums[i]) % 5;
       answer.push_back(val == 0);
     }

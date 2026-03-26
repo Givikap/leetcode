@@ -8,8 +8,8 @@ public:
     int prev = 0;
     int curr = 1;
 
-    for (int i = 0; i < s.size() - 1; ++i) {
-      if (s[i] == s[i + 1])
+    for (size_t i = 1; i < s.size(); ++i) {
+      if (s[i - 1] == s[i])
         ++curr;
       else {
         count += std::min(curr, prev);

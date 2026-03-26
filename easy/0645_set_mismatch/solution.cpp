@@ -3,10 +3,8 @@
 class Solution {
 public:
   std::vector<int> findErrorNums(std::vector<int> &nums) {
-    const int numsLen = nums.size();
-
     std::vector<int> notSeen;
-    for (int i = 0; i < numsLen + 1; ++i)
+    for (size_t i = 0; i < nums.size() + 1; ++i)
       notSeen.push_back(i);
 
     int duplicate, mismatch;

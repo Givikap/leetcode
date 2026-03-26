@@ -3,12 +3,12 @@
 class Solution {
 public:
   std::vector<int> productExceptSelf(std::vector<int> &nums) {
-    const int numsLen = nums.size();
+    const size_t numsLen = nums.size();
 
     std::vector<int> numProducts(numsLen, 1);
 
     int prefix = 1;
-    for (int i = 0; i < numsLen; ++i) {
+    for (size_t i = 0; i < numsLen; ++i) {
       numProducts[i] = prefix;
       prefix *= nums[i];
     }

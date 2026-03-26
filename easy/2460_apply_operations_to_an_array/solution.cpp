@@ -3,14 +3,14 @@
 class Solution {
 public:
   std::vector<int> applyOperations(std::vector<int> &nums) {
-    const int numsLen = nums.size();
+    const size_t numsLen = nums.size();
 
     std::vector<int> modifiedNums;
     modifiedNums.reserve(numsLen);
 
     int zeroCount = 0;
 
-    for (int i = 0; i < numsLen; ++i) {
+    for (size_t i = 0; i < numsLen; ++i) {
       if (nums[i] == 0)
         ++zeroCount;
       else if (i < numsLen - 1 && nums[i] == nums[i + 1]) {

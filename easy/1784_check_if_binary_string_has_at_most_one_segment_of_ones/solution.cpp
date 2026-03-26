@@ -3,11 +3,11 @@
 class Solution {
 public:
   bool checkOnesSegment(std::string s) {
-    const int sLen = s.size();
+    const size_t sLen = s.size();
 
     bool hasOnesSegment = false;
 
-    for (int i = 0; i < sLen; ++i) {
+    for (size_t i = 0; i < sLen; ++i) {
       if (s[i] == '1') {
         if (hasOnesSegment)
           return false;

@@ -9,7 +9,7 @@ public:
 
     std::vector<int>::iterator prev, curr;
 
-    for (int i = 0; i < (nums1.size() + nums2.size()) / 2 + 1; ++i) {
+    for (size_t _ = 0; _ < (nums1.size() + nums2.size()) / 2 + 1; ++_) {
       prev = curr;
 
       if (it2 == nums2.end() || (it1 != nums1.end() && *it1 < *it2))

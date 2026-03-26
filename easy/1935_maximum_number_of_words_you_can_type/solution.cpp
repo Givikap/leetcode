@@ -9,7 +9,7 @@ public:
 
     int wordsCount = 0;
 
-    for (int i = 0; i < text.size(); i++) {
+    for (size_t i = 0; i < text.size(); i++) {
       if (brokenLettersSet.find(text[i]) != brokenLettersSet.end())
         while (i < text.size() - 1 && text[++i] != ' ') {
         }

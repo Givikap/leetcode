@@ -3,12 +3,12 @@
 class Solution {
 public:
   std::string longestPalindrome(std::string s) {
-    const int sLen = s.size();
+    const size_t sLen = s.size();
 
     std::string longestPalindrome{s[0]};
     int left, right;
 
-    for (int i = 0; i < sLen - 1; ++i) {
+    for (size_t i = 0; i < sLen - 1; ++i) {
       for (int offset = 1; offset < 3; ++offset) {
         left = i;
         right = left + offset;

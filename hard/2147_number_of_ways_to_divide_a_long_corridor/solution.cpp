@@ -10,7 +10,7 @@ public:
 
     long numberOfWays = 1;
 
-    for (int i = 0; i < corridor.size(); ++i) {
+    for (size_t i = 0; i < corridor.size(); ++i) {
       if (corridor[i] != 'S')
         continue;
 

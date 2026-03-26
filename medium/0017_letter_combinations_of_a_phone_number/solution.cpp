@@ -13,7 +13,7 @@ public:
     std::queue<std::string> q;
     q.push("");
 
-    for (int i = 0; i < digits.size(); ++i) {
+    for (size_t i = 0; i < digits.size(); ++i) {
       for (int _ = q.size(); _ != 0; --_) {
         for (char &ch : phoneKeyboard[digits[i]])
           q.push(q.front() + ch);

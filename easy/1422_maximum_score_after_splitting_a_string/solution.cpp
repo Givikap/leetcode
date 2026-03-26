@@ -5,8 +5,6 @@
 class Solution {
 public:
   int maxScore(std::string s) {
-    const int sLen = s.size();
-
     std::vector<int> sList;
 
     for (const char &ch : s)
@@ -17,7 +15,7 @@ public:
 
     int maxScore = 0;
 
-    for (int i = 0; i < sLen - 1; ++i) {
+    for (size_t i = 0; i < s.size() - 1; ++i) {
       maxScore = std::max(left + right, maxScore);
 
       left += sList[i + 1] == 0 ? 1 : 0;

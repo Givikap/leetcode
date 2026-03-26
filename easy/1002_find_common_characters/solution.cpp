@@ -5,21 +5,19 @@
 class Solution {
 public:
   std::vector<std::string> commonChars(std::vector<std::string> &words) {
-    const int wordsLen = words.size();
-
     std::vector<int> charsHash(26, 0);
 
     for (const char &ch : words[0])
       ++charsHash[ch - 'a'];
 
-    for (int i = 1; i < wordsLen; ++i) {
+    for (size_t i = 1; i < words.size(); ++i) {
       std::vector<int> wordHash(26, 0);
 
       for (const char &ch : words[i])
         ++wordHash[ch - 'a'];
 
-      for (int i = 0; i < 26; ++i)
-        charsHash[i] = std::min(charsHash[i], wordHash[i]);
+      for (size_t j = 0; j < 26; ++j)
+        charsHash[j] = std::min(charsHash[j], wordHash[j]);
     }
 
     std::vector<std::string> common;

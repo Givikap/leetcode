@@ -7,7 +7,7 @@ public:
 
     int minDiff = 100000;
 
-    for (int i = 0; i < nums.size() - k + 1; ++i)
+    for (size_t i = 0; i < nums.size() - k + 1; ++i)
       minDiff = std::min(minDiff, nums[i + k - 1] - nums[i]);
 
     return minDiff;

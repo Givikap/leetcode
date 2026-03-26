@@ -10,7 +10,7 @@ public:
                 return a.start < b.start;
               });
 
-    for (int i = 0; i + 1 < intervals.size(); ++i) {
+    for (size_t i = 0; i + 1 < intervals.size(); ++i) {
       if (intervals[i].end > intervals[i + 1].start)
         return false;
     }

@@ -3,15 +3,10 @@
 class Solution {
 public:
   int minTimeToVisitAllPoints(std::vector<std::vector<int>> &points) {
-    if (points.size() == 1)
-      return 0;
-
-    const int pointsLen = points.size();
-
     int x1, y1, x2, y2;
     int time = 0;
 
-    for (int i = 0; i < pointsLen - 1; ++i) {
+    for (size_t i = 0; i < points.size() - 1; ++i) {
       x1 = points[i][0];
       y1 = points[i][1];
       x2 = points[i + 1][0];

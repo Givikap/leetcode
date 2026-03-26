@@ -26,7 +26,7 @@ public:
     std::vector<std::pair<int, std::string>> validCouponsItems;
     std::vector<std::string> validCoupons;
 
-    for (int i = 0; i < coupons.size(); ++i) {
+    for (size_t i = 0; i < coupons.size(); ++i) {
       if (!areActive[i])
         continue;
       if (validBusinessLines.find(businessLines[i]) == validBusinessLines.end())

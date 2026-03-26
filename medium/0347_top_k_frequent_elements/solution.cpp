@@ -20,7 +20,7 @@ public:
          it != numsCounter.end(); ++it)
       pq.push(std::pair<int, int>(it->second, it->first));
 
-    for (int i = 0; i < k; i++) {
+    for (int _ = 0; _ < k; ++_) {
       topKFreqientNums.push_back(pq.top().second);
       pq.pop();
     }

@@ -6,7 +6,7 @@ public:
   bool areAlmostEqual(std::string s1, std::string s2) {
     std::vector<int> difference;
 
-    for (int i = 0; i < s1.size(); ++i) {
+    for (size_t i = 0; i < s1.size(); ++i) {
       if (s1[i] != s2[i])
         difference.push_back(i);
     }

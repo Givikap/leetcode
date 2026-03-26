@@ -4,11 +4,9 @@
 class Solution {
 public:
   std::string restoreString(std::string s, std::vector<int> &indices) {
-    const int sLen = s.size();
-
     std::string shuffledS(s.size(), ' ');
 
-    for (int i = 0; i < sLen; ++i)
+    for (size_t i = 0; i < s.size(); ++i)
       shuffledS[indices[i]] = s[i];
 
     return shuffledS;

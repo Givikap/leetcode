@@ -5,7 +5,7 @@ public:
   bool checkPossibility(std::vector<int> &nums) {
     bool modified = false;
 
-    for (int i = 0; i + 1 < nums.size(); ++i) {
+    for (size_t i = 0; i + 1 < nums.size(); ++i) {
       if (nums[i] > nums[i + 1]) {
         if (modified)
           return false;
