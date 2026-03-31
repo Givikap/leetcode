@@ -3,15 +3,11 @@ from typing import List
 
 class Solution:
     def minBitwiseArray(self, nums: List[int]) -> List[int]:
-        bitwise_array = []
+        bitwise_array = [0] * len(nums)
 
-        for i in range(len(nums)):
-            for j in range(nums[i]):
-                if j | (j + 1) == nums[i]:
-                    bitwise_array[i] = j
-                    break
-
-                j += 1
+        for i, num in enumerate(nums):
+            if num & 1:
+                bitwise_array[i] = num & ~(((num + 1) & ~num) >> 1)
             else:
                 bitwise_array[i] = -1
 
