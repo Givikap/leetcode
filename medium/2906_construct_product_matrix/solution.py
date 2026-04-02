@@ -6,18 +6,18 @@ class Solution:
         rows = len(grid)
         cols = len(grid[0])
 
-        product_grid = []
-        for _ in range(rows):
-            product_grid.append([1] * cols)
+        product_grid = [[1] * cols for _ in range(rows)]
 
-        for r1 in range(rows):
-            for c1 in range(cols):
-                for r2 in range(rows):
-                    for c2 in range(cols):
-                        product_grid[r1][c1] *= grid[r2][c2]
+        matrix_product = 1
 
-                product_grid[r1][c1] = (
-                    product_grid[r1][c1] // grid[r1][c1]
+        for row in range(rows):
+            for col in range(cols):
+                matrix_product *= grid[row][col]
+
+        for row in range(rows):
+            for col in range(cols):
+                product_grid[row][col] = (
+                    matrix_product // grid[row][col]
                 ) % 12345
 
         return product_grid
