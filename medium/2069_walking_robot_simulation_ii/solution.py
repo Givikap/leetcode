@@ -2,47 +2,53 @@ from typing import List
 
 
 class Robot:
-    directions = {0: "North", 90: "East", 180: "South", 270: "West"}
-    deltas = {
-        0: (0, 1),
-        90: (1, 0),
-        180: (0, -1),
-        270: (-1, 0),
-    }
+    directions = ["East", "North", "West", "South"]
 
     def __init__(self, width: int, height: int):
         self.width = width
         self.height = height
+        self.perimeter = 2 * (width + height) - 4
 
         self.x = 0
         self.y = 0
-        self.direction = 90
+        self.direction = 0
 
     def step(self, num: int) -> None:
-        while True:
-            dx, dy = self.deltas[self.direction]
-            self.x += dx * num
-            self.y += dy * num
+        if self.perimeter == 0:
+            return
 
-            num = 0
+        num %= self.perimeter
+        if num == 0:
+            num = self.perimeter
 
-            if self.x < 0:
-                num = -self.x
-                self.x = 0
-            elif self.x >= self.width:
-                num = self.x - (self.width - 1)
+        while num > 0:
+            if self.direction == 0:
+                distance = (self.width - 1) - self.x
+                if num <= distance:
+                    self.x += num
+                    return
                 self.x = self.width - 1
-            elif self.y < 0:
-                num = -self.y
-                self.y = 0
-            elif self.y >= self.height:
-                num = self.y - (self.height - 1)
+            elif self.direction == 1:
+                distance = (self.height - 1) - self.y
+                if num <= distance:
+                    self.y += num
+                    return
                 self.y = self.height - 1
+            elif self.direction == 2:
+                distance = self.x
+                if num <= distance:
+                    self.x -= num
+                    return
+                self.x = 0
+            else:
+                distance = self.y
+                if num <= distance:
+                    self.y -= num
+                    return
+                self.y = 0
 
-            if num == 0:
-                break
-
-            self.direction = (self.direction - 90) % 360
+            num -= distance
+            self.direction = (self.direction + 1) % 4
 
     def getPos(self) -> List[int]:
         return [self.x, self.y]
