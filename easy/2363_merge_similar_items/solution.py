@@ -1,3 +1,4 @@
+from collections import Counter
 from typing import List
 
 
@@ -5,9 +6,11 @@ class Solution:
     def mergeSimilarItems(
         self, items1: List[List[int]], items2: List[List[int]]
     ) -> List[List[int]]:
-        items_map = {}
+        items_map = Counter()
 
-        for value, weight in [*items1, *items2]:
-            items_map[value] = items_map.get(value, 0) + weight
+        for value, weight in items1:
+            items_map[value] += weight
+        for value, weight in items2:
+            items_map[value] += weight
 
-        return sorted(map(list, items_map.items()))
+        return sorted([value, weight] for value, weight in items_map.items())
