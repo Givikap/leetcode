@@ -1,8 +1,3 @@
 class Solution:
     def kthCharacter(self, k: int) -> str:
-        word = "a"
-
-        while len(word) < k:
-            word += "".join(chr(ord(c) + 1) for c in word)
-
-        return word[k - 1]
+        return chr(ord("a") + bin(k - 1).count("1"))
