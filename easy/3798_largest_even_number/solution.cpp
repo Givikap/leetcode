@@ -4,15 +4,13 @@
 class Solution {
 public:
   std::string largestEven(std::string s) {
-    std::deque<char> sDeque(s.begin(), s.end());
+    while (!s.empty()) {
+      if ((s.back() - '0') % 2 == 0)
+        return s;
 
-    while (!sDeque.empty() && sDeque.back() != '2') {
-      if (sDeque.back() == '1')
-        sDeque.pop_back();
-      else
-        sDeque.pop_front();
+      s.pop_back();
     }
 
-    return std::string(sDeque.begin(), sDeque.end());
+    return "";
   }
 };
