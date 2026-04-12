@@ -1,5 +1,4 @@
 from collections import defaultdict
-from itertools import combinations
 from typing import List
 
 
@@ -14,12 +13,7 @@ class Solution:
 
         for indices in indices_map.values():
             if len(indices) >= 3:
-                for triple in combinations(indices, 3):
-                    min_dist = min(
-                        min_dist,
-                        abs(triple[0] - triple[1])
-                        + abs(triple[1] - triple[2])
-                        + abs(triple[2] - triple[0]),
-                    )
+                for i in range(len(indices) - 2):
+                    min_dist = min(min_dist, 2 * (indices[i + 2] - indices[i]))
 
         return min_dist if min_dist != float("inf") else -1
