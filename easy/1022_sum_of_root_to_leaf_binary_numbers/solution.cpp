@@ -5,8 +5,7 @@
 class Solution {
 public:
   int sumRootToLeaf(utils::TreeNode *root) {
-    std::vector<std::pair<utils::TreeNode *, int>> stack = {
-        std::pair<utils::TreeNode *, int>{root, root->val}};
+    std::vector<std::pair<utils::TreeNode *, int>> stack = {{root, root->val}};
     std::vector<int> nums;
 
     while (!stack.empty()) {
@@ -20,11 +19,9 @@ public:
       }
 
       if (node->left)
-        stack.push_back(std::pair<utils::TreeNode *, int>{
-            node->left, (num << 1) | node->left->val});
+        stack.push_back({node->left, (num << 1) | node->left->val});
       if (node->right)
-        stack.push_back(std::pair<utils::TreeNode *, int>{
-            node->right, (num << 1) | node->right->val});
+        stack.push_back({node->right, (num << 1) | node->right->val});
     }
 
     return reduce(nums.begin(), nums.end(), 0);

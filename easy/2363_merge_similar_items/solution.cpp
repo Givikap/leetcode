@@ -17,7 +17,7 @@ public:
     mergedItems.reserve(itemsMap.size());
 
     for (const auto &[value, weight] : itemsMap)
-      mergedItems.push_back(std::vector<int>{value, weight});
+      mergedItems.push_back({value, weight});
 
     return mergedItems;
   }

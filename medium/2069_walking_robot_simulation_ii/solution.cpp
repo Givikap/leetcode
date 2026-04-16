@@ -63,7 +63,7 @@ public:
     }
   }
 
-  std::vector<int> getPos() { return std::vector<int>{this->x, this->y}; }
+  std::vector<int> getPos() { return {this->x, this->y}; }
 
   std::string getDir() { return this->directions[this->direction]; }
 };

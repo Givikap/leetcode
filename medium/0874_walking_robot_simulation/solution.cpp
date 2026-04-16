@@ -7,7 +7,7 @@ public:
                std::vector<std::vector<int>> &obstacles) {
     std::set<std::pair<int, int>> obstaclesSet;
     for (const std::vector<int> &obstacle : obstacles)
-      obstaclesSet.insert(std::pair<int, int>{obstacle[0], obstacle[1]});
+      obstaclesSet.insert({obstacle[0], obstacle[1]});
 
     int x = 0, y = 0;
     int direction = 0;
@@ -33,8 +33,7 @@ public:
           dx = -1;
 
         for (int _ = 0; _ < command; ++_) {
-          if (obstaclesSet.find(std::pair<int, int>{x + dx, y + dy}) !=
-              obstaclesSet.end())
+          if (obstaclesSet.find({x + dx, y + dy}) != obstaclesSet.end())
             break;
 
           x += dx;

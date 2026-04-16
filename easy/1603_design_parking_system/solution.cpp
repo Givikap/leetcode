@@ -6,7 +6,7 @@ private:
 
 public:
   ParkingSystem(int big, int medium, int small) {
-    parking = std::vector<int>{big, medium, small};
+    parking = {big, medium, small};
   }
 
   bool addCar(int carType) {
