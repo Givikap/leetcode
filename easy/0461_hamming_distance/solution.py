@@ -1,11 +1,10 @@
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
-        x = list(bin(x)[2:][::-1])
-        y = list(bin(y)[2:][::-1])
+        z = x ^ y
+        hamming_distance = 0
 
-        while len(x) < max(len(x), len(y)):
-            x.append("0")
-        while len(y) < max(len(x), len(y)):
-            y.append("0")
+        while z:
+            hamming_distance += z & 1
+            z >>= 1
 
-        return sum(x[i] != y[i] for i in range(len(x)))
+        return hamming_distance
