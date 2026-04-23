@@ -1,4 +1,3 @@
-from collections import Counter
 from typing import List, Optional
 
 from utils.python.nodes import TreeNode
@@ -6,21 +5,34 @@ from utils.python.nodes import TreeNode
 
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
-        vals_counter = Counter()
+        modes = []
+        mode_count = 0
 
-        stack = [root]
-        while stack:
+        curr_val = -(10**5 + 1)
+        curr_count = 0
+
+        curr = root
+        stack = []
+
+        while curr or stack:
+            while curr:
+                stack.append(curr)
+                curr = curr.left
+
             node = stack.pop()
 
-            vals_counter[node.val] += 1
+            if curr_val != node.val:
+                curr_val = node.val
+                curr_count = 1
+            else:
+                curr_count += 1
 
-            if node.left:
-                stack.append(node.left)
-            if node.right:
-                stack.append(node.right)
+            if curr_count > mode_count:
+                modes = [node.val]
+                mode_count = curr_count
+            elif curr_count == mode_count:
+                modes.append(node.val)
 
-        max_count = max(vals_counter.values())
+            curr = node.right
 
-        return [
-            val for val, count in vals_counter.items() if count == max_count
-        ]
+        return modes
