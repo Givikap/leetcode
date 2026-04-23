@@ -19,8 +19,8 @@ class Solution:
             if node.right:
                 stack.append(node.right)
 
+        max_count = max(vals_counter.values())
+
         return [
-            val
-            for val, count in vals_counter.items()
-            if count == max(vals_counter.values())
+            val for val, count in vals_counter.items() if count == max_count
         ]
