@@ -12,6 +12,17 @@ class Solution:
             if outer_left > 0 and nums[outer_left] == nums[outer_left - 1]:
                 continue
 
+            if (
+                nums[outer_left]
+                + nums[outer_left + 1]
+                + nums[outer_left + 2]
+                + nums[outer_left + 3]
+                > target
+            ):
+                break
+            if nums[outer_left] + nums[-3] + nums[-2] + nums[-1] < target:
+                continue
+
             for outer_right in range(nums_len - 1, outer_left + 2, -1):
                 if (
                     outer_right < nums_len - 1
@@ -22,13 +33,10 @@ class Solution:
                 inner_left = outer_left + 1
                 inner_right = outer_right - 1
 
+                outer_sum = nums[outer_left] + nums[outer_right]
+
                 while inner_left < inner_right:
-                    curr_sum = (
-                        nums[outer_left]
-                        + nums[inner_left]
-                        + nums[inner_right]
-                        + nums[outer_right]
-                    )
+                    curr_sum = outer_sum + nums[inner_left] + nums[inner_right]
 
                     if curr_sum == target:
                         four_sums.append(
