@@ -2,7 +2,7 @@
 
 # Check for correct argument count
 if [ "$#" -lt 4 ]; then
-  echo "Usage: $0 <difficulty: easy|medium|hard> <number> <name_with_underscores> <extension...>"
+  echo "Usage: $0 <difficulty: easy|medium|hard> <number> <name_with_underscores> <extension: py|cpp|java ...>"
   exit 1
 fi
 
@@ -33,8 +33,11 @@ mkdir -p "$target_dir"
 # Shift arguments by 3
 shift 3
 for ext in "$@"; do
-  # Allow .py and .cpp extensions only for now
   case "$ext" in
+    java)
+      touch "${target_dir}/Solution.java"
+      echo "Added ${target_dir}/Solution.java"
+      ;;
     py|cpp)
       touch "${target_dir}/solution.${ext}"
       echo "Added ${target_dir}/solution.${ext}"
