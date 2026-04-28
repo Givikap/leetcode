@@ -46,3 +46,20 @@ repos:
         language: system
         types_or: [c, c++, header]
         files: \.(c|cpp|h|hpp)$
+
+  - repo: local
+    hooks:
+      - id: google-java-format
+        name: google-java-format
+        entry: google-java-format -i
+        language: system
+        types: [java]
+
+  - repo: https://codeberg.org/gherynos/pre-commit-java
+    rev: v0.6.39
+    hooks:
+      - id: pmd
+        args: ["-R=configs/pmd.xml"]
+      - id: cpd
+      - id: checkstyle
+        args: ["-c", "configs/checkstyle.xml"]
