@@ -1,4 +1,4 @@
-import utils.java.nodes.TreeNode;
+import nodes.TreeNode;
 
 class Solution {
   public TreeNode searchBST(TreeNode root, int val) {
