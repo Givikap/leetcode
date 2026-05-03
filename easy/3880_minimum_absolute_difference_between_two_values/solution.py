@@ -3,18 +3,19 @@ from typing import List
 
 class Solution:
     def minAbsoluteDifference(self, nums: List[int]) -> int:
-        min_difference = len(nums) + 1
+        min_difference = float("inf")
 
-        for i in range(len(nums)):
-            if nums[i] == 0:
+        prev_num = 0
+        prev_i = 0
+
+        for i, num in enumerate(nums):
+            if num == 0:
                 continue
-            elif nums[i] == 1:
-                other = 2
-            else:
-                other = 1
 
-            for j in range(i + 1, len(nums)):
-                if nums[j] == other:
-                    min_difference = min(min_difference, abs(i - j))
+            if prev_num == 3 - num and i - prev_i < min_difference:
+                min_difference = i - prev_i
 
-        return min_difference if min_difference != len(nums) + 1 else -1
+            prev_num = num
+            prev_i = i
+
+        return min_difference if min_difference != float("inf") else -1
