@@ -1,11 +1,11 @@
-import java.util.Arrays;
-
 class Solution {
   public int[] findDegrees(int[][] matrix) {
     final int[] degrees = new int[matrix.length];
 
-    for (int i = 0; i < matrix.length; ++i) {
-      degrees[i] = Arrays.stream(matrix[i]).reduce(0, (a, b) -> a + b);
+    for (int i = 0; i < matrix.length; i++) {
+      for (int j = 0; j < matrix.length; j++) {
+        degrees[i] += matrix[i][j];
+      }
     }
 
     return degrees;
