@@ -13,10 +13,10 @@ public:
     int levelSum = root->val;
 
     while (!q.empty()) {
-      size_t n = q.size();
       int nextLevelSum = 0;
 
-      while (n--) {
+      size_t n = q.size();
+      for (; n > 0; --n) {
         utils::TreeNode *node = q.front();
         q.pop();
 
