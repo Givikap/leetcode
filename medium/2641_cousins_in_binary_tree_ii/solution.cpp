@@ -1,42 +1,44 @@
 #include "../../utils/cpp/nodes.hpp"
-#include <vector>
+#include <queue>
 
 class Solution {
 public:
   utils::TreeNode *replaceValueInTree(utils::TreeNode *root) {
-    root->val = 0;
+    if (!root)
+      return root;
 
-    std::vector<utils::TreeNode *> level = {root};
-    while (!level.empty()) {
-      std::vector<utils::TreeNode *> nextLevel;
+    std::queue<utils::TreeNode *> q;
+    q.push(root);
 
-      for (const utils::TreeNode *node : level) {
-        if (node->left)
-          nextLevel.push_back(node->left);
-        if (node->right)
-          nextLevel.push_back(node->right);
+    int levelSum = root->val;
+
+    while (!q.empty()) {
+      size_t n = q.size();
+      int nextLevelSum = 0;
+
+      while (n--) {
+        utils::TreeNode *node = q.front();
+        q.pop();
+
+        node->val = levelSum - node->val;
+
+        int siblingSum = 0;
+        siblingSum += (node->left ? node->left->val : 0);
+        siblingSum += (node->right ? node->right->val : 0);
+
+        if (node->left) {
+          nextLevelSum += node->left->val;
+          node->left->val = siblingSum;
+          q.push(node->left);
+        }
+        if (node->right) {
+          nextLevelSum += node->right->val;
+          node->right->val = siblingSum;
+          q.push(node->right);
+        }
       }
 
-      int levelSum = 0;
-      for (const utils::TreeNode *node : nextLevel)
-        levelSum += node->val;
-
-      for (const utils::TreeNode *node : level) {
-        int levelDeduction = 0;
-
-        if (node->left)
-          levelDeduction += node->left->val;
-        if (node->right)
-          levelDeduction += node->right->val;
-
-        if (node->left)
-          node->left->val = levelSum - levelDeduction;
-        if (node->right)
-          node->right->val = levelSum - levelDeduction;
-        ;
-      }
-
-      level = nextLevel;
+      levelSum = nextLevelSum;
     }
 
     return root;
