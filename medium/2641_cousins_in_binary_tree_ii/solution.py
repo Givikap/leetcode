@@ -7,30 +7,35 @@ class Solution:
     def replaceValueInTree(
         self, root: Optional[TreeNode]
     ) -> Optional[TreeNode]:
-        stack = [(root, None, 0)]
+        root.val = 0
 
-        while stack:
-            level = stack
-            stack = []
+        level = [root]
+        while level:
+            next_level = []
+
+            for node in level:
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
 
             level_sum = 0
+            for node in next_level:
+                level_sum += node.val
 
-            for i in range(len(level)):
-                level_sum += level[i][0].val
-
-            for i in range(len(level)):
-                level[i][0].val = level_sum - level[i][0].val - level[i][2]
-
-            while level:
-                node, _, _ = level.pop()
+            for node in level:
+                level_deduction = 0
 
                 if node.left:
-                    stack.append(
-                        (node.left, node, node.right.val if node.right else 0)
-                    )
+                    level_deduction += node.left.val
                 if node.right:
-                    stack.append(
-                        (node.right, node, node.left.val if node.left else 0)
-                    )
+                    level_deduction += node.right.val
+
+                if node.left:
+                    node.left.val = level_sum - level_deduction
+                if node.right:
+                    node.right.val = level_sum - level_deduction
+
+            level = next_level
 
         return root
