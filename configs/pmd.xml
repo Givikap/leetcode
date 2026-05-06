@@ -36,6 +36,7 @@
         <exclude name="ShortVariable"/>
     </rule>
     <rule ref="category/java/design.xml">
+        <exclude name="CognitiveComplexity"/>
         <exclude name="LawOfDemeter"/>
         <exclude name="LoosePackageCoupling"/>
         <exclude name="PublicMemberInNonPublicType"/>
