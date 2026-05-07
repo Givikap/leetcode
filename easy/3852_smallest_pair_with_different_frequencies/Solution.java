@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -8,16 +9,22 @@ class Solution {
       numsCounter.put(num, numsCounter.getOrDefault(num, 0) + 1);
     }
 
-    final Integer[] values = numsCounter.keySet().toArray(Integer[]::new);
+    final Iterator<Map.Entry<Integer, Integer>> iterator = numsCounter.entrySet().iterator();
 
-    for (int i = 0; i < values.length; i++) {
-      for (int j = i + 1; j < values.length; j++) {
-        final int x = values[i];
-        final int y = values[j];
+    if (!iterator.hasNext()) {
+      return new int[] {-1, -1};
+    }
 
-        if (!numsCounter.get(x).equals(numsCounter.get(y))) {
-          return new int[] {x, y};
-        }
+    final Map.Entry<Integer, Integer> smallest = iterator.next();
+
+    final int x = smallest.getKey();
+    final int xFrequency = smallest.getValue();
+
+    while (iterator.hasNext()) {
+      final Map.Entry<Integer, Integer> next = iterator.next();
+
+      if (next.getValue() != xFrequency) {
+        return new int[] {x, next.getKey()};
       }
     }
 
