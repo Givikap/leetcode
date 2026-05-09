@@ -1,29 +1,25 @@
 class Solution:
     def reverseByType(self, s: str) -> str:
-        chars = list(s)
+        lowercase_letters = []
+        special_chars = []
 
-        for should_be_lower_case in (True, False):
-            left = 0
-            right = len(s) - 1
+        for i in range(len(s) - 1, -1, -1):
+            if s[i].islower():
+                lowercase_letters.append(i)
+            else:
+                special_chars.append(i)
 
-            while True:
-                while (
-                    left < right
-                    and chars[left].islower() == should_be_lower_case
-                ):
-                    left += 1
-                while (
-                    right > 0
-                    and chars[right].islower() == should_be_lower_case
-                ):
-                    right -= 1
+        lowercase_i = 0
+        special_i = 0
 
-                if left >= right:
-                    break
+        reversed_chars = []
 
-                chars[left], chars[right] = chars[right], chars[left]
+        for i in range(len(s)):
+            if s[i].islower():
+                reversed_chars.append(s[lowercase_letters[lowercase_i]])
+                lowercase_i += 1
+            else:
+                reversed_chars.append(s[special_chars[special_i]])
+                special_i += 1
 
-                left += 1
-                right -= 1
-
-        return "".join(chars)
+        return "".join(reversed_chars)
