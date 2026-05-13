@@ -1,18 +1,21 @@
 #include <vector>
 
 class Solution {
-private:
-  std::vector<int> fibCache = {0, 1};
-
 public:
   int fib(int n) {
     if (n < 2)
       return n;
-    if (n < fibCache.size())
-      return fibCache[n];
 
-    const int fibN = fib(n - 1) + fib(n - 2);
-    fibCache.push_back(fibN);
+    int lastLast = 0;
+    int last = 1;
+    int fibN = 0;
+
+    for (int _ = 2; _ < n + 1; ++_) {
+      fibN = lastLast + last;
+      lastLast = last;
+      last = fibN;
+    }
+
     return fibN;
   }
 };
