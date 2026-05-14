@@ -1,16 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution {
   public int[] separateDigits(int[] nums) {
-    final List<Integer> digits = new ArrayList<>();
+    int size = 0;
+    for (final int num : nums) {
+      size += Math.log10(num) + 1;
+    }
 
-    for (final Integer num : nums) {
-      for (final char ch : Integer.toString(num).toCharArray()) {
-        digits.add(ch - '0');
+    final int[] digits = new int[size];
+    --size;
+
+    for (int i = nums.length - 1; i > -1; --i) {
+      int num = nums[i];
+
+      while (num > 0) {
+        digits[size] = num % 10;
+        --size;
+        num /= 10;
       }
     }
 
-    return digits.stream().mapToInt(Integer::intValue).toArray();
+    return digits;
   }
 }
