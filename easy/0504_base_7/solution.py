@@ -1,23 +1,22 @@
+from collections import deque
+
+
 class Solution:
     def convertToBase7(self, num: int) -> str:
-        if num == 0:
-            return "0"
+        if abs(num) < 7:
+            return str(num)
 
         is_negative = num < 0
         if is_negative:
             num = -num
 
-        stack = []
+        dq = deque()
 
         while num:
-            stack.append(chr(48 + num % 7))
+            dq.appendleft(chr(48 + num % 7))
             num //= 7
 
-        base_7_num = []
         if is_negative:
-            base_7_num.append("-")
+            dq.appendleft("-")
 
-        while stack:
-            base_7_num.append(stack.pop())
-
-        return "".join(base_7_num)
+        return "".join(dq)
