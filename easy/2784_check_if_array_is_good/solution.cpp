@@ -1,23 +1,21 @@
-#include <map>
 #include <vector>
 
 class Solution {
 public:
   bool isGood(std::vector<int> &nums) {
-    std::map<int, int> numsCounter;
-    for (const int &num : nums)
-      ++numsCounter[num];
+    const int n = nums.size();
+    std::vector<int> numsCounter(n, 0);
 
-    const int maxNum = numsCounter.rbegin()->first;
+    for (int i = 0; i < n; ++i) {
+      if (nums[i] >= n)
+        return false;
 
-    if (numsCounter[maxNum] != 2)
-      return false;
+      numsCounter[nums[i]]++;
 
-    for (int num = 1; num < maxNum; ++num) {
-      if (numsCounter[num] != 1)
+      if (numsCounter[nums[i]] > 1 && nums[i] != n - 1)
         return false;
     }
 
-    return true;
+    return numsCounter[n - 1] == 2;
   }
 };
