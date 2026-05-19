@@ -10,19 +10,21 @@ public:
     size_t abbrI = 0;
 
     while (wordI < wordLen) {
-      if (std::isalpha(abbr[abbrI])) {
-        if (word[wordI++] != abbr[abbrI++])
-          return false;
-      } else {
+      if (word[wordI] == abbr[abbrI]) {
+        ++wordI;
+        ++abbrI;
+      } else if (abbr[abbrI] >= '0' && abbr[abbrI] <= '9') {
         if (abbr[abbrI] == '0')
           return false;
 
         size_t jump = 0;
 
         while (abbrI < abbrLen && std::isdigit(abbr[abbrI]))
-          jump = jump * 10 + abbr[abbrI++] - 48;
+          jump = jump * 10 + (abbr[abbrI++] - '0');
 
         wordI += jump;
+      } else {
+        return false;
       }
     }
 
