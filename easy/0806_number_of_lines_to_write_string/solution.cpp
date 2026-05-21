@@ -5,19 +5,18 @@ class Solution {
 public:
   std::vector<int> numberOfLines(std::vector<int> &widths, std::string s) {
     int linesCount = 1;
-    int remainingLineWidth = 100;
+    int currLineWidth = 0;
 
     for (const char &ch : s) {
       int chWidth = widths[ch - 'a'];
 
-      if (remainingLineWidth < chWidth) {
+      if (currLineWidth + chWidth > 100) {
         ++linesCount;
-        remainingLineWidth = 100;
-      }
-
-      remainingLineWidth -= chWidth;
+        currLineWidth = chWidth;
+      } else
+        currLineWidth += chWidth;
     }
 
-    return {linesCount, 100 - remainingLineWidth};
+    return {linesCount, currLineWidth};
   }
 };
