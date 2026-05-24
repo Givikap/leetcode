@@ -1,28 +1,39 @@
 #include "../../utils/cpp/nodes.hpp"
 #include <stack>
-#include <unordered_set>
+#include <vector>
 
 class Solution {
 public:
   bool findTarget(utils::TreeNode *root, int k) {
-    std::unordered_set<int> visited;
+    utils::TreeNode *curr = root;
 
     std::stack<utils::TreeNode *> s;
-    s.push(root);
+    std::vector<int> sortedVals;
 
-    while (!s.empty()) {
-      utils::TreeNode *node = s.top();
+    while (curr || !s.empty()) {
+      while (curr) {
+        s.push(curr);
+        curr = curr->left;
+      }
+
+      sortedVals.push_back(s.top()->val);
+      curr = s.top()->right;
+
       s.pop();
+    }
 
-      if (visited.find(k - node->val) != visited.end())
+    size_t left = 0;
+    size_t right = sortedVals.size() - 1;
+
+    while (left < right) {
+      int currSum = sortedVals[left] + sortedVals[right];
+
+      if (currSum == k)
         return true;
+      else if (currSum < k)
+        ++left;
       else
-        visited.insert(node->val);
-
-      if (node->left)
-        s.push(node->left);
-      if (node->right)
-        s.push(node->right);
+        --right;
     }
 
     return false;
