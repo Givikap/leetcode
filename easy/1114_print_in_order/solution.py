@@ -1,24 +1,25 @@
+import time
 from typing import Callable
 
 
 class Foo:
     def __init__(self):
-        self.called = [0] * 3
+        self.state = 0
 
     def first(self, printFirst: "Callable[[], None]") -> None:
         printFirst()
-        self.called[0] = 1
+        self.state = 1
 
     def second(self, printSecond: "Callable[[], None]") -> None:
-        while not self.called[0]:
-            pass
+        while self.state != 1:
+            time.sleep(0.1)
 
         printSecond()
-        self.called[1] = 1
+        self.state = 2
 
     def third(self, printThird: "Callable[[], None]") -> None:
-        while not self.called[1]:
-            pass
+        while self.state != 2:
+            time.sleep(0.1)
 
         printThird()
-        self.called[2] = 1
+        self.state = 3
