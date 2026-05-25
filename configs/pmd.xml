@@ -33,6 +33,7 @@
         <exclude name="MethodArgumentCouldBeFinal"/>
         <exclude name="NoPackage"/>
         <exclude name="OnlyOneReturn"/>
+        <exclude name="ShortClassName"/>
         <exclude name="ShortVariable"/>
     </rule>
     <rule ref="category/java/design.xml">
@@ -49,6 +50,7 @@
         <exclude name="AvoidLiteralsInIfCondition"/>
     </rule>
     <rule ref="category/java/multithreading.xml">
+        <exclude name="DoNotUseThreads"/>
         <exclude name="UseConcurrentHashMap"/>
     </rule>
     <rule ref="category/java/performance.xml" />
