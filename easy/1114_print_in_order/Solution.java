@@ -1,30 +1,54 @@
-class Foo {
-  private int state;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-  public Foo() {
-    state = 0;
-  }
+class Foo {
+  private final Lock lock = new ReentrantLock();
+
+  private final Condition firstCompleted = lock.newCondition();
+  private final Condition secondCompleted = lock.newCondition();
+
+  private volatile boolean isFirstCompleted;
+  private volatile boolean isSecondCompleted;
+
+  public Foo() {}
 
   public void first(Runnable printFirst) throws InterruptedException {
-    printFirst.run();
-    state = 1;
+    lock.lock();
+    try {
+      printFirst.run();
+      isFirstCompleted = true;
+      firstCompleted.signal();
+    } finally {
+      lock.unlock();
+    }
   }
 
   public void second(Runnable printSecond) throws InterruptedException {
-    while (state != 1) {
-      Thread.sleep(1);
-    }
+    lock.lock();
+    try {
+      while (!isFirstCompleted) {
+        firstCompleted.await();
+      }
 
-    printSecond.run();
-    state = 2;
+      printSecond.run();
+      isSecondCompleted = true;
+      secondCompleted.signal();
+    } finally {
+      lock.unlock();
+    }
   }
 
   public void third(Runnable printThird) throws InterruptedException {
-    while (state != 1) {
-      Thread.sleep(1);
-    }
+    lock.lock();
+    try {
+      while (!isSecondCompleted) {
+        secondCompleted.await();
+      }
 
-    printThird.run();
-    state = 3;
+      printThird.run();
+    } finally {
+      lock.unlock();
+    }
   }
 }
