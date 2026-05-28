@@ -1,20 +1,20 @@
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        case_map = [[-1, -1] for _ in range(26)]
-
-        for i, c in enumerate(word):
-            if c.isupper():
-                c_i = ord(c) - 65
-
-                if case_map[c_i][1] == -1:
-                    case_map[c_i][1] = i
-            else:
-                case_map[ord(c) - 97][0] = i
+        lowercase_chars = "abcdefghijklmnopqrstuvwxyz"
+        uppercase_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
         special_chars_count = 0
 
-        for last_lowercase_i, first_uppercase_i in case_map:
-            if last_lowercase_i != -1 and last_lowercase_i < first_uppercase_i:
+        for lowercase_c, uppercase_c in zip(lowercase_chars, uppercase_chars):
+            lowercase_i = word.rfind(lowercase_c)
+            if lowercase_i < 0:
+                continue
+
+            uppercase_i = word.find(uppercase_c)
+            if uppercase_i < 0:
+                continue
+
+            if lowercase_i < uppercase_i:
                 special_chars_count += 1
 
         return special_chars_count
