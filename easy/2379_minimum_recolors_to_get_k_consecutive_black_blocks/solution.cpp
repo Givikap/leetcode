@@ -3,13 +3,10 @@
 class Solution {
 public:
   int minimumRecolors(std::string blocks, int k) {
-    int whiteCount = 0;
     int blackCount = 0;
 
     for (size_t i = 0; i < k; ++i) {
-      if (blocks[i] == 'W')
-        ++whiteCount;
-      else
+      if (blocks[i] == 'B')
         ++blackCount;
     }
 
@@ -19,14 +16,10 @@ public:
       return recolorsCount;
 
     for (size_t i = k; i < blocks.size(); ++i) {
-      if (blocks[i - k] == 'W')
-        --whiteCount;
-      else
+      if (blocks[i - k] == 'B')
         --blackCount;
 
-      if (blocks[i] == 'W')
-        ++whiteCount;
-      else
+      if (blocks[i] == 'B')
         ++blackCount;
 
       recolorsCount = std::min(recolorsCount, k - blackCount);
