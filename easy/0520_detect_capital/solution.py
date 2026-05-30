@@ -3,13 +3,10 @@ class Solution:
         if len(word) == 1:
             return True
 
-        if word[0].isupper() and word[1].isupper():
-            for i in range(1, len(word)):
-                if not word[i].isupper():
-                    return False
-        else:
-            for i in range(1, len(word)):
-                if not word[i].islower():
-                    return False
+        is_upper = word[0].isupper() and word[1].isupper()
+
+        for i in range(1, len(word)):
+            if word[i].islower() == is_upper:
+                return False
 
         return True
