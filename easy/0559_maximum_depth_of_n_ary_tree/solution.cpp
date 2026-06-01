@@ -1,5 +1,5 @@
 #include "../../utils/cpp/nodes.hpp"
-#include <stack>
+#include <queue>
 
 class Solution {
 public:
@@ -7,22 +7,24 @@ public:
     if (!root)
       return 0;
 
-    std::stack<std::pair<utils::Node *, int>> s;
-    s.push({root, 1});
+    std::queue<utils::Node *> q;
+    q.push(root);
 
-    int maxDepth = 0;
+    int depth = 0;
 
-    while (!s.empty()) {
-      utils::Node *node = s.top().first;
-      int depth = s.top().second;
-      s.pop();
+    while (!q.empty()) {
+      ++depth;
+      size_t levelSize = q.size();
 
-      maxDepth = std::max(maxDepth, depth);
+      for (size_t _ = 0; _ < levelSize; ++_) {
+        utils::Node *node = q.front();
+        q.pop();
 
-      for (utils::Node *child : node->children)
-        s.push({child, depth + 1});
+        for (utils::Node *child : node->children)
+          q.push(child);
+      }
     }
 
-    return maxDepth;
+    return depth;
   }
 };
