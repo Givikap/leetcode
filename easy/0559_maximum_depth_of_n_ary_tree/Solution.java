@@ -1,5 +1,3 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
 import nodes.Node;
 
 class Solution {
@@ -8,22 +6,12 @@ class Solution {
       return 0;
     }
 
-    final Deque<Node> dq = new ArrayDeque<>();
-    dq.push(root);
+    int maxDepth = 0;
 
-    int depth = 0;
-
-    while (!dq.isEmpty()) {
-      ++depth;
-      final int levelSize = dq.size();
-
-      for (int i = 0; i < levelSize; ++i) {
-        for (final Node child : dq.pop().children) {
-          dq.add(child);
-        }
-      }
+    for (final Node child : root.children) {
+      maxDepth = Math.max(maxDepth, maxDepth(child));
     }
 
-    return depth;
+    return 1 + maxDepth;
   }
 }
