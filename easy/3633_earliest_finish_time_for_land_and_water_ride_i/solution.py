@@ -9,23 +9,20 @@ class Solution:
         waterStartTime: List[int],
         waterDuration: List[int],
     ) -> int:
-        landTime = sorted(
-            zip(landStartTime, landDuration), key=lambda t: t[0] + t[1]
-        )
-        waterTime = sorted(
-            zip(waterStartTime, waterDuration), key=lambda t: t[0] + t[1]
-        )
-
         earliestFinishTime = float("inf")
 
-        landFt = landTime[0][0] + landTime[0][1]
-        for waterSt, waterDur in waterTime:
+        landFt = sum(
+            min(zip(landStartTime, landDuration), key=lambda t: t[0] + t[1])
+        )
+        for waterSt, waterDur in zip(waterStartTime, waterDuration):
             earliestFinishTime = min(
                 earliestFinishTime, max(landFt, waterSt) + waterDur
             )
 
-        waterFt = waterTime[0][0] + waterTime[0][1]
-        for landSt, landDur in landTime:
+        waterFt = sum(
+            min(zip(waterStartTime, waterDuration), key=lambda t: t[0] + t[1])
+        )
+        for landSt, landDur in zip(landStartTime, landDuration):
             earliestFinishTime = min(
                 earliestFinishTime, max(waterFt, landSt) + landDur
             )
