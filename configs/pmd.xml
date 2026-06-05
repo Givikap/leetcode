@@ -34,6 +34,7 @@
         <exclude name="NoPackage"/>
         <exclude name="OnlyOneReturn"/>
         <exclude name="ShortClassName"/>
+        <exclude name="LongVariable"/>
         <exclude name="ShortVariable"/>
     </rule>
     <rule ref="category/java/design.xml">
