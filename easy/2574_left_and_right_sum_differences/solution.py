@@ -5,13 +5,14 @@ class Solution:
     def leftRightDifference(self, nums: List[int]) -> List[int]:
         n = len(nums)
 
-        leftSums = [0] * n
-        rightSums = [0] * n
+        differences = []
 
-        for i in range(1, n):
-            leftSums[i] = leftSums[i - 1] + nums[i - 1]
+        numsSum = sum(nums)
+        leftSum = 0
 
-        for i in range(n - 2, -1, -1):
-            rightSums[i] = rightSums[i + 1] + nums[i + 1]
+        for i in range(n):
+            rightSum = numsSum - leftSum - nums[i]
+            differences.append(abs(leftSum - rightSum))
+            leftSum += nums[i]
 
-        return [abs(leftSums[i] - rightSums[i]) for i in range(n)]
+        return differences
