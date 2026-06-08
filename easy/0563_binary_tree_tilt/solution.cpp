@@ -1,43 +1,23 @@
 #include "../../utils/cpp/nodes.hpp"
-#include <stack>
-#include <unordered_map>
 
 class Solution {
 public:
   int findTilt(utils::TreeNode *root) {
-    if (!root)
+    int tilt = 0;
+    subtreeSum(root, tilt);
+    return tilt;
+  }
+
+private:
+  int subtreeSum(utils::TreeNode *node, int &tilt) {
+    if (!node)
       return 0;
 
-    std::stack<utils::TreeNode *> s1;
-    std::stack<utils::TreeNode *> s2;
+    int leftSum = subtreeSum(node->left, tilt);
+    int rightSum = subtreeSum(node->right, tilt);
 
-    s1.push(root);
+    tilt += std::abs(leftSum - rightSum);
 
-    while (!s1.empty()) {
-      utils::TreeNode *node = s1.top();
-      s1.pop();
-      s2.push(node);
-
-      if (node->left)
-        s1.push(node->left);
-      if (node->right)
-        s1.push(node->right);
-    }
-
-    int tilt = 0;
-    std::unordered_map<utils::TreeNode *, int> nodeSums;
-
-    while (!s2.empty()) {
-      utils::TreeNode *node = s2.top();
-      s2.pop();
-
-      int leftSum = node->left ? nodeSums[node->left] : 0;
-      int rightSum = node->right ? nodeSums[node->right] : 0;
-
-      tilt += abs(leftSum - rightSum);
-      nodeSums[node] = node->val + leftSum + rightSum;
-    }
-
-    return tilt;
+    return node->val + leftSum + rightSum;
   }
 };
