@@ -17,7 +17,7 @@ class Solution:
 
             vals.append(node.val)
 
-            for i in range(len(node.children) - 1, -1, -1):
-                dq.appendleft(node.children[i])
+            for child in reversed(node.children):
+                dq.appendleft(child)
 
         return vals
