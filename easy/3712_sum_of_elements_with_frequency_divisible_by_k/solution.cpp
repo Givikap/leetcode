@@ -9,10 +9,13 @@ public:
     for (const int &num : nums)
       ++numsCounter[num];
 
-    return std::accumulate(
-        numsCounter.begin(), numsCounter.end(), 0,
-        [k](int sum, const auto &pair) {
-          return sum + (pair.second % k == 0 ? pair.first * pair.second : 0);
-        });
+    int numsSum = 0;
+
+    for (const auto &[num, count] : numsCounter) {
+      if (count % k == 0)
+        numsSum += num * count;
+    }
+
+    return numsSum;
   }
 };
