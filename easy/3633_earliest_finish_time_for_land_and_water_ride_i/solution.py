@@ -9,8 +9,6 @@ class Solution:
         waterStartTime: List[int],
         waterDuration: List[int],
     ) -> int:
-        earliestFinishTime = float("inf")
-
         earliestLandFinishTime = sum(
             min(zip(landStartTime, landDuration), key=lambda t: t[0] + t[1])
         )
