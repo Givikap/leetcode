@@ -9,25 +9,38 @@ class Solution:
         waterStartTime: List[int],
         waterDuration: List[int],
     ) -> int:
-        earliestLandFinishTime = sum(
-            min(zip(landStartTime, landDuration), key=lambda t: t[0] + t[1])
-        )
-        earliestWaterFinishTime = sum(
-            min(zip(waterStartTime, waterDuration), key=lambda t: t[0] + t[1])
-        )
+        earliestLandFinishTime = float("inf")
+        for i in range(len(landStartTime)):
+            if landStartTime[i] >= earliestLandFinishTime:
+                continue
+
+            earliestLandFinishTime = min(
+                earliestLandFinishTime, landStartTime[i] + landDuration[i]
+            )
+
+        earliestWaterFinishTime = float("inf")
+        for i in range(len(waterStartTime)):
+            if waterStartTime[i] >= earliestLandFinishTime:
+                continue
+
+            earliestWaterFinishTime = min(
+                earliestWaterFinishTime, waterStartTime[i] + waterDuration[i]
+            )
 
         earliestFinishTime = float("inf")
 
-        for landSt, landDur in zip(landStartTime, landDuration):
+        for i in range(len(landStartTime)):
             earliestFinishTime = min(
                 earliestFinishTime,
-                max(earliestWaterFinishTime, landSt) + landDur,
+                max(earliestWaterFinishTime, landStartTime[i])
+                + landDuration[i],
             )
 
-        for waterSt, waterDur in zip(waterStartTime, waterDuration):
+        for i in range(len(waterStartTime)):
             earliestFinishTime = min(
                 earliestFinishTime,
-                max(earliestLandFinishTime, waterSt) + waterDur,
+                max(earliestLandFinishTime, waterStartTime[i])
+                + waterDuration[i],
             )
 
         return earliestFinishTime
