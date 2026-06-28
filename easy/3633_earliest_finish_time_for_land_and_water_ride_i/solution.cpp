@@ -12,22 +12,22 @@ public:
           std::min(earliestLandFinishTime, landStartTime[i] + landDuration[i]);
 
     int earliestWaterFinishTime = INT32_MAX;
-    for (size_t i = 0; i < waterStartTime.size(); ++i)
+    int earliestFinishTime = INT32_MAX;
+
+    for (size_t i = 0; i < waterStartTime.size(); ++i) {
       earliestWaterFinishTime = std::min(earliestWaterFinishTime,
                                          waterStartTime[i] + waterDuration[i]);
-
-    int earliestFinishTime = INT32_MAX;
+      earliestFinishTime =
+          std::min(earliestFinishTime,
+                   std::max(earliestLandFinishTime, waterStartTime[i]) +
+                       waterDuration[i]);
+    }
 
     for (size_t i = 0; i < landStartTime.size(); ++i)
       earliestFinishTime =
           std::min(earliestFinishTime,
                    std::max(earliestWaterFinishTime, landStartTime[i]) +
                        landDuration[i]);
-    for (size_t i = 0; i < waterStartTime.size(); ++i)
-      earliestFinishTime =
-          std::min(earliestFinishTime,
-                   std::max(earliestLandFinishTime, waterStartTime[i]) +
-                       waterDuration[i]);
 
     return earliestFinishTime;
   }
