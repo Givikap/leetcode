@@ -7,24 +7,22 @@ class Solution {
     }
 
     int earliestWaterFinishTime = Integer.MAX_VALUE;
+    int earliestFinishTime = Integer.MAX_VALUE;
+
     for (int i = 0; i < waterStartTime.length; ++i) {
       earliestWaterFinishTime =
           Math.min(earliestWaterFinishTime, waterStartTime[i] + waterDuration[i]);
+      earliestFinishTime =
+          Math.min(
+              earliestFinishTime,
+              Math.max(earliestLandFinishTime, waterStartTime[i]) + waterDuration[i]);
     }
-
-    int earliestFinishTime = Integer.MAX_VALUE;
 
     for (int i = 0; i < landStartTime.length; ++i) {
       earliestFinishTime =
           Math.min(
               earliestFinishTime,
               Math.max(earliestWaterFinishTime, landStartTime[i]) + landDuration[i]);
-    }
-    for (int i = 0; i < waterStartTime.length; ++i) {
-      earliestFinishTime =
-          Math.min(
-              earliestFinishTime,
-              Math.max(earliestLandFinishTime, waterStartTime[i]) + waterDuration[i]);
     }
 
     return earliestFinishTime;
