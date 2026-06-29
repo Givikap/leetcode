@@ -46,8 +46,8 @@ repos:
         name: clang-tidy
         entry: clang-tidy
         language: system
-        types_or: [c, c++, header]
-        files: \.(c|cpp|h|hpp)$
+        types_or: [c, c++]
+        args: ['--checks=boost-*,bugprone-*,performance-*,readability-*,portability-*,modernize-*,clang-analyzer-*,cppcoreguidelines-*']
 
   - repo: local
     hooks:
