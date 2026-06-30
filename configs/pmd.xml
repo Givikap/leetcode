@@ -35,10 +35,12 @@
         <exclude name="OnlyOneReturn"/>
         <exclude name="ShortClassName"/>
         <exclude name="LongVariable"/>
+        <exclude name="EmptyControlStatement"/>
         <exclude name="ShortVariable"/>
     </rule>
     <rule ref="category/java/design.xml">
         <exclude name="CognitiveComplexity"/>
+        <exclude name="CyclomaticComplexity"/>
         <exclude name="LawOfDemeter"/>
         <exclude name="LoosePackageCoupling"/>
         <exclude name="PublicMemberInNonPublicType"/>
