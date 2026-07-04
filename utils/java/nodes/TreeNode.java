@@ -1,4 +1,4 @@
-package nodes;
+package utils.java.nodes;
 
 public class TreeNode {
   public int val;

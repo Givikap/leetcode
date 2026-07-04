@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import nodes.TreeNode;
+import utils.java.nodes.TreeNode;
 
 class Solution {
   public TreeNode createBinaryTree(int[][] descriptions) {

@@ -1,4 +1,4 @@
-package nodes;
+package utils.java.nodes;
 
 import java.util.List;
 

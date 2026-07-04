@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
-import nodes.TreeNode;
+import utils.java.nodes.TreeNode;
 
 class Solution {
   public TreeNode replaceValueInTree(TreeNode root) {

@@ -1,4 +1,4 @@
-import nodes.Node;
+import utils.java.nodes.Node;
 
 class Solution {
   public int maxDepth(Node root) {

@@ -2,7 +2,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-import nodes.Node;
+import utils.java.nodes.Node;
 
 class Solution {
   public List<Integer> preorder(Node root) {

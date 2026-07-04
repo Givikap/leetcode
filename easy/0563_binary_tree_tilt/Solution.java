@@ -1,4 +1,4 @@
-import nodes.TreeNode;
+import utils.java.nodes.TreeNode;
 
 class Solution {
   private int tilt;

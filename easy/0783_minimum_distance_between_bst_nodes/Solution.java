@@ -2,7 +2,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-import nodes.TreeNode;
+import utils.java.nodes.TreeNode;
 
 class Solution {
   public int minDiffInBST(TreeNode root) {
