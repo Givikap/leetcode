@@ -5,21 +5,18 @@ from utils.python.nodes import ListNode
 
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev = None
+        if not head or not head.next:
+            return None
+
         slow = head
-        fast = head
+        fast = head.next.next
 
         while fast and fast.next:
-            prev = slow
             slow = slow.next
-            fast = fast.next
-            if fast:
-                fast = fast.next
+            fast = fast.next.next
 
-        if prev:
-            prev.next = slow.next
-            del slow
-        else:
-            head = None
+        mid = slow.next
+        slow.next = slow.next.next
+        del mid
 
         return head
