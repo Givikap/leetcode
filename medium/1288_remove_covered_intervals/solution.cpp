@@ -3,21 +3,20 @@
 class Solution {
 public:
   int removeCoveredIntervals(std::vector<std::vector<int>> &intervals) {
-    sort(intervals.begin(), intervals.end());
+    sort(intervals.begin(), intervals.end(),
+         [](const std::vector<int> &a, const std::vector<int> &b) {
+           if (a[0] == b[0])
+             return a[1] > b[1];
+           return a[0] < b[0];
+         });
 
-    int uncoveredIntervalsCount = 1;
-    std::vector<int> prevInterval = intervals[0];
+    int uncoveredIntervalsCount = 0;
+    int prevIntervalEnd = -1;
 
-    for (size_t i = 1; i < intervals.size(); ++i) {
-      if (intervals[i][0] >= prevInterval[0] &&
-          intervals[i][1] <= prevInterval[1]) {
-
-      } else if (intervals[i][0] <= prevInterval[0] &&
-                 intervals[i][1] >= prevInterval[1]) {
-        prevInterval = intervals[i];
-      } else {
+    for (const std::vector<int> &interval : intervals) {
+      if (interval[1] > prevIntervalEnd) {
         ++uncoveredIntervalsCount;
-        prevInterval = intervals[i];
+        prevIntervalEnd = interval[1];
       }
     }
 
