@@ -3,24 +3,14 @@ from typing import List
 
 class Solution:
     def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
-        intervals.sort()
+        intervals.sort(key=lambda interval: (interval[0], -interval[1]))
 
-        uncoveredIntervalsCount = 1
-        prevInterval = intervals[0]
+        uncoveredIntervalsCount = 0
+        prevIntervalEnd = -1
 
-        for i in range(1, len(intervals)):
-            if (
-                intervals[i][0] >= prevInterval[0]
-                and intervals[i][1] <= prevInterval[1]
-            ):
-                pass
-            elif (
-                intervals[i][0] <= prevInterval[0]
-                and intervals[i][1] >= prevInterval[1]
-            ):
-                prevInterval = intervals[i]
-            else:
+        for interval in intervals:
+            if interval[1] > prevIntervalEnd:
                 uncoveredIntervalsCount += 1
-                prevInterval = intervals[i]
+                prevIntervalEnd = interval[1]
 
         return uncoveredIntervalsCount
