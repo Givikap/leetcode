@@ -4,10 +4,10 @@ class Solution {
 public:
   int removeCoveredIntervals(std::vector<std::vector<int>> &intervals) {
     sort(intervals.begin(), intervals.end(),
-         [](const std::vector<int> &a, const std::vector<int> &b) {
-           if (a[0] == b[0])
-             return a[1] > b[1];
-           return a[0] < b[0];
+         [](const std::vector<int> &i1, const std::vector<int> &i2) {
+           if (i1[0] == i2[0])
+             return i1[1] > i2[1];
+           return i1[0] < i2[0];
          });
 
     int uncoveredIntervalsCount = 0;
