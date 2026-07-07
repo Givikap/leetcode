@@ -1,27 +1,21 @@
-#include <numeric>
-#include <vector>
-
 class Solution {
 public:
   long long sumAndMultiply(int n) {
-    std::vector<int> digits;
+    long long nNew = 0;
+    int mul = 1;
+    int digitsSum = 0;
 
     while (n) {
       int digit = n % 10;
-
-      if (digit != 0)
-        digits.push_back(digit);
-
       n /= 10;
+
+      if (digit != 0) {
+        nNew = digit * mul + nNew;
+        mul *= 10;
+        digitsSum += digit;
+      }
     }
 
-    int digitsSum = std::reduce(digits.begin(), digits.end());
-
-    while (!digits.empty()) {
-      n = n * 10 + digits.back();
-      digits.pop_back();
-    }
-
-    return (long long)n * digitsSum;
+    return nNew * digitsSum;
   }
 };
