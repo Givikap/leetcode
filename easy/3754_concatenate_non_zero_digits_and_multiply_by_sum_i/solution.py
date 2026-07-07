@@ -1,18 +1,16 @@
 class Solution:
     def sumAndMultiply(self, n: int) -> int:
-        digits = []
+        nNew = 0
+        mul = 1
+        digitsSum = 0
 
         while n:
             digit = n % 10
-
-            if digit != 0:
-                digits.append(digit)
-
             n //= 10
 
-        digitsSum = sum(digits)
+            if digit != 0:
+                nNew = digit * mul + nNew
+                mul *= 10
+                digitsSum += digit
 
-        while digits:
-            n = n * 10 + digits.pop()
-
-        return n * digitsSum
+        return nNew * digitsSum
