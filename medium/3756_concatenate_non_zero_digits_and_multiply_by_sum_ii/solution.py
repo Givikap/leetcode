@@ -4,9 +4,9 @@ from typing import List
 class Solution:
     def sumAndMultiply(self, s: str, queries: List[List[int]]) -> List[int]:
         n = len(s)
-        mod = 10**9 + 7
 
-        inv10 = pow(10, mod - 2, mod)
+        mod = 1000000007
+        inv10 = 700000005
 
         pow10 = [1] * (n + 1)
         inv10pow = [1] * (n + 1)
