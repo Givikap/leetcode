@@ -9,11 +9,10 @@ public:
       return a->val > b->val;
     };
 
-    for (size_t i = 0; i < lists.size(); ++i) {
-      while (lists[i]) {
-        heap.push_back(lists[i]);
+    for (utils::ListNode *list : lists) {
+      if (list) {
+        heap.push_back(list);
         push_heap(heap.begin(), heap.end(), cmp);
-        lists[i] = lists[i]->next;
       }
     }
 
@@ -22,9 +21,15 @@ public:
 
     while (!heap.empty()) {
       curr->next = heap.front();
+
       pop_heap(heap.begin(), heap.end(), cmp);
       heap.pop_back();
+
       curr = curr->next;
+      if (curr->next) {
+        heap.push_back(curr->next);
+        push_heap(heap.begin(), heap.end(), cmp);
+      }
     }
     curr->next = nullptr;
 
