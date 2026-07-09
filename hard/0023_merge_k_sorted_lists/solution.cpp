@@ -1,35 +1,32 @@
 #include "../../utils/cpp/nodes.hpp"
+#include <queue>
 #include <vector>
 
 class Solution {
 public:
   utils::ListNode *mergeKLists(std::vector<utils::ListNode *> &lists) {
-    std::vector<utils::ListNode *> heap;
     auto cmp = [](utils::ListNode *a, utils::ListNode *b) {
       return a->val > b->val;
     };
+    std::priority_queue<utils::ListNode *, std::vector<utils::ListNode *>,
+                        decltype(cmp)>
+        pq(cmp);
 
     for (utils::ListNode *list : lists) {
-      if (list) {
-        heap.push_back(list);
-        push_heap(heap.begin(), heap.end(), cmp);
-      }
+      if (list)
+        pq.push(list);
     }
 
     utils::ListNode *dummy = new utils::ListNode(-10001);
     utils::ListNode *curr = dummy;
 
-    while (!heap.empty()) {
-      curr->next = heap.front();
-
-      pop_heap(heap.begin(), heap.end(), cmp);
-      heap.pop_back();
+    while (!pq.empty()) {
+      curr->next = pq.top();
+      pq.pop();
 
       curr = curr->next;
-      if (curr->next) {
-        heap.push_back(curr->next);
-        push_heap(heap.begin(), heap.end(), cmp);
-      }
+      if (curr->next)
+        pq.push(curr->next);
     }
     curr->next = nullptr;
 
