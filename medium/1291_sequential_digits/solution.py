@@ -3,27 +3,21 @@ from typing import List
 
 class Solution:
     def sequentialDigits(self, low: int, high: int) -> List[int]:
-        lowStr = str(low)
-
-        seed = ord(lowStr[0]) - 48
-        sLen = len(lowStr)
+        digits = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         sequentialNums = []
 
-        while True:
-            sequentialNum = 0
-            for i in range(sLen):
-                sequentialNum = sequentialNum * 10 + seed + i
+        for count in range(1, 10):
+            for i in range(len(digits)):
+                if i == 10 - count:
+                    break
 
-            if sequentialNum > high:
-                break
-            elif seed < sequentialNum % 10 and sequentialNum >= low:
-                sequentialNums.append(sequentialNum)
+                sequentialNum = 0
 
-            if sequentialNum % 10 == 9:
-                seed = 1
-                sLen += 1
-            else:
-                seed += 1
+                for j in range(count):
+                    sequentialNum = sequentialNum * 10 + digits[i + j]
+
+                if low <= sequentialNum <= high:
+                    sequentialNums.append(sequentialNum)
 
         return sequentialNums
