@@ -1,61 +1,74 @@
 from typing import List
 
-import numpy as np
-
 
 class Solution:
     def pathExistenceQueries(
         self, n: int, nums: List[int], maxDiff: int, queries: List[List[int]]
     ) -> List[int]:
-        items = sorted((num, i) for i, num in enumerate(nums))
+        uniqueSortedVals = sorted(set(nums))
+        indicesMap = {val: i for i, val in enumerate(uniqueSortedVals)}
 
-        indicesMap = [0] * n
-        for i in range(n):
-            indicesMap[items[i][1]] = i
+        m = len(uniqueSortedVals)
 
-        reachable = [-1] * n
-        for i in range(n - 2, -1, -1):
-            if items[i + 1][0] - items[i][0] <= maxDiff:
-                reachable[i] = reachable[i + 1]
-            else:
-                reachable[i] = i
+        groupsMap = [0] * m
+        currGroup = 0
 
-        jumps = np.full((100001, 18), n - 1, dtype=np.int32)
+        for i in range(1, m):
+            if uniqueSortedVals[i] - uniqueSortedVals[i - 1] > maxDiff:
+                currGroup += 1
 
-        i = 0
-        for j in range(n):
-            while items[j][0] - items[i][0] > maxDiff:
-                jumps[i][0] = j - 1
-                i += 1
+            groupsMap[i] = currGroup
 
-        while i < n:
-            jumps[i][0] = n - 1
-            i += 1
+        maxHops = max(1, m.bit_length())
 
-        for j in range(18):
-            for i in range(n):
-                jumps[i][j] = jumps[jumps[i][j - 1]][j - 1]
+        jumps = [None] * maxHops
+        jumps0 = [0] * m
 
-        pathsExist = [0] * len(queries)
+        right = 0
 
-        for i in range(len(queries)):
-            u = queries[i][0]
-            v = queries[i][1]
+        for i in range(m):
+            while (
+                right + 1 < m
+                and uniqueSortedVals[right + 1]
+                <= uniqueSortedVals[i] + maxDiff
+            ):
+                right += 1
+            jumps0[i] = right
 
-            if u != v:
-                left = indicesMap[u]
-                right = indicesMap[v]
-                if left > right:
-                    left, right = right, left
+        jumps[0] = jumps0
 
-                if reachable[left] < right:
-                    pathsExist[i] = -1
-                else:
-                    pathsExist[i] = 1
+        for h in range(1, maxHops):
+            jumps[h] = [jumps[h - 1][jumps[h - 1][i]] for i in range(m)]
 
-                    for j in range(17, -1, -1):
-                        if jumps[left][j] < right:
-                            left = jumps[left][j]
-                            pathsExist[i] += 1 << j
+        pathsExist = []
+
+        for u, v in queries:
+            if u == v:
+                pathsExist.append(0)
+                continue
+
+            uVal, vVal = nums[u], nums[v]
+            if uVal == vVal:
+                pathsExist.append(1)
+                continue
+
+            if uVal > vVal:
+                uVal, vVal = vVal, uVal
+
+            uIdx, vIdx = indicesMap[uVal], indicesMap[vVal]
+
+            if groupsMap[uIdx] != groupsMap[vIdx]:
+                pathsExist.append(-1)
+                continue
+
+            curr = uIdx
+            hops = 0
+
+            for h in range(maxHops - 1, -1, -1):
+                if jumps[h][curr] < vIdx:
+                    curr = jumps[h][curr]
+                    hops += 1 << h
+
+            pathsExist.append(hops + 1)
 
         return pathsExist
