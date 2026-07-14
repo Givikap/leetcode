@@ -1,4 +1,3 @@
-from copy import deepcopy
 from typing import List
 
 
@@ -9,13 +8,9 @@ class Solution:
 
         k %= cols
 
-        matCopy = deepcopy(mat)
-
         for row in range(rows):
             for col in range(cols):
-                if row % 2 == 0:
-                    matCopy[row][col] = mat[row][col - k]
-                else:
-                    matCopy[row][col] = mat[row][(col + k) % cols]
+                if mat[row][col] != mat[row][(col + k) % cols]:
+                    return False
 
-        return matCopy == mat
+        return True
