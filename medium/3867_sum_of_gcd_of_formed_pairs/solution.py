@@ -6,14 +6,12 @@ class Solution:
     def gcdSum(self, nums: List[int]) -> int:
         n = len(nums)
 
-        mx = [nums[0]] * n
-        prefixGcd = [0] * n
+        currMax = 0
+        prefixGcd = []
 
-        for i in range(1, n):
-            mx[i] = max(mx[i - 1], nums[i])
-
-        for i in range(n):
-            prefixGcd[i] = math.gcd(nums[i], mx[i])
+        for num in nums:
+            currMax = max(currMax, num)
+            prefixGcd.append(math.gcd(num, currMax))
 
         prefixGcd.sort()
 
