@@ -1,13 +1,10 @@
-#include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
   int maxDigitRange(std::vector<int> &nums) {
-    std::unordered_map<int, int> digitRangesMap;
-    std::unordered_map<int, int> numsCounter;
-
     int maxDigitRange = 0;
+    int maxDigitRangeSum = 0;
 
     for (const int &num : nums) {
       int numCopy = num;
@@ -23,17 +20,13 @@ public:
         numCopy /= 10;
       }
 
-      digitRangesMap[num] = maxDigit - minDigit;
-      ++numsCounter[num];
+      int digitRange = maxDigit - minDigit;
 
-      maxDigitRange = std::max(maxDigitRange, maxDigit - minDigit);
-    }
-
-    int maxDigitRangeSum = 0;
-
-    for (const auto &[num, digitRange] : digitRangesMap) {
-      if (digitRange == maxDigitRange)
-        maxDigitRangeSum += num * numsCounter[num];
+      if (digitRange > maxDigitRange) {
+        maxDigitRange = digitRange;
+        maxDigitRangeSum = num;
+      } else if (digitRange == maxDigitRange)
+        maxDigitRangeSum += num;
     }
 
     return maxDigitRangeSum;
