@@ -16,7 +16,7 @@ private:
     int leftSum = subtreeSum(node->left, tilt);
     int rightSum = subtreeSum(node->right, tilt);
 
-    tilt += std::abs(leftSum - rightSum);
+    tilt += abs(leftSum - rightSum);
 
     return node->val + leftSum + rightSum;
   }

@@ -7,7 +7,7 @@ public:
 
     for (int i = 0; i < nums.size(); ++i) {
       if (nums[i] == target)
-        minDist = std::min(minDist, std::abs(i - start));
+        minDist = std::min(minDist, abs(i - start));
     }
 
     return minDist;

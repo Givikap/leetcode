@@ -17,7 +17,7 @@ public:
       while (mid < right) {
         currSum = nums[left] + nums[mid] + nums[right];
 
-        if (std::abs(target - currSum) < abs(target - closestSum))
+        if (abs(target - currSum) < abs(target - closestSum))
           closestSum = currSum;
 
         if (currSum < target)

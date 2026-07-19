@@ -10,7 +10,7 @@ public:
     if (n == 1)
       return x;
 
-    long N = std::abs((long)n);
+    long N = abs((long)n);
 
     double result = myPow(x, N / 2);
     result *= result;

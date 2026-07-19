@@ -10,7 +10,7 @@ public:
     int leftSum = 0;
 
     for (const int &num : nums) {
-      differences.push_back(std::abs(leftSum * 2 + num - numsSum));
+      differences.push_back(abs(leftSum * 2 + num - numsSum));
       leftSum += num;
     }
 

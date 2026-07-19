@@ -14,7 +14,7 @@ public:
 
           maxArea = std::max(
               maxArea,
-              std::abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0);
+              abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0);
         }
       }
     }

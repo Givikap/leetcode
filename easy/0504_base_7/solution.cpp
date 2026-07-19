@@ -4,7 +4,7 @@
 class Solution {
 public:
   std::string convertToBase7(int num) {
-    if (std::abs(num) < 6)
+    if (abs(num) < 6)
       return std::to_string(num);
 
     const bool isNegative = num < 0;

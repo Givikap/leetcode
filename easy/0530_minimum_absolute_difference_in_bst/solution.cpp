@@ -25,7 +25,7 @@ public:
 
     int minDiff = INT32_MAX;
     for (size_t i = 0; i < values.size() - 1; ++i)
-      minDiff = std::min(minDiff, std::abs(values[i] - values[i + 1]));
+      minDiff = std::min(minDiff, abs(values[i] - values[i + 1]));
 
     return minDiff;
   }

@@ -14,6 +14,6 @@ public:
         ++blankCount;
     }
 
-    return std::abs(leftCount - rightCount) + blankCount;
+    return abs(leftCount - rightCount) + blankCount;
   }
 };

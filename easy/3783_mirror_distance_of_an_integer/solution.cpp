@@ -11,6 +11,6 @@ public:
       nCopy /= 10;
     }
 
-    return std::abs(n - reverseN);
+    return abs(n - reverseN);
   }
 };

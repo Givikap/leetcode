@@ -19,7 +19,7 @@ public:
     for (const auto &[_, i] : firstsMap) {
       for (const auto &[_, j] : lastsMap) {
         if (colors[i] != colors[j])
-          maxDist = std::max(maxDist, std::abs((int)(i - j)));
+          maxDist = std::max(maxDist, abs((int)(i - j)));
       }
     }
 
